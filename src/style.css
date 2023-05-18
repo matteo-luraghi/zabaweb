@@ -41,6 +41,7 @@ html, body {
   color: #e0e0e0;
   max-height: 120px;
   width: 100%;
+  margin-top: 0px;
 }
 
 .router-link {
