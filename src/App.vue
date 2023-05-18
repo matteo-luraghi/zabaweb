@@ -93,7 +93,7 @@
   .footer-circle {
     display: flex;
     width: 50px;
-    height: 40px;
+    height: 35px;
     border-radius: 50%;
     background-color: #e0e0e0;
     align-items: center;
