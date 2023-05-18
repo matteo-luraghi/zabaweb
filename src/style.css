@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: "Roadway";
+  src: url(./fonts/ROADWAY.ttf);
+}
+
+@font-face {
+  font-family: "MinionPro";
+  src: url(./fonts/MinionPro-Regular.otf);
+}
+
+@font-face {
+  font-family: "CodeBold";
+  src: url(./fonts/CODEBold.otf);
+}
+
+.title-font {
+  font-family: "Roadway";
+}
+
+.text-font {
+  font-family: "MinionPro";
+}
+
+.header {
+  margin-left: 20px;
+  box-sizing: border-box;
+  padding: 40px 60px;
+  display: flex;
+  background-color: #303030;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  color: #e0e0e0;
+  max-height: 120px;
+  width: 100%;
+}
+
+.router-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 20px 0;
+  padding: 0;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.button {
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+  text-decoration: none;
+  color: inherit;
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.title {
+  text-align: center;
+  font-size: 40px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: auto;
+  padding: 0 10%;
+}
+
+.text-center {
+  text-align: center;
+}

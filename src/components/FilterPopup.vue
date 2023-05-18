@@ -1,0 +1,122 @@
+<script setup lang="ts">
+import { filters, showFilters, api } from '../state'
+import { reactive } from 'vue';
+
+    //interface for the Article type of object
+    interface Article {
+        title: string
+        text: string
+        subtitle: string
+        date: string
+        tags: string[]
+        authors: string[]
+        img: string
+    }
+
+    //call to the backend API to get the "articles" object from the notion database
+    //the variable dataJson stores all the info, then in the template via the v-for method are displayed all of the articles of the database
+    let dataJson: Article[] = []
+    await api.get<Article[]>('articles').then(
+        (res) => {
+            dataJson = res.data
+        },
+        (error) => console.log(error)
+    )
+    
+    //reactive variable to display the filters as buttons
+    const filtersList = reactive({
+        type: "",
+        data: [""],
+    })
+
+    //updates the filters as they're pressed
+    function filterByTags() {
+        if(filtersList.type === 'tags') {
+            filtersList.type = ''
+            return
+        }
+        filtersList.type = 'tags'
+        filtersList.data = []
+        for(let i in dataJson) {
+            const filteringData = dataJson[i]['tags']
+            for (let j in filteringData) {
+                if (!filtersList.data.includes(filteringData[j])) {
+                    filtersList.data.push(filteringData[j])
+                }
+            }
+        } 
+    }
+
+    //adds the selected filters to the global variable filters
+    //in order to display the articles according to the filters
+    function addFilter(filterType:string,filterData:string) {
+        switch (filterType) {
+            case 'tags': {
+                if(!filters['tags'].includes(filterData)) {
+                    filters['tags'].push(filterData)
+                }
+                break
+            }
+            case 'date': {
+                if(filters['date'] != filterData) {
+                    filters['date'] = filterData
+                }
+                break
+            }
+        }
+    }
+
+    //variable that saves the filtering based on the date
+    let selectedDate: string = ''
+
+</script>
+
+<template>
+    <div class="filter-popup">
+      <input class="button filter-button" type="date"  
+            v-model="selectedDate"
+            @input="addFilter('date', selectedDate)"/>
+      <button class="button filter-button" @click="filterByTags()">Tags</button>
+            <div v-if="filtersList.type==='tags'">
+                <button class="button filter-button" 
+                        v-for="tag in filtersList.data"
+                        @click="addFilter('tags', tag)">{{ tag }}</button>
+            </div>
+            <button class="button filter-button" 
+      @click="showFilters.showFilters = !showFilters.showFilters"
+      ><i class="fas fa-times"></i></button>
+    </div>
+</template>
+
+<style>
+    .filter-popup {
+        display: flex;
+        flex-direction: column;
+        margin-right: 10%;
+    }
+    .filter-button {
+        margin-bottom: 10px;
+        background-color: transparent;
+        border: 2px solid #303030;
+        border-radius: 15px;
+        color: #303030;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        min-height: 60px;
+        min-width: 0;
+        padding: 16px 24px;
+        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+        touch-action: manipulation;
+        will-change: transform;
+    }
+    .filter-button:disabled{
+        pointer-events: none;
+    }
+    .filter-button:hover{
+        color: #fff;
+        background-color: #303030;
+        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+        transform: translateY(-2px);
+    }
+</style>
