@@ -98,7 +98,7 @@
   flex-wrap: wrap;
   box-sizing: border-box;
   justify-content: space-between;
-  padding: 60px;
+  padding: 20px;
 }
 
 .articoli-title-text {

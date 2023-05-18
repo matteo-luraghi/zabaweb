@@ -100,7 +100,7 @@
 
 <style>
     .article-card {
-        width: 410px;
+        width: 430px;
         max-height: 900px;
         margin-bottom: 20px;
     }

@@ -27,7 +27,7 @@
         <router-link to="/articoli" class="button navbar-button">ARTICOLI</router-link>   
       </div>
     </nav>
-
+    
     <BottomBar v-else="wideScreen"/>
 
     <hr class="separator" v-if="wideScreen">
@@ -92,8 +92,8 @@
 
   .footer-circle {
     display: flex;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     background-color: #e0e0e0;
     align-items: center;
