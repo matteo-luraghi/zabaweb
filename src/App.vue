@@ -16,6 +16,12 @@
   //effective way to load async components (the ones that needs the backend API call for example)
   //on the VueJs website it is specified that Suspense is in beta and will probably change in the future
   //if something doesn't work, it's very likely to be that
+  let classname:string
+  if(wideScreen===true) {
+    classname = 'footer-circle-large'
+  } else {
+    classname = 'footer-circle-small'
+  }
 </script>
 
 <template>
@@ -37,19 +43,19 @@
     </Suspense>
     
     <div class="footer">
-      <div class="footer-circle">
+      <div :class="`footer-circle ${classname}`">
         <a href="mailto:parini.zabaione@gmail.com"><i class="footer-icon fas fa-envelope"></i></a>
       </div>
-      <div class="footer-circle">
+      <div :class="`footer-circle ${classname}`">
         <a href="https://www.youtube.com/channel/UCh5GWanmOgLQO7up4Tkyk4g"><i class="footer-icon fa-brands fa-youtube"></i></a>  
       </div>
-      <div class="footer-circle">
+      <div :class="`footer-circle ${classname}`">
         <a href="https://www.facebook.com/zabaioneliceoparini/"><i class="footer-icon fa-brands fa-facebook-f"></i></a> 
       </div>
-      <div class="footer-circle">
+      <div :class="`footer-circle ${classname}`">
         <a href="https://www.instagram.com/zabaione.liceoparini/"><i class="footer-icon fa-brands fa-instagram"></i></a>   
       </div>
-      <div class="footer-circle">
+      <div :class="`footer-circle ${classname}`">
         <a href="https://zabaioneparini.online/"><i class="footer-icon fas fa-solid fa-link"></i></a>   
       </div>
     </div>
@@ -92,14 +98,22 @@
 
   .footer-circle {
     display: flex;
-    width: 50px;
-    height: 35px;
     border-radius: 50%;
     background-color: #e0e0e0;
     align-items: center;
     justify-content: center;
     margin: 0 5px;
     margin-bottom: 20px;
+  }
+
+  .footer-circle-small {
+    width: 50px;
+    height: 35px;
+  }
+
+  .footer-circle-large {
+    width: 50px;
+    height: 50px;
   }
 
   .footer-icon {
