@@ -5,7 +5,8 @@
     const props = defineProps<{
         title:string,
         subtitle: string,
-        text: string,
+        text: object,
+        plaintext: string,
         date: string,
         tags: object,
         authors: object,
@@ -15,18 +16,18 @@
     //the text of the article displayed will be no longer than 600 characters
     //the following code will search for the '.' nearest to the 600 chars limit and add '[...]'
     let slicedText:string
-    if (props.text.length > 400 ) {
+    if (props.plaintext.length > 400 ) {
         let last = 0
-        for(let i=0; i<props.text.length; i++) {
-            if (props.text[i] === ".") {
+        for(let i=0; i<props.plaintext.length; i++) {
+            if (props.plaintext[i] === ".") {
                 last = i
             }
             if (last > 400) {break}
         }
-        slicedText = props.text.slice(0, last+1) + ' [...]'
+        slicedText = props.plaintext.slice(0, last+1) + ' [...]'
     }
     else{
-        slicedText = props.text
+        slicedText = props.plaintext
     }
 
     //if the user clicks on an author's name, the date or a tag, the global variable filters will be updated with the right filters
@@ -59,12 +60,12 @@
     <div class="article-card">
         <router-link to="/articolo">
             <img class="button article-card-image" :src="img"
-            @click="passArticle(title, subtitle, text, date, tags, authors, img)"/>
+            @click="passArticle(title, subtitle, plaintext, date, tags, authors, img)"/>
         </router-link>
         <div class="article-card-title-container">
             <router-link to="/articolo" class="router-link">
                 <p class="button article-card-title title-font"
-                @click="passArticle(title, subtitle, text, date, tags, authors, img)">{{ title }}</p>
+                @click="passArticle(title, subtitle, plaintext, date, tags, authors, img)">{{ title }}</p>
             </router-link>
         </div>
         <div class="article-card-info">
@@ -93,7 +94,7 @@
         <p class="article-card-text text-font">{{ slicedText }}</p>
         <router-link to="/articolo" class="router-link">
             <p class="button article-card-button text-font"
-            @click="passArticle(title, subtitle, text, date, tags, authors, img)">LEGGI</p>
+            @click="passArticle(title, subtitle, plaintext, date, tags, authors, img)">LEGGI</p>
         </router-link>
     </div>
 </template>

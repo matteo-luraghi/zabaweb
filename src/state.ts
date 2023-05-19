@@ -3,7 +3,8 @@ import axios from 'axios'
 
 interface Article {
     title: string
-    text: string
+    text: object
+    plaintext: string
     subtitle: string
     date: string
     tags: string[]
@@ -101,7 +102,8 @@ export const api = axios.create({
 //setup of the articoli object from the backend, it is necessary for the filtered object
 let dataJson = reactive([{
     title: '',
-    text: '',
+    text: {},
+    plaintext: '',
     subtitle: '',
     date: '',
     tags: [''],
