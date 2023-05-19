@@ -15,13 +15,13 @@
     //the text of the article displayed will be no longer than 600 characters
     //the following code will search for the '.' nearest to the 600 chars limit and add '[...]'
     let slicedText:string
-    if (props.text.length > 600 ) {
+    if (props.text.length > 400 ) {
         let last = 0
         for(let i=0; i<props.text.length; i++) {
             if (props.text[i] === ".") {
                 last = i
             }
-            if (last > 600) {break}
+            if (last > 400) {break}
         }
         slicedText = props.text.slice(0, last+1) + ' [...]'
     }
