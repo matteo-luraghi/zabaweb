@@ -103,12 +103,12 @@
     align-items: center;
     justify-content: center;
     margin: 0 5px;
-    margin-bottom: 20px;
   }
 
   .footer-circle-small {
     width: 50px;
     height: 35px;
+    margin-bottom: 20px;
   }
 
   .footer-circle-large {
