@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { articleDetails } from '../state';
+    import {computed} from 'vue'
     //the global variable articleDetails contains all the info to display a single article
     //it gets updated by the Cards component
     let wideScreen = true
@@ -16,6 +17,13 @@
     } else {
         classname ='articolo-small'
     }
+    const formattedText = computed(() => {
+    let text = '';
+    for (const part in articleDetails.text) {
+      text += `<span style="${articleDetails.text[part as keyof(object)]}">${part}</span>`;
+    }
+    return text;
+    })
 </script>
 
 <template>
@@ -27,8 +35,8 @@
     <div :class="`articolo ${classname}`">
         <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
         <h3 v-for="author in articleDetails.authors" class="articolo-authors">{{ author }}</h3>
-        <p class="articolo-date text-font"> {{ articleDetails.date }}</p>
-        <p class="articolo-text text-font"> {{ articleDetails.text }}</p>
+        <p class="articolo-date text-font"> {{ articleDetails.date }}</p>      
+        <p class="text-font articolo-text" v-html="formattedText"></p>
     </div>
 </template>
 

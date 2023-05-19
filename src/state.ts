@@ -30,7 +30,7 @@ export let filtered = computed(() => {
 export const articleDetails = reactive({
     title: "",
     subtitle: "",
-    text: "",
+    text: {},
     date: "",
     tags: {},
     authors: {},

@@ -76,7 +76,7 @@
         <Card v-if="checkEmpty()" v-for="page in filtered"
         :title="page.title"
         :subtitle="page.subtitle"
-        :text="{}"
+        :text="page.text"
         :plaintext="page.plaintext"
         :date="page.date"
         :tags="page.tags"

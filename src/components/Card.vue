@@ -44,7 +44,7 @@
 
     //if the user clicks on the image, the title or "LEGGI", this function will pass to the global variable
     //articleDetails the info needed to display the selected article, the router will manage the routing to the /articolo view
-    function passArticle(title:string, subtitle:string, text:string, date:string, tags:object, authors:object, img:string){
+    function passArticle(title:string, subtitle:string, text:object, date:string, tags:object, authors:object, img:string){
         articleDetails.title = title
         articleDetails.subtitle = subtitle
         articleDetails.text = text
@@ -60,12 +60,12 @@
     <div class="article-card">
         <router-link to="/articolo">
             <img class="button article-card-image" :src="img"
-            @click="passArticle(title, subtitle, plaintext, date, tags, authors, img)"/>
+            @click="passArticle(title, subtitle, text, date, tags, authors, img)"/>
         </router-link>
         <div class="article-card-title-container">
             <router-link to="/articolo" class="router-link">
                 <p class="button article-card-title title-font"
-                @click="passArticle(title, subtitle, plaintext, date, tags, authors, img)">{{ title }}</p>
+                @click="passArticle(title, subtitle, text, date, tags, authors, img)">{{ title }}</p>
             </router-link>
         </div>
         <div class="article-card-info">
@@ -94,7 +94,7 @@
         <p class="article-card-text text-font">{{ slicedText }}</p>
         <router-link to="/articolo" class="router-link">
             <p class="button article-card-button text-font"
-            @click="passArticle(title, subtitle, plaintext, date, tags, authors, img)">LEGGI</p>
+            @click="passArticle(title, subtitle, text, date, tags, authors, img)">LEGGI</p>
         </router-link>
     </div>
 </template>
