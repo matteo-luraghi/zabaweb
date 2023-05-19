@@ -6,7 +6,8 @@
     interface Article {
         id: number
         title: string
-        text: string
+        text: object
+        plaintext: string
         subtitle: string
         date: string
         tags: string[]
@@ -31,6 +32,7 @@
         <Card v-for="i in 9" 
             :title="dataJson[i-1].title"
             :text="dataJson[i-1].text"
+            :plaintext="dataJson[i-1].plaintext"
             :subtitle="dataJson[i-1].subtitle"
             :date="dataJson[i-1].date"
             :tags="dataJson[i-1].tags"
