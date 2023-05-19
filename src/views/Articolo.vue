@@ -1,7 +1,14 @@
 <script setup lang="ts">
     import { articleDetails } from '../state';
+    import { wideScreen } from '@/App.vue';
     //the global variable articleDetails contains all the info to display a single article
     //it gets updated by the Cards component
+    let classname:string
+    if(wideScreen===true) {
+        classname = 'articolo-large'
+    } else {
+        classname ='articolo-small'
+    }
 </script>
 
 <template>
@@ -10,7 +17,7 @@
         >{{ articleDetails.title }}</h1>
     </div>
 
-    <div class="articolo">
+    <div :class="`articolo ${classname}`">
         <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
         <h3 v-for="author in articleDetails.authors" class="articolo-authors">{{ author }}</h3>
         <p class="articolo-date text-font"> {{ articleDetails.date }}</p>
@@ -34,7 +41,14 @@
     .articolo {
         display: flex;
         flex-direction: column;
+    }
+
+    .articolo-large {
         padding: 80px 60px;
+    }
+
+    .articolo-small {
+        padding: 40px 30px
     }
 
     .articolo-title {
