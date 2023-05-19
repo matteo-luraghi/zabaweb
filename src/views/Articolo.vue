@@ -1,6 +1,6 @@
 <script setup lang="ts">
     import { articleDetails } from '../state';
-    import { wideScreen } from '@/App.vue';
+    import { wideScreen } from '../App.vue';
     //the global variable articleDetails contains all the info to display a single article
     //it gets updated by the Cards component
     let classname:string
