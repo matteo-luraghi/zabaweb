@@ -1,8 +1,15 @@
 <script setup lang="ts">
     import { articleDetails } from '../state';
-    import { wideScreen } from '../App.vue';
     //the global variable articleDetails contains all the info to display a single article
     //it gets updated by the Cards component
+    let wideScreen = true
+    const windowWidth = window.innerWidth
+    if (windowWidth <900) {
+        wideScreen = false
+    }
+    else {
+        wideScreen = true
+    }    
     let classname:string
     if(wideScreen===true) {
         classname = 'articolo-large'
