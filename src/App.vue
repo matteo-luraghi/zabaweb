@@ -3,7 +3,7 @@
 
   //the code below will check the screen size and based on that
   //the app will display an upper navbar (for wide screens) or a bottom navbar (for small screens)
-  export let wideScreen = true
+  let wideScreen = true
   const windowWidth = window.innerWidth
   if (windowWidth <900) {
     wideScreen = false
