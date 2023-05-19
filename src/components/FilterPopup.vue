@@ -5,7 +5,8 @@ import { reactive } from 'vue';
     //interface for the Article type of object
     interface Article {
         title: string
-        text: string
+        text: object
+        plaintext: string
         subtitle: string
         date: string
         tags: string[]
