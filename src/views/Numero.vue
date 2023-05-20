@@ -1,21 +1,40 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import { showPdf } from '../state';
-
-const pdfViewer = ref(null);
+import pdfjsLib from 'pdfjs-dist';
 
 onMounted(() => {
   const container = document.getElementById('pdf-viewer');
   const pdfUrl = showPdf.url;
 
-  const viewerUrl = '/path/to/pdf.js/web/viewer.html';
-  const viewerIframe = document.createElement('iframe');
-  viewerIframe.src = viewerUrl + '?file=' + encodeURIComponent(pdfUrl);
-  viewerIframe.width = '100%';
-  viewerIframe.height = '1000px';
-  viewerIframe.frameBorder = '0';
+  pdfjsLib.getDocument(pdfUrl).promise.then((pdf) => {
+    const numPages = pdf.numPages;
 
-  container!.appendChild(viewerIframe);
+    for (let pageNum = 1; pageNum <= numPages; pageNum++) {
+      pdf.getPage(pageNum).then((page) => {
+        const scale = 1.5;
+        const viewport = page.getViewport({ scale });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        const context = canvas.getContext('2d');
+        if (!context) {
+          throw new Error('Failed to create 2D rendering context.');
+        }
+
+        const renderContext = {
+          canvasContext: context,
+          viewport,
+        };
+
+        page.render(renderContext).promise.then(() => {
+          container!.appendChild(canvas);
+        });
+      });
+    }
+  });
 });
 </script>
 
