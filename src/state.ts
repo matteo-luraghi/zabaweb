@@ -12,6 +12,13 @@ interface Article {
     img: string
 }
 
+interface Numero {
+    id: number,
+    name: string,
+    url: string,
+    img: string
+}
+
 //global reactive variable that saves all the selected filters
 export let filters = reactive({
     title: "",
@@ -99,7 +106,7 @@ export const api = axios.create({
     }
 })
 
-//setup of the articoli object from the backend, it is necessary for the filtered object
+//setup of the articoli object from the backend
 export let dataJson = reactive([{
     title: '',
     text: {},
@@ -114,6 +121,21 @@ export let dataJson = reactive([{
 await api.get<Article[]>('articles').then(
     (res) => {
         dataJson = res.data
+    },
+    (error) => console.log(error)
+)
+
+//setup of the numeri object from the backend
+export let archive = reactive([{
+    id: 0,
+    name: '',
+    url: '',
+    img: '',
+}])
+
+await api.get<Numero[]>('archive').then(
+    (res) => {
+        archive = res.data
     },
     (error) => console.log(error)
 )
