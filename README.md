@@ -1,6 +1,6 @@
 # zaba-app-pwa
 
-- fix pdf not well
-- style
-- add push notification?
-- see if the bandwidth of netlify is enough
+Possible future updates:
+
+- push notifications
+- pdf reader in the app
