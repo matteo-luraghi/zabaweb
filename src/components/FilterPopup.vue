@@ -26,64 +26,35 @@ import { reactive } from 'vue';
     
     //reactive variable to display the filters as buttons
     const filtersList = reactive({
-        type: "",
         data: [""],
     })
 
     //updates the filters as they're pressed
-    function filterByTags() {
-        if(filtersList.type === 'tags') {
-            filtersList.type = ''
-            return
-        }
-        filtersList.type = 'tags'
-        filtersList.data = []
-        for(let i in dataJson) {
-            const filteringData = dataJson[i]['tags']
-            for (let j in filteringData) {
-                if (!filtersList.data.includes(filteringData[j])) {
-                    filtersList.data.push(filteringData[j])
-                }
+    filtersList.data = []
+    for(let i in dataJson) {
+        const filteringData = dataJson[i]['tags']
+        for (let j in filteringData) {
+            if (!filtersList.data.includes(filteringData[j])) {
+                filtersList.data.push(filteringData[j])
             }
-        } 
-    }
+        }
+    } 
 
     //adds the selected filters to the global variable filters
     //in order to display the articles according to the filters
-    function addFilter(filterType:string,filterData:string) {
-        switch (filterType) {
-            case 'tags': {
-                if(!filters['tags'].includes(filterData)) {
-                    filters['tags'].push(filterData)
-                }
-                break
-            }
-            case 'date': {
-                if(filters['date'] != filterData) {
-                    filters['date'] = filterData
-                }
-                break
-            }
+    function addFilter(filterData:string) {
+        if(!filters['tags'].includes(filterData)) {
+            filters['tags'].push(filterData)
         }
     }
-
-    //variable that saves the filtering based on the date
-    let selectedDate: string = ''
-
 </script>
 
 <template>
     <div class="filter-popup">
-      <input class="button filter-button" type="date"  
-            v-model="selectedDate"
-            @input="addFilter('date', selectedDate)"/>
-      <button class="button filter-button" @click="filterByTags()">Tags</button>
-            <div v-if="filtersList.type==='tags'">
-                <button class="button filter-button" 
-                        v-for="tag in filtersList.data"
-                        @click="addFilter('tags', tag)">{{ tag }}</button>
-            </div>
-            <button class="button filter-button" 
+        <button class="button filter-button" 
+                v-for="tag in filtersList.data"
+                @click="addFilter(tag)">{{ tag }}</button>
+        <button class="button filter-button" 
       @click="showFilters.showFilters = !showFilters.showFilters"
       ><i class="fas fa-times"></i></button>
     </div>
