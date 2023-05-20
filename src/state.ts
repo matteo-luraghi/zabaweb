@@ -100,7 +100,7 @@ export const api = axios.create({
 })
 
 //setup of the articoli object from the backend, it is necessary for the filtered object
-let dataJson = reactive([{
+export let dataJson = reactive([{
     title: '',
     text: {},
     plaintext: '',
@@ -110,6 +110,7 @@ let dataJson = reactive([{
     authors: [''],
     img: '',
 }])
+
 await api.get<Article[]>('articles').then(
     (res) => {
         dataJson = res.data

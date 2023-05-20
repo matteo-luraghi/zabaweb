@@ -1,29 +1,7 @@
 <script setup lang="ts">
     import Card from '../components/Card.vue';
-    import {api} from '../state'
-
-    //interface for the Article objext
-    interface Article {
-        id: number
-        title: string
-        text: object
-        plaintext: string
-        subtitle: string
-        date: string
-        tags: string[]
-        authors: string[]
-        img: string
-    }
-
-    //call to the backend API to get the "articles" object from the notion database
+    import { dataJson } from '../state'
     //the variable dataJson stores all the info, then in the template via the v-for method are displayed the first 9 articles of the database
-    let dataJson: Article[] = []
-    await api.get<Article[]>('articles').then(
-        (res) => {
-            dataJson = res.data
-        },
-        (error) => console.log(error)
-    )
 </script>
 
 <template>
