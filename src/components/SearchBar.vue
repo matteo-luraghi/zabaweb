@@ -1,14 +1,33 @@
 <script setup lang="ts">
     import { filters } from '../state';
-    
+    function isDateStringValid(dateString: string): boolean {
+        const dateFormats = [
+            /^\d{4}-\d{2}-\d{2}$/,    // Format: YYYY-MM-DD
+            /^\d{2}-\d{2}-\d{4}$/,    // Format: DD-MM-YYYY
+            /^\d{4}\/\d{2}\/\d{2}$/,  // Format: YYYY/MM/DD
+            /^\d{2}\/\d{2}\/\d{4}$/   // Format: DD/MM/YYYY
+        ];
+
+        for (const format of dateFormats) {
+            if (format.test(dateString)) {
+                return true
+            }
+        }
+        return false
+    }
     //when the enter key or the lens icon are pressed the variable search, which contains
     //the text written by the user in the searchbar, will be pushed to the authors and title methods of 
     //the global variable filter, go in the 'state.ts' file to see how the filtering system works
     let search = ''
     function searchFilter() {
         if (search != '') {
-            filters.authors.push(search)
-            filters.title = search
+            if(isDateStringValid(search)===true) {
+                filters.date = search
+            }
+            else {
+                filters.authors.push(search)
+                filters.title = search
+            }
             search = ''
         }
     }
@@ -19,7 +38,7 @@
         <input v-model="search" 
         @keyup.enter="searchFilter"
         :ref="search" 
-        type="text" placeholder="Inserisci titolo o autore" class="searchbar-input"/>
+        type="text" placeholder="Inserisci titolo, autore o data" class="searchbar-input"/>
         <button @click="searchFilter" class="searchbar-button"><i class="fas fa-search searchbar-icon"></i></button>
     </div>
 </template>
