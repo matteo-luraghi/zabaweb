@@ -10,6 +10,17 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
+    <script>
+      if (window.navigator && navigator.serviceWorker) {
+        navigator.serviceWorker
+          .getRegistrations()
+          .then(function (registrations) {
+            for (let registration of registrations) {
+              registration.update()
+            }
+          })
+      }
+    </script>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
