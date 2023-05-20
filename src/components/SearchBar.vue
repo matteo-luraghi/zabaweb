@@ -60,7 +60,7 @@
         <input v-model="search" 
         @keyup.enter="searchFilter"
         :ref="search" 
-        type="text" placeholder="Inserisci titolo, autore o data" class="searchbar-input"/>
+        type="text" placeholder="Cerca titolo, autore o data" class="searchbar-input"/>
         <button @click="searchFilter" class="searchbar-button"><i class="fas fa-search searchbar-icon"></i></button>
     </div>
 </template>
