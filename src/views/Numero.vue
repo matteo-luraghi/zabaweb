@@ -1,12 +1,5 @@
 <script setup lang="ts">
   import { showPdf } from '../state';
-  import { onMounted } from 'vue';
-import * as pdfjsLib from 'pdfjs-dist';
-
-onMounted(() => {
-  // Optional: Adjust the path to the worker file
-  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.8.335/pdf.worker.min.js';
-});
 </script>
 
 <template>
