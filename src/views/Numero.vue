@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { showPdf } from '../state';
   import VuePdfEmbed from 'vue-pdf-embed'
-  const pdf2base64 = require('pdf-to-base64')
+  import pdf2base64 from 'pdf-to-base64'
   let pdfSourceBase64:string
   pdf2base64(showPdf.url).then(
       (response:string) => {
