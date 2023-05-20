@@ -12,17 +12,24 @@
         authors: object,
         img: string
     }>()
-
+    let maxTextLength = 0
+    const windowWidth = window.innerWidth
+    if (windowWidth <900) {
+    maxTextLength = 400
+    }
+    else {
+    maxTextLength = 600
+    }  
     //the text of the article displayed will be no longer than 600 characters
     //the following code will search for the '.' nearest to the 600 chars limit and add '[...]'
     let slicedText:string
-    if (props.plaintext.length > 400 ) {
+    if (props.plaintext.length > maxTextLength ) {
         let last = 0
         for(let i=0; i<props.plaintext.length; i++) {
             if (props.plaintext[i] === ".") {
                 last = i
             }
-            if (last > 400) {break}
+            if (last > maxTextLength) {break}
         }
         slicedText = props.plaintext.slice(0, last+1) + ' [...]'
     }
