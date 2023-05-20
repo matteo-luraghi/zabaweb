@@ -15,8 +15,8 @@
         ]
     },
     {
-        "name": "Archive", 
-        "short_name": "Archive", 
+        "name": "Archivio", 
+        "short_name": "Archivio", 
         "url": "/numeri",
         "icons": [
             {
