@@ -25,7 +25,6 @@
 </script>
 
 <template>
-  <h1>TEST</h1>
   <nav class="navbar" v-if="wideScreen">
       <img class="navbar-logo" src="./assets/logo.jpg"/>
       <div class="navbar-buttons">
