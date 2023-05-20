@@ -3,7 +3,7 @@
   import VuePdfEmbed from 'vue-pdf-embed'
   import axios from 'axios';
   //this view simply displays the pdf based on the global variable showPdf
-  let b64Pdf
+  let b64Pdf:string
   async function convertToBase64(): Promise<void> {
   try {
     const pdfUrl = showPdf.url;
