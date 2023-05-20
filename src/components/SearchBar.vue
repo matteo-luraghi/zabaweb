@@ -15,6 +15,28 @@
         }
         return false
     }
+    function convertDateFormat(input: string): string {
+        // Replace forward slashes with dashes
+        const converted = input.replace(/\//g, '-');
+
+        // Extract year, month, and day from the original string
+        const matches = input.match(/\d+/g);
+        if (!matches || matches.length < 3) {
+            throw new Error('Invalid date format');
+        }
+
+        let [year, month, day] = matches;
+        if(day.length > year.length) {
+            let temp = year
+            year = day
+            day = temp
+        }
+
+        // Create the new date format
+        const newFormat = `${year}-${month}-${day}`;
+
+        return newFormat;
+    }
     //when the enter key or the lens icon are pressed the variable search, which contains
     //the text written by the user in the searchbar, will be pushed to the authors and title methods of 
     //the global variable filter, go in the 'state.ts' file to see how the filtering system works
@@ -22,7 +44,7 @@
     function searchFilter() {
         if (search != '') {
             if(isDateStringValid(search)===true) {
-                filters.date = search
+                filters.date = convertDateFormat(search)
             }
             else {
                 filters.authors.push(search)
