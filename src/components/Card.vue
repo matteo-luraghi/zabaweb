@@ -17,8 +17,7 @@
     //the max length of the text displayed on the card is 400 for small screens and 600 for large ones
     let maxTextLength = windowWidth < 900 ? 400 : 600
 
-    //the text of the article displayed will be no longer than 600 characters
-    //the following code will search for the '.' nearest to the 600 chars limit and add '[...]'
+    //the following code will search for the '.' nearest to the chars limit and add '[...]'
     const slicedText = computed(() => {
         if (props.plaintext.length > maxTextLength) {
             let last = 0
