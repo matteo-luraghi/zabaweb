@@ -118,13 +118,6 @@ export let dataJson = reactive([{
     img: '',
 }])
 
-await api.get<Article[]>('articles').then(
-    (res) => {
-        dataJson = res.data
-    },
-    (error) => console.log(error)
-)
-
 //setup of the numeri object from the backend
 export let archive = reactive([{
     id: 0,
@@ -133,12 +126,24 @@ export let archive = reactive([{
     img: '',
 }])
 
-await api.get<Numero[]>('archive').then(
-    (res) => {
-        archive = res.data
-    },
-    (error) => console.log(error)
-)
+export async function updateDatabase() {
+    await api.get<Article[]>('articles').then(
+        (res) => {
+            dataJson = res.data
+        },
+        (error) => console.log(error)
+    )
+    
+    await api.get<Numero[]>('archive').then(
+        (res) => {
+            archive = res.data
+        },
+        (error) => console.log(error)
+    )
+}
+
+//database initialization
+updateDatabase()
 
 for (let i in archive) {
     archive[i].url =
