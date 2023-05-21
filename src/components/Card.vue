@@ -12,7 +12,6 @@
         authors: object,
         img: string
     }>()
-    console.log(props.plaintext)
     let maxTextLength = 0
     const windowWidth = window.innerWidth
     if (windowWidth <900) {
