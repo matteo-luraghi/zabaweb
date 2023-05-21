@@ -12,7 +12,7 @@ let showUrl =
       :src="showUrl"
       frameborder="0"
       width="100%"
-      height="1000px"
+      height="1700px"
     ></iframe>
   </div>
 </template>
