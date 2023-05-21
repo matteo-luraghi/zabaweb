@@ -48,7 +48,7 @@
 }
 
 .bottombar-link-active {
-  color: #303030;
+  color: #e0e0e0;
 }
 
 .bottombar-link-active:hover {
@@ -56,6 +56,6 @@
 }
 
 .bottombar-link:hover {
-  background-color: #e0e0e0;
+  background-color: #303030;
 }
 </style>
