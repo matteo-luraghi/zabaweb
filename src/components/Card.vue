@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { filters, articleDetails } from '../state'
+    import { computed } from 'vue';
 
     //info of the article object
     const props = defineProps<{
@@ -12,30 +13,28 @@
         authors: object,
         img: string
     }>()
-    let maxTextLength = 0
     const windowWidth = window.innerWidth
-    if (windowWidth <900) {
-    maxTextLength = 400
-    }
-    else {
-    maxTextLength = 600
-    }  
+    //the max length of the text displayed on the card is 400 for small screens and 600 for large ones
+    let maxTextLength = windowWidth < 900 ? 400 : 600
+
     //the text of the article displayed will be no longer than 600 characters
     //the following code will search for the '.' nearest to the 600 chars limit and add '[...]'
-    let slicedText:string
-    if (props.plaintext.length > maxTextLength ) {
-        let last = 0
-        for(let i=0; i<props.plaintext.length; i++) {
-            if (props.plaintext[i] === ".") {
-                last = i
+    const slicedText = computed(() => {
+        if (props.plaintext.length > maxTextLength) {
+            let last = 0
+            for (let i = 0; i < props.plaintext.length; i++) {
+                if (props.plaintext[i] === ".") {
+                    last = i
+                }
+                if (last > maxTextLength) {
+                    break
+                }
             }
-            if (last > maxTextLength) {break}
+            return props.plaintext.slice(0, last + 1) + ' [...]'
+        } else {
+            return props.plaintext
         }
-        slicedText = props.plaintext.slice(0, last+1) + ' [...]'
-    }
-    else{
-        slicedText = props.plaintext
-    }
+    })
 
     //if the user clicks on an author's name, the date or a tag, the global variable filters will be updated with the right filters
     //the router will manage the routing to the /articoli view with the filters on
