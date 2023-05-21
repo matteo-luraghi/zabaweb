@@ -50,14 +50,6 @@ const props = defineProps<{ to: string, icon:string }>()
   text-decoration: none;
 }
 
-.link:hover {
-  background-color: var(--bottombar-item-hover);
-}
-
-.link:active {
-  background-color: var(--bottombar-item-active);
-}
-
 .link .icon {
   flex-shrink: 0;
   width: 25px;
