@@ -71,7 +71,7 @@
             <i class="fas fa-times"></i>
         </button>
     </div>
-<Suspense>
+
     <div class="container">
         <Card v-if="checkEmpty()" v-for="page in filtered"
         :title="page.title"
@@ -85,7 +85,7 @@
         />
         <h3 v-else>Nessun risultato, prova a modificare i filtri!</h3>
     </div>
-</Suspense>
+
 </template>
 
 <style>
