@@ -48,11 +48,11 @@
 }
 
 .bottombar-link-active {
-  color: #e0e0e0;
+  color: #303030;
 }
 
 .bottombar-link-active:hover {
-  color: #e0e0e0;
+  color: #303030;
 }
 
 .bottombar-link:hover {
