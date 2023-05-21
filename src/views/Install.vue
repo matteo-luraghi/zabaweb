@@ -4,8 +4,8 @@
     offline!
 
     <template v-slot:actions>
-      <v-btn text @click="dismiss">Dismiss</v-btn>
-      <v-btn text @click="install">Install</v-btn>
+      <v-btn @click="dismiss">Dismiss</v-btn>
+      <v-btn @click="install">Install</v-btn>
     </template>
   </v-banner>
   <div class="pa-4 text-center">
