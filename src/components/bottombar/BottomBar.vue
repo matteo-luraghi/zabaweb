@@ -13,7 +13,7 @@
 <style>
 :root {
   --bottombar-bg-color: #f5f5f5;
-  --bottombar-item-hover: #e0e0e0;
+  --bottombar-item-hover: #303030;
   --bottombar-item-active: #303030;
 }
 </style>
@@ -52,7 +52,7 @@
 }
 
 .bottombar-link-active:hover {
-  color: #303030;
+  color: #e0e0e0;
 }
 
 .bottombar-link:hover {
