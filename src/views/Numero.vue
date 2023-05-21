@@ -3,12 +3,12 @@ import { showPdf } from "../state";
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <h2 class="text-font">{{ showPdf.name }}</h2>
     <iframe
       :src="showPdf.url"
       frameborder="0"
-      width="100%"
+      width="90%"
       height="1700px"
     ></iframe>
   </div>
