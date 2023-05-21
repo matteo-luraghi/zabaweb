@@ -2,18 +2,6 @@
 import { filters, showFilters, dataJson } from '../state'
 import { reactive } from 'vue';
 
-    //interface for the Article type of object
-    interface Article {
-        title: string
-        text: object
-        plaintext: string
-        subtitle: string
-        date: string
-        tags: string[]
-        authors: string[]
-        img: string
-    }
-    
     //reactive variable to display the filters as buttons
     const filtersList = reactive({
         data: [""],

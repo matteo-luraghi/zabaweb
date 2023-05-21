@@ -36,6 +36,7 @@
     else{
         slicedText = props.plaintext
     }
+    console.log(slicedText)
 
     //if the user clicks on an author's name, the date or a tag, the global variable filters will be updated with the right filters
     //the router will manage the routing to the /articoli view with the filters on
