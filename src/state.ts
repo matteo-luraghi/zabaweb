@@ -70,7 +70,7 @@ export function filterData(filters: {title: string, authors: string[], tags: str
         const upperAuthors = dataJson[i]['authors'].map(toUpper)
 
         if ((dataJson[i]['title'].toUpperCase()).includes(filters.title.toUpperCase()) && filters.title != '') {
-            filtered.push({...dataJson[i], plaintext: dataJson[i].plaintext})
+            filtered.push({...dataJson[i]})
             continue
         }
         
@@ -90,7 +90,7 @@ export function filterData(filters: {title: string, authors: string[], tags: str
             nope=1
             break
         }
-        if(nope===0) {filtered.push({...dataJson[i], plaintext: dataJson[i].plaintext})}
+        if(nope===0) {filtered.push({...dataJson[i]})}
         nope = 0
     }
     filters.title = ''
