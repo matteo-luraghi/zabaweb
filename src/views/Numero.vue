@@ -1,10 +1,15 @@
 <script setup lang="ts">
-  import { showPdf } from '../state';
+import { showPdf } from "../state";
 </script>
 
 <template>
   <div>
     <h2 class="text-font">{{ showPdf.name }}</h2>
-    <iframe :src="showPdf.url" style="width:100%; height:1000px; zoom: calc(100vw / 900)" frameborder="0"></iframe>
+    <iframe
+      :src="`http://docs.google.com/gview?url=${showPdf.url}.pdf&embedded=true`"
+      frameborder="0"
+      id="myiframe"
+      style="height: 100%; width: 100%"
+    ></iframe>
   </div>
 </template>
