@@ -4,6 +4,7 @@ import Numeri from '../views/Numeri.vue'
 import Numero from '../views/Numero.vue'
 import Articoli from '../views/Articoli.vue'
 import Articolo from '../views/Articolo.vue'
+import Install from '../views/Install.vue'
 
 const routes = [
     {
@@ -35,6 +36,12 @@ const routes = [
         path: '/articolo',
         name: 'Articolo',
         component: Articolo,
+    },
+    {
+        //view for the installation
+        path: '/install',
+        name: 'Install',
+        component: Install,
     }
 ];
 
