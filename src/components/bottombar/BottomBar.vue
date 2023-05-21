@@ -52,7 +52,7 @@
 }
 
 .bottombar-link-active:hover {
-  color: #303030;
+  color: #e0e0e0;
 }
 
 .bottombar-link:hover {
