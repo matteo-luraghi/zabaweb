@@ -139,3 +139,9 @@ await api.get<Numero[]>('archive').then(
     },
     (error) => console.log(error)
 )
+
+for (let i in archive) {
+    archive[i].url =
+      "https://drive.google.com/viewerng/viewer?embedded=true&url=" +
+      encodeURIComponent(archive[i].url);
+  }

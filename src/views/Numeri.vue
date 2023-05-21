@@ -17,11 +17,6 @@ function updateShowPdf(element: Numero) {
   showPdf.url = element.url;
   showPdf.name = element.name;
 }
-for (let i in archive) {
-  archive[i].url =
-    "https://drive.google.com/viewerng/viewer?embedded=true&url=" +
-    encodeURIComponent(archive[i].url);
-}
 </script>
 
 <template>
