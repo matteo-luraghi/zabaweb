@@ -6,7 +6,7 @@ import { showPdf } from "../state";
   <div>
     <h2 class="text-font">{{ showPdf.name }}</h2>
     <iframe
-      :src="`https://docs.google.com/gview?url=${showPdf.url}.pdf&embedded=true`"
+      :src="`https://drive.google.com/viewerng/viewer?embedded=true&url=${showPdf.url}`"
       frameborder="0"
       id="myiframe"
       style="height: 100%; width: 100%"
