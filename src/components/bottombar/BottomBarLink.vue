@@ -54,7 +54,7 @@ const props = defineProps<{ to: string, icon:string }>()
   background-color: var(--bottombar-item-hover);
 }
 
-.link.active {
+.link:active {
   background-color: var(--bottombar-item-active);
 }
 

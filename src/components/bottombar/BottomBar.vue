@@ -52,6 +52,7 @@
 }
 
 .bottombar-link:hover {
-  background-color: #e0e0e0;
+  background-color: #303030;
+  color: #e0e0e0;
 }
 </style>
