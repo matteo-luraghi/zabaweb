@@ -11,8 +11,12 @@ import { showPdf } from "../state";
         encodeURIComponent(showPdf.url)
       "
       frameborder="0"
-      id="myiframe"
-      style="height: 100%; width: 100%"
+      style="
+         {
+          height: 1000px;
+          width: 100%;
+        }
+      "
     ></iframe>
   </div>
 </template>
