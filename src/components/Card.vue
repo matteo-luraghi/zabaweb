@@ -47,8 +47,8 @@ function addFilters(data: string, button: string) {
   }
 }
 
-function updateAndReload() {
-  updateDatabase();
+async function updateAndReload() {
+  await updateDatabase();
   window.location.reload();
 }
 

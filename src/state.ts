@@ -143,7 +143,7 @@ export async function updateDatabase() {
 }
 
 //database initialization
-updateDatabase()
+await updateDatabase()
 
 for (let i in archive) {
     archive[i].url =
