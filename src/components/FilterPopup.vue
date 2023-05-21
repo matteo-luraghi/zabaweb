@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { filters, showFilters, api } from '../state'
+import { filters, showFilters, dataJson } from '../state'
 import { reactive } from 'vue';
 
     //interface for the Article type of object
@@ -13,16 +13,6 @@ import { reactive } from 'vue';
         authors: string[]
         img: string
     }
-
-    //call to the backend API to get the "articles" object from the notion database
-    //the variable dataJson stores all the info, then in the template via the v-for method are displayed all of the articles of the database
-    let dataJson: Article[] = []
-    await api.get<Article[]>('articles').then(
-        (res) => {
-            dataJson = res.data
-        },
-        (error) => console.log(error)
-    )
     
     //reactive variable to display the filters as buttons
     const filtersList = reactive({

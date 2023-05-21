@@ -40,9 +40,7 @@
                 @click="showFilters.showFilters = !showFilters.showFilters" 
                 class="articoli-title-filter-button text-font">Aggiungi Filtri</button>
             </div>
-            <Suspense>
-                <FilterPopup v-if="showFilters.showFilters"/>                
-            </Suspense>
+            <FilterPopup v-if="showFilters.showFilters"/>
         </div>
         
     </div>

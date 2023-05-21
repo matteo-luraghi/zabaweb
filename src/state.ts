@@ -94,6 +94,7 @@ export function filterData(filters: {title: string, authors: string[], tags: str
         nope = 0
     }
     filters.title = ''
+    console.log(filtered)
     return filtered
 }
   
