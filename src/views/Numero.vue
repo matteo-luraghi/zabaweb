@@ -8,7 +8,7 @@ import { showPdf } from "../state";
     <iframe
       :src="showPdf.url"
       frameborder="0"
-      width="90%"
+      width="97%"
       height="1700px"
     ></iframe>
   </div>
