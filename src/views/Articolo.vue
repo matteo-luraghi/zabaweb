@@ -113,12 +113,6 @@ function shareViaWebShare() {
   opacity: 0.8;
 }
 
-.bar-container {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-}
-
 .articolo {
   display: flex;
   flex-direction: column;

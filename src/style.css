@@ -85,3 +85,9 @@ html, body {
 .text-center {
   text-align: center;
 }
+
+.bar-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}

@@ -14,11 +14,24 @@ let showPdf = {
 
 showPdf.url = archive[archive.length - numberId].url;
 showPdf.name = archive[archive.length - numberId].name;
+
+function shareViaWebShare() {
+  navigator.share({
+    title: showPdf.name,
+    text: "",
+    url: window.location.pathname + `?q=${numberId}#${showPdf.name}`,
+  });
+}
 </script>
 
 <template>
   <div class="container">
-    <h2 class="text-font">{{ showPdf.name }}</h2>
+    <div class="bar-container">
+      <h2 class="text-font">{{ showPdf.name }}</h2>
+      <button class="share-button" @click="shareViaWebShare">
+        <i class="fa-solid fa-share-nodes"></i>
+      </button>
+    </div>
     <iframe
       :src="showPdf.url"
       frameborder="0"
