@@ -20,19 +20,15 @@ if (wideScreen === true) {
   classname = "articolo-small";
 }
 
-articleDetails.title =
-  dataJson[dataJson.length - parseInt(props.query) + 1].title;
-articleDetails.text =
-  dataJson[dataJson.length - parseInt(props.query) + 1].text;
+articleDetails.title = dataJson[dataJson.length - parseInt(props.query)].title;
+articleDetails.text = dataJson[dataJson.length - parseInt(props.query)].text;
 articleDetails.subtitle =
-  dataJson[dataJson.length - parseInt(props.query) + 1].subtitle;
-articleDetails.img = dataJson[dataJson.length - parseInt(props.query) + 1].img;
+  dataJson[dataJson.length - parseInt(props.query)].subtitle;
+articleDetails.img = dataJson[dataJson.length - parseInt(props.query)].img;
 articleDetails.authors =
-  dataJson[dataJson.length - parseInt(props.query) + 1].authors;
-articleDetails.tags =
-  dataJson[dataJson.length - parseInt(props.query) + 1].tags;
-articleDetails.date =
-  dataJson[dataJson.length - parseInt(props.query) + 1].date;
+  dataJson[dataJson.length - parseInt(props.query)].authors;
+articleDetails.tags = dataJson[dataJson.length - parseInt(props.query)].tags;
+articleDetails.date = dataJson[dataJson.length - parseInt(props.query)].date;
 
 const formattedText = computed(() => {
   let text = "";
