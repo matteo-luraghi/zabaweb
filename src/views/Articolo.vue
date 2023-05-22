@@ -55,7 +55,7 @@ function shareViaWebShare() {
   navigator.share({
     title: articleDetails.title,
     text: articleDetails.plaintext,
-    url: window.location.pathname,
+    url: window.location.pathname + `?q=${articleId}#${articleDetails.title}`,
   });
 }
 </script>
@@ -99,7 +99,7 @@ function shareViaWebShare() {
 
 .bar-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
 }
 
