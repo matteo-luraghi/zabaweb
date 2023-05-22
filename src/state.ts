@@ -125,13 +125,13 @@ export async function updateDatabase() {
         },
         (error) => console.log(error)
     )
+
+    for (let i in archive) {
+        archive[i].url =
+          "https://drive.google.com/viewerng/viewer?embedded=true&url=" +
+          encodeURIComponent(archive[i].url);
+    }
 }
 
 //database initialization
 await updateDatabase()
-
-for (let i in archive) {
-    archive[i].url =
-      "https://drive.google.com/viewerng/viewer?embedded=true&url=" +
-      encodeURIComponent(archive[i].url);
-  }
