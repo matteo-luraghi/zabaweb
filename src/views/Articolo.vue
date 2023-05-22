@@ -110,16 +110,40 @@ const formattedText = computed(() => {
 
 .articolo-subtitle {
   align-self: flex-start;
+  margin-left: 20px; /* Adjust the margin value as needed */
+  margin-bottom: 20px; /* Add margin at the bottom */
 }
 
 .articolo-text {
   white-space: pre-wrap;
   font-size: 16px;
   letter-spacing: 1px;
+  margin-left: 20px; /* Adjust the margin value as needed */
+  margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+.articolo-authors {
+  margin-left: 20px; /* Adjust the margin value as needed */
+}
+
+.articolo-date {
+  margin-left: 20px; /* Adjust the margin value as needed */
 }
 
 .share-button {
   border-radius: 50%;
   align-self: flex-end;
+  margin-top: 20px; /* Add margin at the top */
+  margin-right: 20px; /* Add margin at the right */
+  background-color: #000; /* Adjust the background color */
+  color: #fff; /* Adjust the text color */
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.share-button:hover {
+  background-color: #333; /* Adjust the hover background color */
 }
 </style>
