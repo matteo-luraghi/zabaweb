@@ -4,8 +4,9 @@ import { computed } from "vue";
 const props = defineProps<{
   query: string;
 }>();
-const articleId = parseInt(props.query.split("#")[1]);
+const articleId = props.query.split("#")[1];
 console.log(articleId);
+console.log(props.query.split("#"));
 //the global variable articleDetails contains all the info to display a single article
 //it gets updated by the Cards component
 let wideScreen = true;
@@ -22,13 +23,15 @@ if (wideScreen === true) {
   classname = "articolo-small";
 }
 
-articleDetails.title = dataJson[dataJson.length - articleId].title;
-articleDetails.text = dataJson[dataJson.length - articleId].text;
-articleDetails.subtitle = dataJson[dataJson.length - articleId].subtitle;
-articleDetails.img = dataJson[dataJson.length - articleId].img;
-articleDetails.authors = dataJson[dataJson.length - articleId].authors;
-articleDetails.tags = dataJson[dataJson.length - articleId].tags;
-articleDetails.date = dataJson[dataJson.length - articleId].date;
+articleDetails.title = dataJson[dataJson.length - parseInt(articleId)].title;
+articleDetails.text = dataJson[dataJson.length - parseInt(articleId)].text;
+articleDetails.subtitle =
+  dataJson[dataJson.length - parseInt(articleId)].subtitle;
+articleDetails.img = dataJson[dataJson.length - parseInt(articleId)].img;
+articleDetails.authors =
+  dataJson[dataJson.length - parseInt(articleId)].authors;
+articleDetails.tags = dataJson[dataJson.length - parseInt(articleId)].tags;
+articleDetails.date = dataJson[dataJson.length - parseInt(articleId)].date;
 
 const formattedText = computed(() => {
   let text = "";
