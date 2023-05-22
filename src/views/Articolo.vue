@@ -163,8 +163,10 @@ function shareViaWebShare() {
 
 .share-button {
   border-radius: 50%;
+  height: 35px;
+  width: 50px;
   margin-top: 20px; /* Add margin at the top */
-  margin-right: 20px; /* Add margin at the right */
+  margin-right: 10px; /* Add margin at the right */
   background-color: #f5f5f5; /* Adjust the background color */
   color: #5c5c5c; /* Adjust the text color */
   border: none;
