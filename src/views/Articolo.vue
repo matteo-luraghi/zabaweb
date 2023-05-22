@@ -108,6 +108,10 @@ const formattedText = computed(() => {
   max-width: 800px;
 }
 
+.articolo-subtitle {
+  align-self: flex-start;
+}
+
 .articolo-text {
   white-space: pre-wrap;
   font-size: 16px;
@@ -116,5 +120,6 @@ const formattedText = computed(() => {
 
 .share-button {
   border-radius: 50%;
+  align-self: flex-end;
 }
 </style>
