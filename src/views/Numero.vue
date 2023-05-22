@@ -25,13 +25,11 @@ function shareViaWebShare() {
 </script>
 
 <template>
-  <div class="container">
-    <div class="bar-container">
-      <h2 class="text-font">{{ showPdf.name }}</h2>
-      <button class="share-button" @click="shareViaWebShare">
-        <i class="fa-solid fa-share-nodes"></i>
-      </button>
-    </div>
+  <div class="bar-container">
+    <h2 class="text-font">{{ showPdf.name }}</h2>
+    <button class="share-button" @click="shareViaWebShare">
+      <i class="fa-solid fa-share-nodes"></i>
+    </button>
     <iframe
       :src="showPdf.url"
       frameborder="0"

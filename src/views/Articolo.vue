@@ -135,37 +135,23 @@ function shareViaWebShare() {
 }
 
 .articolo-subtitle {
-  margin-left: 5px; /* Adjust the margin value as needed */
-  margin-bottom: 20px; /* Add margin at the bottom */
+  margin-left: 5px;
+  margin-bottom: 20px;
 }
 
 .articolo-text {
   white-space: pre-wrap;
   font-size: 16px;
   letter-spacing: 1px;
-  margin-left: 5px; /* Adjust the margin value as needed */
-  margin-bottom: 20px; /* Add margin at the bottom */
+  margin-left: 5px;
+  margin-bottom: 20px;
 }
 
 .articolo-authors {
-  margin-left: 5px; /* Adjust the margin value as needed */
+  margin-left: 5px;
 }
 
 .articolo-date {
-  margin-left: 5px; /* Adjust the margin value as needed */
-}
-
-.share-button {
-  border-radius: 50%;
-  height: 35px;
-  width: 50px;
-  margin-top: 20px; /* Add margin at the top */
-  margin-right: 10px; /* Add margin at the right */
-  background-color: #f5f5f5; /* Adjust the background color */
-  color: #5c5c5c; /* Adjust the text color */
-  border: none;
-  padding: 10px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  margin-left: 5px;
 }
 </style>
