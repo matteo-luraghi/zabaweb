@@ -5,7 +5,6 @@ const props = defineProps<{
   query: string;
 }>();
 
-console.log(props.query);
 const numberId = parseInt(props.query.split("#")[0]);
 
 let showPdf = {
