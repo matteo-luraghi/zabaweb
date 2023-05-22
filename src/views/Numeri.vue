@@ -10,7 +10,7 @@ import { archive } from "../state";
   </div>
   <div class="container numeri-container">
     <router-link
-      :to="`/numero?q=${element.id}#${element.name}`"
+      :to="`/numero?qq=${element.id}#${element.name}`"
       class="router-link"
       v-for="element in archive"
     >

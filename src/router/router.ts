@@ -40,7 +40,7 @@ const routes = [
     {
         path: '/numero',
         component: Numero,
-        props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
+        props: (route: { query: { qq: any; }; }) => ({ query: route.query.qq })
     },
     {
         //view for the installation
