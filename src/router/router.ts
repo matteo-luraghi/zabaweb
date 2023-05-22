@@ -38,8 +38,13 @@ const routes = [
         component: Articolo,
     },
     {
-        path: '/search',
+        path: '/searchArticolo',
         component: Articolo,
+        props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
+    },
+    {
+        path: '/searchNumero',
+        component: Numero,
         props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
     },
     {

@@ -2,6 +2,7 @@ import { reactive, computed } from "vue";
 import axios from 'axios'
 
 interface Article {
+    id: number,
     title: string
     text: object
     plaintext: string
@@ -108,6 +109,7 @@ export const api = axios.create({
 
 //setup of the articoli object from the backend
 export let dataJson = reactive([{
+    id: 0,
     title: '',
     text: {},
     plaintext: '',

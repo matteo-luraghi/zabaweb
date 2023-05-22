@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { articleDetails } from "../state";
+import { articleDetails, dataJson } from "../state";
 import { computed } from "vue";
 const props = defineProps<{
-  query?: string;
+  query?: number;
 }>();
-console.log(props.query);
 //the global variable articleDetails contains all the info to display a single article
 //it gets updated by the Cards component
 let wideScreen = true;
@@ -20,6 +19,20 @@ if (wideScreen === true) {
 } else {
   classname = "articolo-small";
 }
+
+for (let i in dataJson) {
+  if (dataJson[i].id === props.query) {
+    articleDetails.title = dataJson[i].title;
+    articleDetails.text = dataJson[i].text;
+    articleDetails.subtitle = dataJson[i].subtitle;
+    articleDetails.img = dataJson[i].img;
+    articleDetails.authors = dataJson[i].authors;
+    articleDetails.tags = dataJson[i].tags;
+    articleDetails.date = dataJson[i].date;
+    break;
+  }
+}
+
 const formattedText = computed(() => {
   let text = "";
   for (const part in articleDetails.text) {

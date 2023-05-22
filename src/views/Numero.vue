@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { showPdf } from "../state";
+const props = defineProps<{
+  query?: string;
+}>();
 </script>
 
 <template>
