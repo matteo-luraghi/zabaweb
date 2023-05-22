@@ -30,11 +30,11 @@ function shareViaWebShare() {
     <button class="share-button" @click="shareViaWebShare">
       <i class="fa-solid fa-share-nodes"></i>
     </button>
-    <iframe
-      :src="showPdf.url"
-      frameborder="0"
-      width="99.5%"
-      height="1700px"
-    ></iframe>
   </div>
+  <iframe
+    :src="showPdf.url"
+    frameborder="0"
+    width="99.5%"
+    height="1700px"
+  ></iframe>
 </template>
