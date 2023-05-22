@@ -129,7 +129,7 @@ export async function updateDatabase() {
     for (let i in archive) {
         archive[i].url =
           "https://drive.google.com/viewerng/viewer?embedded=true&url=" +
-          encodeURIComponent(archive[i].url);
+          archive[i].url;
     }
 }
 
