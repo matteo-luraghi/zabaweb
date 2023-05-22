@@ -51,10 +51,26 @@ const formattedText = computed(() => {
   return text;
 });
 
+let slicedText: string;
+if (articleDetails.plaintext.length > 300) {
+  let last = 0;
+  for (let i = 0; i < articleDetails.plaintext.length; i++) {
+    if (articleDetails.plaintext[i] === ".") {
+      last = i;
+    }
+    if (last > 300) {
+      break;
+    }
+  }
+  slicedText = articleDetails.plaintext.slice(0, last + 1) + " [...]";
+} else {
+  slicedText = articleDetails.plaintext;
+}
+
 function shareViaWebShare() {
   navigator.share({
     title: articleDetails.title,
-    text: articleDetails.plaintext,
+    text: slicedText,
     url: window.location.pathname + `?q=${articleId}#${articleDetails.title}`,
   });
 }
