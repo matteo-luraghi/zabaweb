@@ -38,6 +38,11 @@ const routes = [
         component: Articolo,
     },
     {
+        path: '/search',
+        component: Articolo,
+        props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
+    },
+    {
         //view for the installation
         path: '/install',
         name: 'Install',
