@@ -2,9 +2,8 @@
 import { articleDetails, dataJson } from "../state";
 import { computed } from "vue";
 const props = defineProps<{
-  query?: number;
+  query: string;
 }>();
-console.log(typeof props.query);
 //the global variable articleDetails contains all the info to display a single article
 //it gets updated by the Cards component
 let wideScreen = true;
@@ -22,7 +21,7 @@ if (wideScreen === true) {
 }
 
 for (let i in dataJson) {
-  if (dataJson[i].id === props.query) {
+  if (dataJson[i].id === parseInt(props.query)) {
     articleDetails.title = dataJson[i].title;
     articleDetails.text = dataJson[i].text;
     articleDetails.subtitle = dataJson[i].subtitle;
