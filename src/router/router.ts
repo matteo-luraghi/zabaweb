@@ -34,11 +34,6 @@ const routes = [
     {
         //view of the single article
         path: '/articolo',
-        name: 'Articolo',
-        component: Articolo,
-    },
-    {
-        path: '/searchArticolo',
         component: Articolo,
         props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
     },

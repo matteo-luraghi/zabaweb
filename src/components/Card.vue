@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { filters, articleDetails, updateDatabase } from "../state";
+import { filters, updateDatabase } from "../state";
 import { computed } from "vue";
 
 //info of the article object
 const props = defineProps<{
+  id: number;
   title: string;
   subtitle: string;
-  text: object;
   plaintext: string;
   date: string;
   tags: object;
@@ -51,44 +51,20 @@ async function updateAndReload() {
   await updateDatabase();
   window.location.reload();
 }
-
-//if the user clicks on the image, the title or "LEGGI", this function will pass to the global variable
-//articleDetails the info needed to display the selected article, the router will manage the routing to the /articolo view
-function passArticle(
-  title: string,
-  subtitle: string,
-  text: object,
-  date: string,
-  tags: object,
-  authors: object,
-  img: string
-) {
-  articleDetails.title = title;
-  articleDetails.subtitle = subtitle;
-  articleDetails.text = text;
-  articleDetails.date = date;
-  articleDetails.tags = tags;
-  articleDetails.authors = authors;
-  articleDetails.img = img;
-}
 </script>
 
 <template>
   <div class="article-card">
-    <router-link to="/articolo">
+    <router-link :to="`/articolo?q=${id}`">
       <img
         class="button article-card-image"
         :src="img"
         @error="updateAndReload"
-        @click="passArticle(title, subtitle, text, date, tags, authors, img)"
       />
     </router-link>
     <div class="article-card-title-container">
-      <router-link to="/articolo" class="router-link">
-        <p
-          class="button article-card-title title-font"
-          @click="passArticle(title, subtitle, text, date, tags, authors, img)"
-        >
+      <router-link :to="`/articolo?q=${id}`" class="router-link">
+        <p class="button article-card-title title-font">
           {{ title }}
         </p>
       </router-link>
@@ -124,13 +100,8 @@ function passArticle(
       </router-link>
     </div>
     <p class="article-card-text text-font">{{ slicedText }}</p>
-    <router-link to="/articolo" class="router-link">
-      <p
-        class="button article-card-button text-font"
-        @click="passArticle(title, subtitle, text, date, tags, authors, img)"
-      >
-        LEGGI
-      </p>
+    <router-link :to="`/articolo?q=${id}`" class="router-link">
+      <p class="button article-card-button text-font">LEGGI</p>
     </router-link>
   </div>
 </template>

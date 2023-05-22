@@ -10,8 +10,8 @@ import { dataJson } from "../state";
     <img class="testata" src="../assets/testata.png" />
     <Card
       v-for="i in 9"
+      :id="dataJson[i - 1].id"
       :title="dataJson[i - 1].title"
-      :text="dataJson[i - 1].text"
       :plaintext="dataJson[i - 1].plaintext"
       :subtitle="dataJson[i - 1].subtitle"
       :date="dataJson[i - 1].date"
