@@ -4,7 +4,12 @@ import { computed } from "vue";
 const props = defineProps<{
   query: string;
 }>();
-const articleId = parseInt(props.query.split("#", 10)[1]);
+let articleIdStr = props.query.split("#", 10);
+console.log(articleIdStr);
+const articleIdLst = articleIdStr[articleIdStr.length - 1];
+console.log(articleIdLst);
+const articleId = parseInt(articleIdLst);
+console.log(articleId);
 //the global variable articleDetails contains all the info to display a single article
 //it gets updated by the Cards component
 let wideScreen = true;
