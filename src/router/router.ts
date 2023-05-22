@@ -38,7 +38,7 @@ const routes = [
         props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
     },
     {
-        path: '/searchNumero',
+        path: '/numero',
         component: Numero,
         props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
     },

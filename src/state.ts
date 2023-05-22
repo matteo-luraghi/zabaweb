@@ -40,12 +40,6 @@ export const showFilters = reactive({
     showFilters: false,
 })
 
-//global reactive variable that saves all the info about the pdf (numero) to display
-export const showPdf = reactive({
-    url: '',
-    name: ''
-})
-
 //function that filters the data from the database based on the filters
 //it is used to keep updated the filtered global variable and, consequently, the Articoli view
 export function filterData(filters: {title: string, authors: string[], tags: string[], date: string,}) {

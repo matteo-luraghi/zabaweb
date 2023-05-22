@@ -52,13 +52,13 @@ const formattedText = computed(() => {
 });
 
 let slicedText: string;
-if (articleDetails.plaintext.length > 300) {
+if (articleDetails.plaintext.length > 100) {
   let last = 0;
   for (let i = 0; i < articleDetails.plaintext.length; i++) {
     if (articleDetails.plaintext[i] === ".") {
       last = i;
     }
-    if (last > 300) {
+    if (last > 100) {
       break;
     }
   }

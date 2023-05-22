@@ -1,8 +1,17 @@
 <script setup lang="ts">
-import { showPdf } from "../state";
+import { archive } from "@/state";
+
 const props = defineProps<{
-  query?: string;
+  query: string;
 }>();
+const numberId = parseInt(props.query.split("#")[0]);
+let showPdf = {
+  url: "",
+  name: "",
+};
+
+showPdf.url = archive[archive.length - numberId].url;
+showPdf.name = archive[archive.length - numberId].name;
 </script>
 
 <template>
