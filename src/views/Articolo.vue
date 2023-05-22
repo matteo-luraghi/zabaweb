@@ -25,6 +25,7 @@ let articleDetails = {
   title: "",
   subtitle: "",
   text: {},
+  plaintext: "",
   date: "",
   tags: {},
   authors: {},
@@ -33,6 +34,7 @@ let articleDetails = {
 
 articleDetails.title = dataJson[dataJson.length - articleId].title;
 articleDetails.text = dataJson[dataJson.length - articleId].text;
+articleDetails.plaintext = dataJson[dataJson.length - articleId].plaintext;
 articleDetails.subtitle = dataJson[dataJson.length - articleId].subtitle;
 articleDetails.img = dataJson[dataJson.length - articleId].img;
 articleDetails.authors = dataJson[dataJson.length - articleId].authors;
@@ -48,6 +50,14 @@ const formattedText = computed(() => {
   }
   return text;
 });
+
+function shareViaWebShare() {
+  navigator.share({
+    title: articleDetails.title,
+    text: articleDetails.plaintext,
+    url: window.location.pathname,
+  });
+}
 </script>
 
 <template>
@@ -63,7 +73,7 @@ const formattedText = computed(() => {
   <div :class="`articolo ${classname}`">
     <div class="container">
       <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
-      <button class="share-button">
+      <button class="share-button" @click="shareViaWebShare">
         <i class="fa-solid fa-share-nodes"></i>
       </button>
     </div>
@@ -109,7 +119,6 @@ const formattedText = computed(() => {
 }
 
 .articolo-subtitle {
-  align-self: flex-start;
   margin-left: 20px; /* Adjust the margin value as needed */
   margin-bottom: 20px; /* Add margin at the bottom */
 }
@@ -132,18 +141,13 @@ const formattedText = computed(() => {
 
 .share-button {
   border-radius: 50%;
-  align-self: flex-end;
   margin-top: 20px; /* Add margin at the top */
   margin-right: 20px; /* Add margin at the right */
-  background-color: #000; /* Adjust the background color */
-  color: #fff; /* Adjust the text color */
+  background-color: #f5f5f5; /* Adjust the background color */
+  color: #5c5c5c; /* Adjust the text color */
   border: none;
   padding: 10px;
   font-size: 16px;
   transition: background-color 0.3s ease;
-}
-
-.share-button:hover {
-  background-color: #333; /* Adjust the hover background color */
 }
 </style>
