@@ -7,6 +7,8 @@ const props = defineProps<{
 const articleId = parseInt(
   props.query.split("#")[props.query.split("#").length - 1]
 );
+console.log(articleId);
+console.log(props.query.split("#"));
 //the global variable articleDetails contains all the info to display a single article
 //it gets updated by the Cards component
 let wideScreen = true;
