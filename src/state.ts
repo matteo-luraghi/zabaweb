@@ -34,17 +34,6 @@ export let filtered = computed(() => {
     return filterData(filters)
 })
 
-//global reactive variable that saves all the info about the article to display
-export const articleDetails = reactive({
-    title: "",
-    subtitle: "",
-    text: {},
-    date: "",
-    tags: {},
-    authors: {},
-    img:"",
-})
-
 //global reactive variable that is true when there's at least
 //one filter active, false otherwise and triggeres the filter buttons to appear
 export const showFilters = reactive({

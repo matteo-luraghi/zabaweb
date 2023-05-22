@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { articleDetails, dataJson } from "../state";
+import { dataJson } from "../state";
 import { computed } from "vue";
 const props = defineProps<{
   query: string;
 }>();
+console.log(props.query);
 const articleId = parseInt(props.query.split("#")[0]);
 console.log(articleId);
 console.log(props.query.split("#"));
@@ -22,6 +23,16 @@ if (wideScreen === true) {
 } else {
   classname = "articolo-small";
 }
+
+let articleDetails = {
+  title: "",
+  subtitle: "",
+  text: {},
+  date: "",
+  tags: {},
+  authors: {},
+  img: "",
+};
 
 articleDetails.title = dataJson[dataJson.length - articleId].title;
 articleDetails.text = dataJson[dataJson.length - articleId].text;
