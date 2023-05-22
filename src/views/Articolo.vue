@@ -71,7 +71,7 @@ function shareViaWebShare() {
   </div>
 
   <div :class="`articolo ${classname}`">
-    <div class="container">
+    <div class="bar-container">
       <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
       <button class="share-button" @click="shareViaWebShare">
         <i class="fa-solid fa-share-nodes"></i>
@@ -97,6 +97,12 @@ function shareViaWebShare() {
   opacity: 0.8;
 }
 
+.bar-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .articolo {
   display: flex;
   flex-direction: column;
@@ -119,7 +125,7 @@ function shareViaWebShare() {
 }
 
 .articolo-subtitle {
-  margin-left: 20px; /* Adjust the margin value as needed */
+  margin-left: 5px; /* Adjust the margin value as needed */
   margin-bottom: 20px; /* Add margin at the bottom */
 }
 
@@ -127,16 +133,16 @@ function shareViaWebShare() {
   white-space: pre-wrap;
   font-size: 16px;
   letter-spacing: 1px;
-  margin-left: 20px; /* Adjust the margin value as needed */
+  margin-left: 5px; /* Adjust the margin value as needed */
   margin-bottom: 20px; /* Add margin at the bottom */
 }
 
 .articolo-authors {
-  margin-left: 20px; /* Adjust the margin value as needed */
+  margin-left: 5px; /* Adjust the margin value as needed */
 }
 
 .articolo-date {
-  margin-left: 20px; /* Adjust the margin value as needed */
+  margin-left: 5px; /* Adjust the margin value as needed */
 }
 
 .share-button {
