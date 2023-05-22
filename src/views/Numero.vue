@@ -4,6 +4,8 @@ import { archive } from "@/state";
 const props = defineProps<{
   query: string;
 }>();
+console.log(props.query);
+console.log(props.query.split("#"));
 const numberId = parseInt(props.query.split("#")[0]);
 let showPdf = {
   url: "",

@@ -3,4 +3,8 @@
 Possible future updates:
 
 - push notifications
-- pdf reader in the app
+- pagina vignette
+- articoli salvati
+- salva articolo come pdf?
+- add free domain
+- download link app
