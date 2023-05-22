@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { archive } from "@/state";
+import { archive } from "../state";
 
 const props = defineProps<{
   query: string;

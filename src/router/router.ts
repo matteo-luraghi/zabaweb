@@ -20,12 +20,6 @@ const routes = [
         component: Numeri,
     },
     {
-        //view of the single Numero
-        path: '/numero',
-        name: 'Numero',
-        component: Numero,
-    },
-    {
         //view of all the articles or the filtered ones
         path: '/articoli',
         name: 'Articoli',
@@ -40,7 +34,7 @@ const routes = [
     {
         path: '/numero',
         component: Numero,
-        props: (route: { query: { qq: any; }; }) => ({ query: route.query.qq })
+        props: (route: { query: { q: any; }; }) => ({ query: route.query.q }),
     },
     {
         //view for the installation
