@@ -55,7 +55,7 @@ async function updateAndReload() {
 
 <template>
   <div class="article-card">
-    <router-link :to="`/articolo?q=${title}#${id}#`">
+    <router-link :to="`/articolo?q=#${id}#${title}`">
       <img
         class="button article-card-image"
         :src="img"
@@ -63,7 +63,7 @@ async function updateAndReload() {
       />
     </router-link>
     <div class="article-card-title-container">
-      <router-link :to="`/articolo?q=${title}#${id}#`" class="router-link">
+      <router-link :to="`/articolo?q=#${id}#${title}`" class="router-link">
         <p class="button article-card-title title-font">
           {{ title }}
         </p>
@@ -100,7 +100,7 @@ async function updateAndReload() {
       </router-link>
     </div>
     <p class="article-card-text text-font">{{ slicedText }}</p>
-    <router-link :to="`/articolo?q=${title}#${id}#`" class="router-link">
+    <router-link :to="`/articolo?q=#${id}#${title}`" class="router-link">
       <p class="button article-card-button text-font">LEGGI</p>
     </router-link>
   </div>
