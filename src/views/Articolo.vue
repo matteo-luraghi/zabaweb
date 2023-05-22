@@ -58,13 +58,15 @@ const formattedText = computed(() => {
     <h1 class="articolo-title text-center title-font">
       {{ articleDetails.title }}
     </h1>
-    <button class="share-button">
-      <i class="fa-solid fa-share-nodes"></i>
-    </button>
   </div>
 
   <div :class="`articolo ${classname}`">
-    <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
+    <div class="container">
+      <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
+      <button class="share-button">
+        <i class="fa-solid fa-share-nodes"></i>
+      </button>
+    </div>
     <h3 v-for="author in articleDetails.authors" class="articolo-authors">
       {{ author }}
     </h3>
