@@ -32,7 +32,7 @@ function shareViaWebShare() {
     </button>
   </div>
   <iframe
-    src="https://drive.google.com/file/d/1vv_codApdlQRyDB0AsRaVCWUkTxSv7tn/preview"
+    :src="showPdf.url"
     frameborder="0"
     width="99.5%"
     height="1700px"
