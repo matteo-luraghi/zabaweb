@@ -44,9 +44,18 @@ articleDetails.date = dataJson[dataJson.length - articleId].date;
 const formattedText = computed(() => {
   let text = "";
   for (const part in articleDetails.text) {
-    text += `<span style="${
-      articleDetails.text[part as keyof object]
-    }">${part}</span>`;
+    const content: string = articleDetails.text[part as keyof object];
+
+    // Check if the content is a URL
+    const isUrl =
+      content.startsWith("http://") || content.startsWith("https://");
+    if (isUrl) {
+      // Replace the URL with an image tag
+      text += `<img src="${content}" alt="${part}">`;
+    } else {
+      // Add the content as a regular text
+      text += `<span style="${content}">${part}</span>`;
+    }
   }
   return text;
 });
