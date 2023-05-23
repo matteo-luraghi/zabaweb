@@ -1,81 +1,25 @@
 <template>
-  <div id="app">
-    <div v-if="deferredPrompt" class="banner info text-left">
-      Get our free app. It won't take up space on your phone and also works
-      offline!
-
-      <div class="actions">
-        <button @click="dismiss">Dismiss</button>
-        <button @click="install">Install</button>
-      </div>
-    </div>
-    <div class="pa-4 text-center">
-      <h1>Customize Your Vue.js PWA Installation</h1>
-    </div>
-  </div>
+  <button @click="installApp" v-if="showDownloadButton">Download App</button>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
-interface BeforeInstallPromptEvent extends Event {
-  readonly platforms: string[];
-  readonly userChoice: Promise<BeforeInstallPromptEventChoice>;
-  prompt(): Promise<void>;
-}
+const showDownloadButton = ref(false);
 
-interface BeforeInstallPromptEventChoice {
-  outcome: "accepted" | "dismissed";
-  platform: string;
-}
-
-let deferredPrompt = ref<BeforeInstallPromptEvent | null>(null);
-
-window.addEventListener("beforeinstallprompt", (e: Event) => {
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt.value = e as BeforeInstallPromptEvent;
+onMounted(() => {
+  // Check if the Web App Install Prompt API is supported and show the download button
+  window.addEventListener("beforeinstallprompt", (event: Event) => {
+    event.preventDefault();
+    showDownloadButton.value = true;
+  });
 });
 
-window.addEventListener("appinstalled", () => {
-  deferredPrompt.value = null;
-});
-
-const dismiss = () => {
-  deferredPrompt.value = null;
-};
-
-const install = () => {
-  if (deferredPrompt.value) {
-    deferredPrompt.value.prompt();
+const installApp = () => {
+  // Check if the Web App Install Prompt API is available
+  if ("BeforeInstallPromptEvent" in window) {
+    const installPromptEvent = new Event("beforeinstallprompt");
+    window.dispatchEvent(installPromptEvent);
   }
 };
 </script>
-
-<style scoped>
-.banner {
-  color: white;
-  background-color: #2196f3;
-  padding: 16px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.info {
-  background-color: #2196f3;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.actions {
-  margin-top: 8px;
-}
-
-button {
-  margin-right: 8px;
-}
-</style>
