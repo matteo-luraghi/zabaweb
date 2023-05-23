@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
 
-let deferredPrompt: BeforeInstallPromptEvent | null = null;
+let deferredPrompt: BeforeInstallPromptEvent;
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -21,20 +21,15 @@ onMounted(() => {
 });
 
 const installApp = async () => {
-  // Check if the Web App Install Prompt API is available and deferredPrompt is set
-  if (deferredPrompt) {
-    try {
-      // Show the install prompt
-      await deferredPrompt.prompt();
-      // Wait for the user to respond to the prompt
-      const { outcome } = await deferredPrompt.userChoice;
-      // Optionally, send analytics event with outcome of user choice
-      console.log(`User response to the install prompt: ${outcome}`);
-      // We've used the prompt, and can't use it again, throw it away
-      deferredPrompt = null;
-    } catch (error) {
-      console.error("Error during app installation:", error);
-    }
+  try {
+    // Show the install prompt
+    await deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    const { outcome } = await deferredPrompt.userChoice;
+    // Optionally, send analytics event with outcome of user choice
+    console.log(`User response to the install prompt: ${outcome}`);
+  } catch (error) {
+    console.error("Error during app installation:", error);
   }
 };
 </script>
