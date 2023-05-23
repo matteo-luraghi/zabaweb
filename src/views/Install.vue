@@ -1,11 +1,10 @@
 <template>
-  <button @click="installApp" v-if="showDownloadButton">Download App</button>
+  <button @click="installApp">Download App</button>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
 
-const showDownloadButton = ref(false);
 let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
 interface BeforeInstallPromptEvent extends Event {
@@ -18,7 +17,6 @@ onMounted(() => {
   window.addEventListener("beforeinstallprompt", (event: Event) => {
     event.preventDefault();
     deferredPrompt = event as BeforeInstallPromptEvent;
-    showDownloadButton.value = true;
   });
 });
 
@@ -26,8 +24,6 @@ const installApp = async () => {
   // Check if the Web App Install Prompt API is available and deferredPrompt is set
   if (deferredPrompt) {
     try {
-      // Hide the app-provided install promotion
-      hideInstallPromotion();
       // Show the install prompt
       await deferredPrompt.prompt();
       // Wait for the user to respond to the prompt
@@ -41,10 +37,4 @@ const installApp = async () => {
     }
   }
 };
-
-function hideInstallPromotion() {
-  // Implement your logic to hide the install promotion UI
-  // For example, you can toggle a CSS class or manipulate the DOM
-  // based on your specific UI implementation
-}
 </script>
