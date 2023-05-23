@@ -56,13 +56,12 @@ const formattedText = computed(() => {
     const content = articleDetails.text[part as keyof object];
 
     // Check if the content is a URL
-    const isUrl =
-      content.startsWith("http://") || content.startsWith("https://");
+    const isUrl = part.startsWith("http://") || part.startsWith("https://");
     if (isUrl) {
       // Replace the URL with an image tag
-      text += `<img src="${content}" alt="${part}">`;
+      text += `<img src="${part}">`;
     } else {
-      // Add the content as a regular text
+      // Add the part as a regular text
       text += `<span style="${content}">${part}</span>`;
     }
   }
