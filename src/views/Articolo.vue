@@ -59,7 +59,7 @@ const formattedText = computed(() => {
     const isUrl = part.startsWith("http://") || part.startsWith("https://");
     if (isUrl) {
       // Replace the URL with an image tag
-      text += `<img src="${part}">`;
+      text += `<img src="${part}" class="articolo-image">`;
     } else {
       // Add the part as a regular text
       text += `<span style="${content}">${part}</span>`;
@@ -170,5 +170,11 @@ function shareViaWebShare() {
 
 .articolo-date {
   margin-left: 5px;
+}
+
+.articolo-image {
+  width: auto;
+  align-self: center;
+  max-width: fit-content;
 }
 </style>
