@@ -59,7 +59,7 @@ const formattedText = computed(() => {
     const isUrl = part.startsWith("http://") || part.startsWith("https://");
     if (isUrl) {
       // Replace the URL with an image tag
-      text += `<img src="${part}" class="articolo-image">`;
+      text += `<div class="container" style:{"width": "100%"}><img src="${part}" class="articolo-image"></div>`;
     } else {
       // Add the part as a regular text
       text += `<span style="${content}">${part}</span>`;
