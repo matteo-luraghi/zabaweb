@@ -174,7 +174,7 @@ function shareViaWebShare() {
 
 .articolo-image {
   align-self: center;
-  max-width: 1000px;
-  max-height: 1000px;
+  max-width: 500px;
+  max-height: 500px;
 }
 </style>
