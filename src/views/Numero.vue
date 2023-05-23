@@ -32,7 +32,7 @@ function shareViaWebShare() {
     </button>
   </div>
   <iframe
-    src="https://drive.google.com/viewerng/viewer?embedded=true&url=https://drive.google.com/file/d/1obMa37wMFgEHCx3-7Z43CwE48xt1KSLx/preview"
+    src="https://drive.google.com/file/d/1vv_codApdlQRyDB0AsRaVCWUkTxSv7tn/view"
     frameborder="0"
     width="99.5%"
     height="1700px"
