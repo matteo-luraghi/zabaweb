@@ -5,6 +5,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 
+declare global {
+  interface Window {
+    // Declare the BeforeInstallPromptEvent interface
+    BeforeInstallPromptEvent: Event;
+  }
+}
+
 const showDownloadButton = ref(false);
 
 onMounted(() => {
