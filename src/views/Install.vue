@@ -7,8 +7,7 @@ import { ref, onMounted } from "vue";
 
 declare global {
   interface Window {
-    // Declare the BeforeInstallPromptEvent interface
-    BeforeInstallPromptEvent: Event;
+    beforeinstallprompt: Event;
   }
 }
 
@@ -24,7 +23,7 @@ onMounted(() => {
 
 const installApp = () => {
   // Check if the Web App Install Prompt API is available
-  if ("BeforeInstallPromptEvent" in window) {
+  if ("beforeinstallprompt" in window) {
     const installPromptEvent = new Event("beforeinstallprompt");
     window.dispatchEvent(installPromptEvent);
   }
