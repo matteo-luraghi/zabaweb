@@ -34,7 +34,7 @@ function shareViaWebShare() {
   <iframe
     :src="showPdf.url"
     frameborder="0"
-    width="99.5%"
+    width="97%"
     height="1700px"
   ></iframe>
 </template>
