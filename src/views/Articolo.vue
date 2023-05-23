@@ -21,7 +21,16 @@ if (wideScreen === true) {
   classname = "articolo-small";
 }
 
-let articleDetails = {
+let articleDetails: {
+  title: string;
+  subtitle: string;
+  text: { [key: string]: string };
+  plaintext: string;
+  date: string;
+  tags: object;
+  authors: object;
+  img: string;
+} = {
   title: "",
   subtitle: "",
   text: {},
@@ -44,7 +53,7 @@ articleDetails.date = dataJson[dataJson.length - articleId].date;
 const formattedText = computed(() => {
   let text = "";
   for (const part in articleDetails.text) {
-    const content: string = articleDetails.text[part as keyof object];
+    const content = articleDetails.text[part as keyof object];
 
     // Check if the content is a URL
     const isUrl =
