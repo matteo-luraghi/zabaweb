@@ -3,8 +3,6 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
-
 let deferredPrompt: BeforeInstallPromptEvent;
 
 interface BeforeInstallPromptEvent extends Event {
@@ -12,12 +10,10 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
-onMounted(() => {
-  // Check if the Web App Install Prompt API is supported and show the download button
-  window.addEventListener("beforeinstallprompt", (event: Event) => {
-    event.preventDefault();
-    deferredPrompt = event as BeforeInstallPromptEvent;
-  });
+// Check if the Web App Install Prompt API is supported and show the download button
+window.addEventListener("beforeinstallprompt", (event: Event) => {
+  event.preventDefault();
+  deferredPrompt = event as BeforeInstallPromptEvent;
 });
 
 const installApp = async () => {
