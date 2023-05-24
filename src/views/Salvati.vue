@@ -36,5 +36,5 @@ let savedArticles = computed(() => {
   return savedArticles;
 });
 
-console.log(savedArticles);
+console.log(savedArticles.value);
 </script>
