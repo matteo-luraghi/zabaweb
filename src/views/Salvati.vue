@@ -40,5 +40,5 @@ let savedArticles = reactive({
   articles: savedArticlesData.value,
 });
 
-console.log(savedArticles.articles.values);
+console.log(savedArticles.articles);
 </script>
