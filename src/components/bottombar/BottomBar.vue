@@ -1,13 +1,38 @@
 <script setup lang="ts">
-    import BottomBarLink from './BottomBarLink.vue';
+import BottomBarLink from "./BottomBarLink.vue";
 </script>
 
 <template>
-    <div class="bottombar">
-        <BottomBarLink class="bottombar-link" :active-class="'bottombar-link-active'" to="/numeri" icon="fas fa-solid fa-box-archive">ARCHIVIO</BottomBarLink >
-        <BottomBarLink class="bottombar-link" :active-class="'bottombar-link-active'" to="/" icon="fas fa-home">HOME</BottomBarLink >
-        <BottomBarLink class="bottombar-link" :active-class="'bottombar-link-active'" to="/articoli" icon="fas fa-newspaper">ARTICOLI</BottomBarLink >
-    </div>
+  <div class="bottombar">
+    <BottomBarLink
+      class="bottombar-link"
+      :active-class="'bottombar-link-active'"
+      to="/numeri"
+      icon="fas fa-solid fa-box-archive"
+      >ARCHIVIO</BottomBarLink
+    >
+    <BottomBarLink
+      class="bottombar-link"
+      :active-class="'bottombar-link-active'"
+      to="/"
+      icon="fas fa-home"
+      >HOME</BottomBarLink
+    >
+    <BottomBarLink
+      class="bottombar-link"
+      :active-class="'bottombar-link-active'"
+      to="/articoli"
+      icon="fas fa-newspaper"
+      >ARTICOLI</BottomBarLink
+    >
+    <BottomBarLink
+      class="bottombar-link"
+      :active-class="'bottombar-link-active'"
+      to="/salvati"
+      icon="fas fa-solid fa-bookmark"
+      >SALVATI</BottomBarLink
+    >
+  </div>
 </template>
 
 <style>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue'
+import Salvati from '../views/Salvati.vue'
 import Numeri from '../views/Numeri.vue'
 import Numero from '../views/Numero.vue'
 import Articoli from '../views/Articoli.vue'
@@ -24,6 +25,12 @@ const routes = [
         path: '/articoli',
         name: 'Articoli',
         component: Articoli,
+    },
+    {
+        //view of all the saved articles and numbers
+        path: '/salvati',
+        name: 'Salvati',
+        component: Salvati,
     },
     {
         //view of the single article
