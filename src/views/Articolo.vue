@@ -118,6 +118,8 @@ function shareViaWebShare() {
       <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
       <button class="save-button">
         <i class="fa-regular fa-bookmark" @click="addArticle"></i>
+      </button>
+      <button class="save-button">
         <i class="fa-solid fa-bookmark" @click="removeArticle"></i>
       </button>
       <button class="share-button" @click="shareViaWebShare">
