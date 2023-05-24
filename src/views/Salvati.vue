@@ -39,4 +39,6 @@ let savedArticlesData = computed(() => {
 let savedArticles = reactive({
   articles: savedArticlesData.value,
 });
+
+console.log(savedArticles.articles.values);
 </script>
