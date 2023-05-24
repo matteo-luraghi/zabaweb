@@ -11,6 +11,10 @@ const savedArticlesId = computed(() => {
   return savedArticles ? JSON.parse(savedArticles) : [];
 });
 
+for (let i in savedArticlesId.value) {
+  console.log(dataJson[i as keyof object]);
+}
+
 const savedArticles = computed(() => {
   for (let i in savedArticlesId.value) {
     console.log(dataJson[i as keyof object]);
