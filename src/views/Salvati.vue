@@ -3,8 +3,8 @@
   <h3 class="title-font">Articoli</h3>
   <div class="container">
     <Card
-      v-if="savedArticles.length != 0"
-      v-for="page in savedArticles"
+      v-if="savedArticles.articles.length != 0"
+      v-for="page in savedArticles.articles"
       :id="page.id"
       :title="page.title"
       :subtitle="page.subtitle"
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, reactive } from "vue";
 import { dataJson } from "@/state";
 
 const savedArticlesId = computed(() => {
@@ -36,10 +36,7 @@ let savedArticlesData = computed(() => {
   return savedArticlesData;
 });
 
-let savedArticles = computed(() => {
-  return savedArticlesData.value;
+let savedArticles = reactive({
+  articles: savedArticlesData.value,
 });
-
-console.log(savedArticles);
-console.log(savedArticles.value);
 </script>
