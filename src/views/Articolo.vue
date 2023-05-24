@@ -5,8 +5,6 @@ const props = defineProps<{
   query: string;
 }>();
 const articleId = parseInt(props.query.split("#")[0]);
-//the global variable articleDetails contains all the info to display a single article
-//it gets updated by the Cards component
 let wideScreen = true;
 const windowWidth = window.innerWidth;
 if (windowWidth < 1700) {
@@ -21,6 +19,7 @@ if (wideScreen === true) {
   classname = "articolo-small";
 }
 
+//the global variable articleDetails contains all the info to display a single article
 let articleDetails: {
   title: string;
   subtitle: string;
@@ -50,6 +49,7 @@ articleDetails.authors = dataJson[dataJson.length - articleId].authors;
 articleDetails.tags = dataJson[dataJson.length - articleId].tags;
 articleDetails.date = dataJson[dataJson.length - articleId].date;
 
+//this shows the text as it is in notion, with images too
 const formattedText = computed(() => {
   let text = "";
   for (const part in articleDetails.text) {
@@ -68,14 +68,24 @@ const formattedText = computed(() => {
   return text;
 });
 
+let savedArticles = localStorage.getItem("SavedArticles" || []);
+console.log(savedArticles);
+
+function addArticle() {
+  localStorage.setItem(`${articleId}`, "saved");
+  let savedArticles = localStorage.getItem("SavedArticles" || []);
+  console.log(savedArticles);
+}
+
+//link article preview
 let slicedText: string;
-if (articleDetails.plaintext.length > 100) {
+if (articleDetails.plaintext.length > 50) {
   let last = 0;
   for (let i = 0; i < articleDetails.plaintext.length; i++) {
     if (articleDetails.plaintext[i] === ".") {
       last = i;
     }
-    if (last > 100) {
+    if (last > 50) {
       break;
     }
   }
@@ -84,6 +94,7 @@ if (articleDetails.plaintext.length > 100) {
   slicedText = articleDetails.plaintext;
 }
 
+//fuction to share the article
 function shareViaWebShare() {
   navigator.share({
     title: articleDetails.title,
@@ -106,6 +117,10 @@ function shareViaWebShare() {
   <div :class="`articolo ${classname}`">
     <div class="bar-container">
       <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
+      <button class="save-button">
+        <i class="fa-regular fa-bookmark" @click="addArticle()"></i>
+        <i class="fa-solid fa-bookmark"></i>
+      </button>
       <button class="share-button" @click="shareViaWebShare">
         <i class="fa-solid fa-share-nodes"></i>
       </button>

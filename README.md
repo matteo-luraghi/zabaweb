@@ -2,7 +2,6 @@
 
 Possible future updates:
 
-- immagini in mezzo all'articolo
 - push notifications
 - pagina vignette
 - articoli salvati

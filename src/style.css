@@ -92,7 +92,7 @@ html, body {
   justify-content: space-between;
 }
 
-.share-button {
+.share-button, .save-button {
   border-radius: 50%;
   height: 35px;
   width: 50px;
