@@ -26,15 +26,20 @@ const savedArticlesId = computed(() => {
   return savedArticlesId ? JSON.parse(savedArticlesId) : [];
 });
 
-let savedArticles = computed(() => {
-  let savedArticles = [];
+let savedArticlesData = computed(() => {
+  let savedArticlesData = [];
   for (let i in savedArticlesId.value) {
-    savedArticles.push(
+    savedArticlesData.push(
       dataJson[dataJson.length - parseInt(savedArticlesId.value[i])]
     );
   }
-  return savedArticles;
+  return savedArticlesData;
 });
 
+let savedArticles = computed(() => {
+  return savedArticlesData.value;
+});
+
+console.log(savedArticles);
 console.log(savedArticles.value);
 </script>
