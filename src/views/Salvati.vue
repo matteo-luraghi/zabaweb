@@ -5,9 +5,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-let savedArticles = computed(() => {
+const savedArticles = computed(() => {
   const savedArticles = localStorage.getItem("SavedArticles");
   return savedArticles ? JSON.parse(savedArticles) : [];
 });
-console.log(savedArticles);
+
+console.log(savedArticles.value);
 </script>
