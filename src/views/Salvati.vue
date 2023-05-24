@@ -21,20 +21,20 @@
 import { computed } from "vue";
 import { dataJson } from "@/state";
 
-const savedArticles = computed(() => {
+const savedArticlesId = computed(() => {
+  const savedArticlesId = localStorage.getItem("SavedArticles");
+  return savedArticlesId ? JSON.parse(savedArticlesId) : [];
+});
+
+let savedArticles = computed(() => {
   let savedArticles = [];
-  const savedArticlesStorage = localStorage.getItem("SavedArticles");
-  const saveArticlesIdData = savedArticlesStorage
-    ? JSON.parse(savedArticlesStorage)
-    : [];
-  let savedArticlesId: string[] = saveArticlesIdData.value;
-  for (let i in savedArticlesId) {
+  for (let i in savedArticlesId.value) {
     savedArticles.push(
-      dataJson[(dataJson.length - parseInt(savedArticlesId[i])) as keyof object]
+      dataJson[dataJson.length - parseInt(savedArticlesId.value[i])]
     );
   }
   return savedArticles;
 });
 
-console.log(savedArticles.value);
+console.log(savedArticles);
 </script>
