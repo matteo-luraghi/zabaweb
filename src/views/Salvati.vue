@@ -4,11 +4,16 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
+import { dataJson } from "@/state";
 
-const savedArticles = computed(() => {
+const savedArticlesId = computed(() => {
   const savedArticles = localStorage.getItem("SavedArticles");
   return savedArticles ? JSON.parse(savedArticles) : [];
 });
 
-console.log(savedArticles.value);
+const savedArticles = computed(() => {
+  for (let i in savedArticlesId.value) {
+    console.log(dataJson[i as keyof object]);
+  }
+});
 </script>
