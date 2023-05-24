@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { dataJson } from "../state";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 const props = defineProps<{
   query: string;
 }>();
@@ -68,20 +68,26 @@ const formattedText = computed(() => {
   return text;
 });
 
-function notInStorage() {
-  if (localStorage.getItem(`${articleId}`) === null) {
-    return true;
-  }
-  return false;
-}
+const savedArticles = ref<string[]>(
+  JSON.parse(localStorage.getItem("SavedArticles") || "[]")
+);
 
 function addArticle() {
-  localStorage.setItem(`${articleId}`, "saved");
+  savedArticles.value.push(`${articleId}`);
+  localStorage.setItem("SavedArticles", JSON.stringify(savedArticles.value));
 }
 
 function removeArticle() {
-  localStorage.removeItem(`${articleId}`);
+  savedArticles.value = savedArticles.value.filter(
+    (id) => id !== `${articleId}`
+  );
+  localStorage.setItem("SavedArticles", JSON.stringify(savedArticles.value));
 }
+
+// Check if the articleId is in the list of saved articles
+const isArticleSaved = computed(() =>
+  savedArticles.value.includes(`${articleId}`)
+);
 
 //link article preview
 let slicedText: string;
@@ -124,7 +130,7 @@ function shareViaWebShare() {
     <div class="bar-container">
       <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
       <div class="buttons">
-        <button class="save-button" @click="addArticle" v-if="notInStorage()">
+        <button class="save-button" @click="addArticle" v-if="!isArticleSaved">
           <i class="fa-regular fa-bookmark"></i>
         </button>
         <button class="save-button" @click="removeArticle" v-else>
