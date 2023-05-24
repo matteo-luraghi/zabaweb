@@ -12,7 +12,11 @@ const savedArticlesId = computed(() => {
 });
 
 for (let i in savedArticlesId.value) {
-  console.log(dataJson[savedArticlesId.value[i] as keyof object]);
+  console.log(
+    dataJson[
+      (dataJson.length - parseInt(savedArticlesId.value[i])) as keyof object
+    ]
+  );
 }
 
 const savedArticles = computed(() => {
