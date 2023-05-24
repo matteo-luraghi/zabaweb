@@ -35,4 +35,6 @@ const savedArticles = computed(() => {
   }
   return savedArticles;
 });
+
+console.log(savedArticles);
 </script>
