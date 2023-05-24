@@ -68,6 +68,13 @@ const formattedText = computed(() => {
   return text;
 });
 
+function notInStorage() {
+  if (localStorage.getItem(`${articleId}`) === null) {
+    return true;
+  }
+  return false;
+}
+
 function addArticle() {
   localStorage.setItem(`${articleId}`, "saved");
 }
@@ -116,15 +123,17 @@ function shareViaWebShare() {
   <div :class="`articolo ${classname}`">
     <div class="bar-container">
       <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
-      <button class="save-button">
-        <i class="fa-regular fa-bookmark" @click="addArticle"></i>
-      </button>
-      <button class="save-button">
-        <i class="fa-solid fa-bookmark" @click="removeArticle"></i>
-      </button>
-      <button class="share-button" @click="shareViaWebShare">
-        <i class="fa-solid fa-share-nodes"></i>
-      </button>
+      <div class="buttons">
+        <button class="save-button" @click="addArticle" v-if="notInStorage()">
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <button class="save-button" @click="removeArticle" v-else>
+          <i class="fa-solid fa-bookmark"></i>
+        </button>
+        <button class="share-button" @click="shareViaWebShare">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+      </div>
     </div>
     <h3 v-for="author in articleDetails.authors" class="articolo-authors">
       {{ author }}

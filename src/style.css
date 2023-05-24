@@ -97,11 +97,14 @@ html, body {
   height: 35px;
   width: 50px;
   margin-top: 20px; 
-  margin-right: 10px; 
   background-color: #f5f5f5; 
   color: #5c5c5c; 
   border: none;
   align-items: center;
   font-size: 16px;
   transition: background-color 0.3s ease;
+}
+
+.buttons {
+  margin-right: 10px; 
 }
