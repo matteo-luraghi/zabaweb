@@ -17,6 +17,7 @@ for (let i in savedArticlesId.value) {
       (dataJson.length - parseInt(savedArticlesId.value[i])) as keyof object
     ]
   );
+  console.log(savedArticlesId.value[i]);
 }
 
 const savedArticles = computed(() => {
