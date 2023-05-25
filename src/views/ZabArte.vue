@@ -14,16 +14,6 @@
         right: swipeDirection === 'right',
       }"
     />
-    <img
-      :src="nextImage.img"
-      alt="Zabarte Image"
-      :class="{
-        swipe: isSwiped,
-        left: swipeDirection === 'left',
-        right: swipeDirection === 'right',
-        next: true,
-      }"
-    />
   </div>
 </template>
 
@@ -54,15 +44,6 @@ const touchStartX = ref(0);
 const swipeDirection = ref("");
 
 const currentImage = computed(() => zabarte[currentIndex.value]);
-const nextImage = computed(() => {
-  if (swipeDirection.value === "left") {
-    return zabarte[(currentIndex.value + 1) % zabarte.length];
-  } else if (swipeDirection.value === "right") {
-    return zabarte[(currentIndex.value - 1 + zabarte.length) % zabarte.length];
-  } else {
-    return zabarte[currentIndex.value];
-  }
-});
 
 const handleTouchStart = (event: TouchEvent) => {
   touchStartX.value = event.touches[0].clientX;
@@ -113,25 +94,11 @@ img {
 
 .swipe.left {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transform: translateX(-100%);
 }
 
 .swipe.right {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-.swipe.left:not(.next) {
-  transform: translateX(-100%);
-}
-
-.swipe.right:not(.next) {
   transform: translateX(100%);
-}
-
-.swipe.left.next {
-  transform: translateX(100%);
-}
-
-.swipe.right.next {
-  transform: translateX(-100%);
 }
 </style>
