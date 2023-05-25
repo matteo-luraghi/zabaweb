@@ -26,6 +26,16 @@ if (wideScreen === true) {
     classname = "footer-circle-small-safari";
   }
 }
+
+function showBottomBar() {
+  if (
+    !wideScreen &&
+    window.location.pathname != "https://zabaweb.vercel.app/install"
+  ) {
+    return true;
+  }
+  return false;
+}
 </script>
 
 <template>
@@ -48,7 +58,7 @@ if (wideScreen === true) {
     </div>
   </nav>
 
-  <BottomBar v-else="wideScreen" />
+  <BottomBar v-if="showBottomBar()" />
 
   <hr class="separator" v-if="wideScreen" />
 
