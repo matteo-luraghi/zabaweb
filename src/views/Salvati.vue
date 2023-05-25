@@ -4,8 +4,8 @@
 
   <div class="container">
     <Card
-      v-if="savedArticles.length != 0"
-      v-for="page in savedArticles"
+      v-if="savedArticles.value.length != 0"
+      v-for="page in savedArticles.value"
       :id="page.id"
       :title="page.title"
       :subtitle="page.subtitle"
@@ -21,26 +21,10 @@
 <script setup lang="ts">
 import { dataJson } from "@/state";
 import { computed } from "vue";
+import Card from "@/components/Card.vue";
 
-const savedArticlesId = computed(() => {
+const savedArticles = computed(() => {
   const savedArticles = localStorage.getItem("SavedArticles");
   return savedArticles ? JSON.parse(savedArticles) : [];
 });
-
-let savedArticles: {
-  id: number;
-  title: string;
-  text: {};
-  plaintext: string;
-  subtitle: string;
-  date: string;
-  tags: string[];
-  authors: string[];
-  img: string;
-}[] = [];
-
-for (let i in savedArticlesId.value) {
-  console.log(dataJson[dataJson.length - savedArticlesId.value[i]]);
-  savedArticles.push(dataJson[dataJson.length - savedArticlesId.value[i]]);
-}
 </script>
