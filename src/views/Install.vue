@@ -14,7 +14,7 @@
       :active-class="'system-button-active'"
       @click="select.system = 'IOS'"
     >
-      IOS
+      APPLE (IOS)
     </button>
   </div>
 
@@ -24,7 +24,7 @@
       e clicca sul pulsante "condividi"
     </p>
     <img src="../assets/download/safari1.webp" />
-    <p>Clicca "aggiungi alla schermata Home"</p>
+    <p>Clicca "Aggiungi alla schermata Home"</p>
     <img src="../assets/download/safari2.webp" />
     <p>Clicca "Aggiungi"</p>
     <img src="../assets/download/safari3.webp" />
@@ -39,8 +39,8 @@
     <p>In alternativa clicca sui tre puntini</p>
     <img src="../assets/download/chrome3.webp" />
     <p>E ora clicca su "Installa App"</p>
-    <p>Questo metodo va bene per la maggior parte dei browser</p>
     <img src="../assets/download/chrome4.webp" />
+    <p>Questo metodo va bene per la maggior parte dei browser</p>
   </div>
 </template>
 
