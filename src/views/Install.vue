@@ -22,7 +22,9 @@ if (userAgent.indexOf("Safari") > -1) {
 } else {
   browser = "unknown";
 }
-let select = reactive({
+console.log(browser);
+const select = reactive({
   system: "",
 });
+console.log(select.system);
 </script>
