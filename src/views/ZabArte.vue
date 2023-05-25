@@ -27,22 +27,12 @@ const handleTouchEnd = (event: TouchEvent) => {
 };
 
 const showNextImage = () => {
-  isSwiped.value = true;
-  setTimeout(() => {
-    currentIndex.value = (currentIndex.value + 1) % zabarte.length;
-    isSwiped.value = false;
-    swipeDirection.value = "";
-  }, 500);
+  currentIndex.value = (currentIndex.value + 1) % zabarte.length;
 };
 
 const showPrevImage = () => {
-  isSwiped.value = true;
-  setTimeout(() => {
-    currentIndex.value =
-      (currentIndex.value - 1 + zabarte.length) % zabarte.length;
-    isSwiped.value = false;
-    swipeDirection.value = "";
-  }, 500);
+  currentIndex.value =
+    (currentIndex.value - 1 + zabarte.length) % zabarte.length;
 };
 </script>
 
