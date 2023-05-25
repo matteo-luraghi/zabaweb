@@ -74,6 +74,6 @@ const isActive = computed(() => route.path === props.to);
 .icon-container.active {
   background-color: #303030;
   border-radius: 0.25em;
-  width: fit-content;
+  padding: 3px;
 }
 </style>
