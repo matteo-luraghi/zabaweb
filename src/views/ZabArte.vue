@@ -8,7 +8,11 @@
     <img
       :src="currentImage.img"
       alt="Zabarte Image"
-      :class="{ swipe: isSwiped }"
+      :class="{
+        swipe: isSwiped,
+        left: swipeDirection === 'left',
+        right: swipeDirection === 'right',
+      }"
     />
   </div>
 </template>
@@ -37,6 +41,7 @@ const zabarte = [
 const currentIndex = ref(0);
 const isSwiped = ref(false);
 const touchStartX = ref(0);
+const swipeDirection = ref("");
 
 const currentImage = computed(() => zabarte[currentIndex.value]);
 
@@ -50,8 +55,10 @@ const handleTouchEnd = (event: TouchEvent) => {
 
   if (deltaX > 50) {
     showPrevImage();
+    swipeDirection.value = "right";
   } else if (deltaX < -50) {
     showNextImage();
+    swipeDirection.value = "left";
   }
 };
 
@@ -60,6 +67,7 @@ const showNextImage = () => {
   setTimeout(() => {
     currentIndex.value = (currentIndex.value + 1) % zabarte.length;
     isSwiped.value = false;
+    swipeDirection.value = "";
   }, 500);
 };
 
@@ -69,6 +77,7 @@ const showPrevImage = () => {
     currentIndex.value =
       (currentIndex.value - 1 + zabarte.length) % zabarte.length;
     isSwiped.value = false;
+    swipeDirection.value = "";
   }, 500);
 };
 </script>
@@ -83,7 +92,13 @@ img {
   max-height: 100%;
 }
 
-.swipe {
-  transition: transform 0.5s ease-in-out;
+.swipe.left {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transform: translateX(-100%);
+}
+
+.swipe.right {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transform: translateX(100%);
 }
 </style>
