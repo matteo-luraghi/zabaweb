@@ -100,7 +100,7 @@ async function updateAndReload() {
           {{ title }}
         </p>
       </router-link>
-      <div class="buttons">
+      <div class="buttons card-buttons">
         <button class="save-button" @click="addArticle" v-if="!isArticleSaved">
           <i class="fa-regular fa-bookmark"></i>
         </button>
@@ -196,5 +196,9 @@ async function updateAndReload() {
 
 .article-card-date {
   margin: 0;
+}
+
+.card-buttons {
+  margin-right: 3px;
 }
 </style>
