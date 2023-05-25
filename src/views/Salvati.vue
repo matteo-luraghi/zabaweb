@@ -40,6 +40,7 @@ let savedArticles: {
 }[] = [];
 
 for (let i in savedArticlesId.value) {
+  console.log(dataJson[dataJson.length - savedArticlesId.value[i]]);
   savedArticles.push(dataJson[dataJson.length - savedArticlesId.value[i]]);
 }
 </script>
