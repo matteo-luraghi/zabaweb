@@ -6,6 +6,7 @@ import Numero from '../views/Numero.vue'
 import Articoli from '../views/Articoli.vue'
 import Articolo from '../views/Articolo.vue'
 import Install from '../views/Install.vue'
+import Zabarte from '../views/ZabArte.vue'
 
 const routes = [
     {
@@ -31,6 +32,12 @@ const routes = [
         path: '/preferiti',
         name: 'Preferiti',
         component: Preferiti,
+    },
+    {
+        //view of zabarte
+        path: '/zabarte',
+        name: 'Zabarte',
+        component: Zabarte,
     },
     {
         //view of the single article
