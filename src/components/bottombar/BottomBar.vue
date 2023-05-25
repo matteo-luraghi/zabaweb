@@ -28,9 +28,9 @@ import BottomBarLink from "./BottomBarLink.vue";
     <BottomBarLink
       class="bottombar-link"
       :active-class="'bottombar-link-active'"
-      to="/salvati"
+      to="/preferiti"
       icon="fas fa-solid fa-bookmark"
-      text="SALVATI"
+      text="PREFERITI"
     ></BottomBarLink>
   </div>
 </template>

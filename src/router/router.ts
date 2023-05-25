@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue'
-import Salvati from '../views/Salvati.vue'
+import Preferiti from '../views/Preferiti.vue'
 import Numeri from '../views/Numeri.vue'
 import Numero from '../views/Numero.vue'
 import Articoli from '../views/Articoli.vue'
@@ -28,9 +28,9 @@ const routes = [
     },
     {
         //view of all the saved articles and numbers
-        path: '/salvati',
-        name: 'Salvati',
-        component: Salvati,
+        path: '/preferiti',
+        name: 'Preferiti',
+        component: Preferiti,
     },
     {
         //view of the single article
