@@ -9,29 +9,29 @@ import BottomBarLink from "./BottomBarLink.vue";
       :active-class="'bottombar-link-active'"
       to="/numeri"
       icon="fas fa-solid fa-box-archive"
-      >ARCHIVIO</BottomBarLink
-    >
+      text="ARCHIVIO"
+    ></BottomBarLink>
     <BottomBarLink
       class="bottombar-link"
       :active-class="'bottombar-link-active'"
       to="/"
       icon="fas fa-home"
-      >HOME</BottomBarLink
-    >
+      text="HOME"
+    ></BottomBarLink>
     <BottomBarLink
       class="bottombar-link"
       :active-class="'bottombar-link-active'"
       to="/articoli"
       icon="fas fa-newspaper"
-      >ARTICOLI</BottomBarLink
-    >
+      text="ARTICOLI"
+    ></BottomBarLink>
     <BottomBarLink
       class="bottombar-link"
       :active-class="'bottombar-link-active'"
       to="/salvati"
       icon="fas fa-solid fa-bookmark"
-      >SALVATI</BottomBarLink
-    >
+      text="SALVATI"
+    ></BottomBarLink>
   </div>
 </template>
 
@@ -41,7 +41,9 @@ import BottomBarLink from "./BottomBarLink.vue";
   --bottombar-item-hover: #303030;
   --bottombar-item-active: #303030;
 }
+</style>
 
+<style scoped>
 .bottombar {
   width: 100%;
   color: black;
@@ -50,7 +52,7 @@ import BottomBarLink from "./BottomBarLink.vue";
   z-index: 1;
   bottom: 0;
   left: 0;
-  height: 50px;
+  height: 70px;
   padding: 0.5em;
   border: none;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
@@ -60,18 +62,14 @@ import BottomBarLink from "./BottomBarLink.vue";
   align-items: center;
 }
 
+.bottombar h1 {
+  height: 2.5em;
+}
+
 .bottombar-link {
   font-family: "CodeBold";
   font-size: 16px;
   color: #303030;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-}
-
-.bottombar-link-text {
-  margin-top: 0.2em;
 }
 
 .bottombar-link-active {

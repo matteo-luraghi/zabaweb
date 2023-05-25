@@ -1,18 +1,19 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
-const props = defineProps<{ to: string, icon:string }>()
+const props = defineProps<{ to: string; icon: string; text: string }>();
 
-    const route = useRoute()
-    const isActive = computed(() => route.path === props.to)
-
-  
+const route = useRoute();
+const isActive = computed(() => route.path === props.to);
 </script>
 
 <template>
   <router-link :to="to" class="link" :class="{ active: isActive }">
-    <i class="icon" :class="icon" />
+    <div class="icon-container">
+      <i class="icon" :class="icon" />
+      <span class="icon-text">{{ text }}</span>
+    </div>
     <transition name="fade">
       <span>
         <slot />
@@ -35,6 +36,8 @@ const props = defineProps<{ to: string, icon:string }>()
 .link {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  justify-content: center;
 
   cursor: pointer;
   position: relative;
@@ -50,9 +53,20 @@ const props = defineProps<{ to: string, icon:string }>()
   text-decoration: none;
 }
 
+.icon-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon-text {
+  margin-top: 5px; /* Adjust the spacing between icon and text */
+}
+
 .link .icon {
   flex-shrink: 0;
   width: 25px;
   margin-right: 10px;
+  margin-bottom: 5px; /* Adjust the spacing between icon and text */
 }
 </style>
