@@ -2,10 +2,18 @@
   <h1 class="header">DOWNLOAD</h1>
   <div class="container">
     <p>Seleziona il tuo sistema operativo</p>
-    <button class="button system-button" @click="select.system = 'ANDROID'">
+    <button
+      class="button system-button"
+      :active-class="'system-button-active'"
+      @click="select.system = 'ANDROID'"
+    >
       ANDROID
     </button>
-    <button class="button system-button" @click="select.system = 'IOS'">
+    <button
+      class="button system-button"
+      :active-class="'system-button-active'"
+      @click="select.system = 'IOS'"
+    >
       IOS
     </button>
   </div>
@@ -46,7 +54,7 @@ const select = reactive({
 <style scoped>
 p {
   font-family: "MinionPro";
-  font-size: medium;
+  font-size: 24px;
 }
 .system-button {
   height: 50px;
@@ -55,6 +63,7 @@ p {
   margin-right: 10px;
   background-color: #303030;
   align-items: center;
+  justify-content: center;
   border: 1px solid #303030;
   border-radius: 15px;
   color: #e0e0e0;
@@ -69,7 +78,7 @@ p {
   width: 90px;
 }
 
-.system-button:active {
+.system-button-active {
   background-color: #e0e0e0;
   color: #303030;
 }
