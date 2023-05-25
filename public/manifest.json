@@ -24,6 +24,17 @@
                 "sizes": "96x96"
             }
         ]
+    },
+    {
+        "name": "Salvati", 
+        "short_name": "Salvati", 
+        "url": "/salvati",
+        "icons": [
+            {
+                "src": "./shortcuts/saved.png",
+                "sizes": "96x96"
+            }
+        ]
     }
 ],
 "start_url":".",
