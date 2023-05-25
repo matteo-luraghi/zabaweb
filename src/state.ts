@@ -20,6 +20,12 @@ interface Numero {
     img: string
 }
 
+interface Art {
+    id: number,
+    title: string,
+    img: string
+}
+
 //global reactive variable that saves all the selected filters
 export let filters = reactive({
     title: "",
@@ -111,14 +117,22 @@ export let archive = reactive([{
     img: '',
 }])
 
-export async function updateDatabase() {
+export let zabarte = reactive([{
+    id: 0,
+    title: '',
+    img: '',
+}])
+
+export async function updateArticleDatabase() {
     await api.get<Article[]>('articles').then(
         (res) => {
             dataJson = res.data
         },
         (error) => console.log(error)
     )
-    
+}
+
+export async function updateArchiveDatabase() {
     await api.get<Numero[]>('archive').then(
         (res) => {
             archive = res.data
@@ -127,5 +141,16 @@ export async function updateDatabase() {
     )
 }
 
+export async function updateArtDatabase() {
+    await api.get<Art[]>('zabart').then(
+        (res) => {
+            zabarte = res.data
+        },
+        (error) => console.log(error)
+    )
+}
+
 //database initialization
-await updateDatabase()
+await updateArticleDatabase()
+await updateArchiveDatabase()
+await updateArtDatabase()

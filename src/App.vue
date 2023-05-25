@@ -28,11 +28,17 @@ if (wideScreen === true) {
     <img class="navbar-logo" src="./assets/logo.jpg" />
     <div class="navbar-buttons">
       <router-link to="/" class="button navbar-button">HOME</router-link>
+      <router-link to="/articoli" class="button navbar-button"
+        >ARTICOLI</router-link
+      >
       <router-link to="/numeri" class="button navbar-button"
         >ARCHIVIO NUMERI</router-link
       >
-      <router-link to="/articoli" class="button navbar-button"
-        >ARTICOLI</router-link
+      <router-link to="/zabarte" class="button navbar-button"
+        >ZABARTE</router-link
+      >
+      <router-link to="/preferiti" class="button navbar-button"
+        >PREFERITI</router-link
       >
     </div>
   </nav>

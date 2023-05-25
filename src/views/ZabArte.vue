@@ -1,42 +1,6 @@
-<template>
-  <h1 class="header articoli-title">ZABARTE</h1>
-  <div
-    class="image-container"
-    @touchstart="handleTouchStart"
-    @touchend="handleTouchEnd"
-  >
-    <img
-      :src="currentImage.img"
-      alt="Zabarte Image"
-      :class="{
-        swipe: isSwiped,
-        left: swipeDirection === 'left',
-        right: swipeDirection === 'right',
-      }"
-    />
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref, computed } from "vue";
-
-const zabarte = [
-  {
-    id: 1,
-    title: "Image 1",
-    img: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-  },
-  {
-    id: 2,
-    title: "Image 2",
-    img: "https://media.istockphoto.com/id/493223692/photo/milan-cathedral-italy.jpg?s=612x612&w=0&k=20&c=35HLzOeor-vAWdcv5SvpBcnRECAmpzjeqh28uUzk-to=",
-  },
-  {
-    id: 3,
-    title: "Image 3",
-    img: "https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg",
-  },
-];
+import { zabarte } from "@/state";
 
 const currentIndex = ref(0);
 const isSwiped = ref(false);
@@ -81,6 +45,29 @@ const showPrevImage = () => {
   }, 500);
 };
 </script>
+
+<template>
+  <h1 class="header articoli-title">ZABARTE</h1>
+  <div class="container" v-if="zabarte.length != 0">
+    <div
+      class="image-container"
+      @touchstart="handleTouchStart"
+      @touchend="handleTouchEnd"
+    >
+      <img
+        :src="currentImage.img"
+        alt="Zabarte Image"
+        :class="{
+          swipe: isSwiped,
+          left: swipeDirection === 'left',
+          right: swipeDirection === 'right',
+        }"
+      />
+    </div>
+    <h3 class="text-font">{{ currentImage.title }}</h3>
+  </div>
+  <p v-else>Ops! Non ci sono ancora opere d'arte, riprova in futuro!</p>
+</template>
 
 <style>
 .image-container {

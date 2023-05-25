@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { filters, updateDatabase } from "../state";
+import { filters, updateArticleDatabase } from "../state";
 import { computed, ref } from "vue";
 
 //info of the article object
@@ -80,7 +80,7 @@ function shareViaWebShare() {
 }
 
 async function updateAndReload() {
-  await updateDatabase();
+  await updateArticleDatabase();
   window.location.reload();
 }
 </script>
