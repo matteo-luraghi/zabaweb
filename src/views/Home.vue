@@ -7,7 +7,10 @@ import { dataJson } from "../state";
 <template>
   <h1 class="header articoli-title">HOME</h1>
   <div class="container">
-    <img class="testata" src="../assets/testata.webp" />
+    <img
+      class="testata"
+      src="https://drive.google.com/file/d/1nBSPDmDTIFo0H1RFMJt6156eZmIqTegH/view"
+    />
     <Card
       v-for="i in 9"
       :id="dataJson[i - 1].id"

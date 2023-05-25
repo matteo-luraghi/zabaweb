@@ -30,23 +30,37 @@ const select = reactive({
       Apri il link su safari (su altri browser non è possibile installare l'app)
       e clicca sul pulsante "condividi"
     </p>
-    <img src="../assets/download/safari1.webp" />
+    <img
+      src="https://drive.google.com/file/d/1UUkmgWbcv-L1RK4Xxm0b7KKmaSmzYR9g/view"
+    />
     <p>Clicca "Aggiungi alla schermata Home"</p>
-    <img src="../assets/download/safari2.webp" />
+    <img
+      src="https://drive.google.com/file/d/1qRl9mIpmPJF4eLVcLMwX1htUxxqoWoaN/view"
+    />
     <p>Clicca "Aggiungi"</p>
-    <img src="../assets/download/safari3.webp" />
+    <img
+      src="https://drive.google.com/file/d/1HHgJw7alCAfLitQ3cmmXBnzPHE7-rDvf/view"
+    />
     <p>Fatto! Controlla nella schermata home!</p>
   </div>
 
   <div v-if="select.system === 'ANDROID'" class="container">
     <p>Su Chrome dovrebbe uscire un messaggio per installare l'app, cliccalo</p>
-    <img src="../assets/download/chrome1.webp" />
+    <img
+      src="https://drive.google.com/file/d/18Ks_ES9n5gVQeFF5R6GmjDkkjDK7sY1v/view"
+    />
     <p>Ora clicca "Installa"</p>
-    <img src="../assets/download/chrome2.webp" />
+    <img
+      src="https://drive.google.com/file/d/108KGxq9YAxW64pX57kbqwA6-RL6v7XiI/view"
+    />
     <p>In alternativa clicca sui tre puntini</p>
-    <img src="../assets/download/chrome3.webp" />
+    <img
+      src="https://drive.google.com/file/d/19ZrwVy51wV1N49PGubPH-Nh1Fpho-xPj/view"
+    />
     <p>E ora clicca su "Installa App"</p>
-    <img src="../assets/download/chrome4.webp" />
+    <img
+      src="https://drive.google.com/file/d/1zqzwq9SEmVA0xBLHnP1g8lp4UW7nKP6x/view"
+    />
     <p>Questo metodo va bene per la maggior parte dei browser</p>
   </div>
 </template>
