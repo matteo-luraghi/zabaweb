@@ -10,7 +10,7 @@ const isActive = computed(() => route.path === props.to);
 
 <template>
   <router-link :to="to" class="link" :class="{ active: isActive }">
-    <div class="icon-container">
+    <div class="icon-container" :class="{ active: isActive }">
       <i class="icon" :class="icon" />
       <span class="icon-text">{{ text }}</span>
     </div>
@@ -72,7 +72,7 @@ const isActive = computed(() => route.path === props.to);
 }
 
 .link.active,
-.link.active .icon-text {
+.icon-container.active .link.active .icon-text {
   background-color: #303030;
 }
 </style>
