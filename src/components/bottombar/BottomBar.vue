@@ -70,9 +70,6 @@ import BottomBarLink from "./BottomBarLink.vue";
   font-family: "CodeBold";
   font-size: 16px;
   color: #303030;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .bottombar-link-active {
@@ -82,10 +79,6 @@ import BottomBarLink from "./BottomBarLink.vue";
 
 .bottombar-link:hover {
   background-color: #303030;
-  color: #e0e0e0;
-}
-.bottombar-link.active .icon-container,
-.bottombar-link.active .text {
   color: #e0e0e0;
 }
 </style>
