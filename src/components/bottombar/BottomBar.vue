@@ -41,9 +41,7 @@ import BottomBarLink from "./BottomBarLink.vue";
   --bottombar-item-hover: #303030;
   --bottombar-item-active: #303030;
 }
-</style>
 
-<style scoped>
 .bottombar {
   width: 100%;
   color: black;
@@ -62,14 +60,18 @@ import BottomBarLink from "./BottomBarLink.vue";
   align-items: center;
 }
 
-.bottombar h1 {
-  height: 2.5em;
-}
-
 .bottombar-link {
   font-family: "CodeBold";
   font-size: 16px;
   color: #303030;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+}
+
+.bottombar-link-text {
+  margin-top: 0.2em;
 }
 
 .bottombar-link-active {
