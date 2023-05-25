@@ -119,7 +119,7 @@ if (wideScreen === true) {
 .footer-circle-small {
   width: 50px;
   height: 35px;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .footer-circle-large {
