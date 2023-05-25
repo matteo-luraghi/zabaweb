@@ -75,5 +75,6 @@ const isActive = computed(() => route.path === props.to);
   background-color: #303030;
   border-radius: 0.25em;
   padding: 3px;
+  width: 80px;
 }
 </style>

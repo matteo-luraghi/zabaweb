@@ -168,7 +168,7 @@ async function updateAndReload() {
   flex-wrap: wrap;
   text-align: center;
   height: 10%;
-  align-items: center;
+  align-items: space-between;
 }
 
 .article-card-title {
