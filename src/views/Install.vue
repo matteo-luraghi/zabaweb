@@ -31,15 +31,15 @@ const select = reactive({
       e clicca sul pulsante "condividi"
     </p>
     <img
-      src="https://drive.google.com/file/d/1UUkmgWbcv-L1RK4Xxm0b7KKmaSmzYR9g/view"
+      src="https://drive.google.com/file/d/1UUkmgWbcv-L1RK4Xxm0b7KKmaSmzYR9g/preview"
     />
     <p>Clicca "Aggiungi alla schermata Home"</p>
     <img
-      src="https://drive.google.com/file/d/1qRl9mIpmPJF4eLVcLMwX1htUxxqoWoaN/view"
+      src="https://drive.google.com/file/d/1qRl9mIpmPJF4eLVcLMwX1htUxxqoWoaN/preview"
     />
     <p>Clicca "Aggiungi"</p>
     <img
-      src="https://drive.google.com/file/d/1HHgJw7alCAfLitQ3cmmXBnzPHE7-rDvf/view"
+      src="https://drive.google.com/file/d/1HHgJw7alCAfLitQ3cmmXBnzPHE7-rDvf/preview"
     />
     <p>Fatto! Controlla nella schermata home!</p>
   </div>
@@ -47,19 +47,19 @@ const select = reactive({
   <div v-if="select.system === 'ANDROID'" class="container">
     <p>Su Chrome dovrebbe uscire un messaggio per installare l'app, cliccalo</p>
     <img
-      src="https://drive.google.com/file/d/18Ks_ES9n5gVQeFF5R6GmjDkkjDK7sY1v/view"
+      src="https://drive.google.com/file/d/18Ks_ES9n5gVQeFF5R6GmjDkkjDK7sY1v/preview"
     />
     <p>Ora clicca "Installa"</p>
     <img
-      src="https://drive.google.com/file/d/108KGxq9YAxW64pX57kbqwA6-RL6v7XiI/view"
+      src="https://drive.google.com/file/d/108KGxq9YAxW64pX57kbqwA6-RL6v7XiI/preview"
     />
     <p>In alternativa clicca sui tre puntini</p>
     <img
-      src="https://drive.google.com/file/d/19ZrwVy51wV1N49PGubPH-Nh1Fpho-xPj/view"
+      src="https://drive.google.com/file/d/19ZrwVy51wV1N49PGubPH-Nh1Fpho-xPj/preview"
     />
     <p>E ora clicca su "Installa App"</p>
     <img
-      src="https://drive.google.com/file/d/1zqzwq9SEmVA0xBLHnP1g8lp4UW7nKP6x/view"
+      src="https://drive.google.com/file/d/1zqzwq9SEmVA0xBLHnP1g8lp4UW7nKP6x/preview"
     />
     <p>Questo metodo va bene per la maggior parte dei browser</p>
   </div>
