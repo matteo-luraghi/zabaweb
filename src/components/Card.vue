@@ -169,7 +169,6 @@ async function updateAndReload() {
   height: 10%;
   justify-content: space-between;
   flex-wrap: wrap;
-  text-align: center;
 }
 
 .article-card-title {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { archive } from "../state";
+import { ref, computed } from "vue";
 
 const props = defineProps<{
   query: string;
@@ -22,14 +23,43 @@ function shareViaWebShare() {
     url: window.location.pathname + `?q=${numberId}#${showPdf.name}`,
   });
 }
+
+//variable that reads the localStorage
+const savedNumbers = ref<string[]>(
+  JSON.parse(localStorage.getItem("SavedNumbers") || "[]")
+);
+
+//functions to manage the localStorage
+function addNumber() {
+  savedNumbers.value.push(`${numberId}`);
+  localStorage.setItem("SavedNumbers", JSON.stringify(savedNumbers.value));
+}
+
+function removeNumber() {
+  savedNumbers.value = savedNumbers.value.filter((id) => id !== `${numberId}`);
+  localStorage.setItem("SavedNumbers", JSON.stringify(savedNumbers.value));
+}
+
+// Check if the numberId is in the list of saved numbers
+const isNumberSaved = computed(() =>
+  savedNumbers.value.includes(`${numberId}`)
+);
 </script>
 
 <template>
   <div class="bar-container">
     <h2 class="text-font">{{ showPdf.name }}</h2>
-    <button class="share-button" @click="shareViaWebShare">
-      <i class="fa-solid fa-share-nodes"></i>
-    </button>
+    <div class="buttons">
+      <button class="save-button" @click="addNumber" v-if="!isNumberSaved">
+        <i class="fa-regular fa-bookmark"></i>
+      </button>
+      <button class="save-button" @click="removeNumber" v-else>
+        <i class="fa-solid fa-bookmark"></i>
+      </button>
+      <button class="share-button" @click="shareViaWebShare">
+        <i class="fa-solid fa-share-nodes"></i>
+      </button>
+    </div>
   </div>
   <iframe
     :src="showPdf.url"
