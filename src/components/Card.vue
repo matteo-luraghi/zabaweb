@@ -168,6 +168,8 @@ async function updateAndReload() {
   flex-direction: row;
   height: 10%;
   justify-content: space-between;
+  flex-wrap: wrap;
+  text-align: center;
 }
 
 .article-card-title {
