@@ -165,6 +165,7 @@ async function updateAndReload() {
 
 .article-card-title-container {
   display: flex;
+  flex-direction: row;
   height: 10%;
   align-items: space-between;
 }
