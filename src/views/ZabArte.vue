@@ -1,3 +1,15 @@
+<template>
+  <h1 class="header articoli-title">ZABARTE</h1>
+  <div class="image-container">
+    <img
+      :src="currentImage.img"
+      alt="Zabarte Image"
+      @click="showNextImage"
+      :class="{ swipe: isSwiped }"
+    />
+  </div>
+</template>
+
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
@@ -17,24 +29,21 @@ const zabarte = [
     title: "Image 3",
     img: "https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg",
   },
-  // Add more image objects as needed
 ];
 
 const currentIndex = ref(0);
+const isSwiped = ref(false);
 
 const currentImage = computed(() => zabarte[currentIndex.value]);
 
 const showNextImage = () => {
-  currentIndex.value = (currentIndex.value + 1) % zabarte.length;
+  isSwiped.value = true;
+  setTimeout(() => {
+    currentIndex.value = (currentIndex.value + 1) % zabarte.length;
+    isSwiped.value = false;
+  }, 500);
 };
 </script>
-
-<template>
-  <h1 class="header articoli-title">ZABARTE</h1>
-  <div class="image-container">
-    <img :src="currentImage.img" alt="Zabarte Image" @click="showNextImage" />
-  </div>
-</template>
 
 <style>
 .image-container {
@@ -44,5 +53,10 @@ const showNextImage = () => {
 img {
   max-width: 100%;
   max-height: 100%;
+}
+
+.swipe {
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(100%);
 }
 </style>
