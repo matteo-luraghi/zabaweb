@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { useSwipe } from "vue-touch";
 
 const zabarte = [
   {
@@ -28,29 +27,12 @@ const currentImage = computed(() => zabarte[currentIndex.value]);
 const showNextImage = () => {
   currentIndex.value = (currentIndex.value + 1) % zabarte.length;
 };
-
-const showPreviousImage = () => {
-  currentIndex.value =
-    (currentIndex.value - 1 + zabarte.length) % zabarte.length;
-};
-
-useSwipe({
-  directives: {
-    swipeleft: showNextImage,
-    swiperight: showPreviousImage,
-  },
-});
 </script>
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="image-container">
-    <img
-      :src="currentImage.img"
-      alt="Zabarte Image"
-      v-touch:swipeleft="showNextImage"
-      v-touch:swiperight="showPreviousImage"
-    />
+    <img :src="currentImage.img" alt="Zabarte Image" @click="showNextImage" />
   </div>
 </template>
 
