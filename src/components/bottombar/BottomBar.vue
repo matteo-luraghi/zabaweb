@@ -57,7 +57,7 @@ import BottomBarLink from "./BottomBarLink.vue";
   background-color: var(--bottombar-bg-color);
   position: fixed;
   z-index: 1;
-  bottom: 0;
+  bottom: -5px;
   left: 0;
   height: 60px;
   padding: 0.5em;
