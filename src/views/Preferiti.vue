@@ -1,6 +1,6 @@
 <template>
   <h1 class="header articoli-title">PREFERITI</h1>
-  <h3 class="title-font" style="font-size: 18px">Articoli</h3>
+  <h3 class="text-font" style="font-size: 18px">Articoli</h3>
 
   <div class="container">
     <Card
@@ -17,7 +17,7 @@
     />
   </div>
 
-  <h3 class="title-font" style="font-size: 18px">Numeri</h3>
+  <h3 class="text-font" style="font-size: 18px">Numeri</h3>
 
   <div class="container numeri-container">
     <router-link
