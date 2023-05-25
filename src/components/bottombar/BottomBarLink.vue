@@ -67,7 +67,6 @@ const isActive = computed(() => route.path === props.to);
 .link .icon {
   flex-shrink: 0;
   width: 25px;
-  margin-right: 10px;
   margin-bottom: 5px; /* Adjust the spacing between icon and text */
 }
 
