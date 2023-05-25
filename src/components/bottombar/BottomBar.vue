@@ -14,13 +14,6 @@ import BottomBarLink from "./BottomBarLink.vue";
     <BottomBarLink
       class="bottombar-link"
       :active-class="'bottombar-link-active'"
-      to="/"
-      icon="fas fa-home"
-      text="HOME"
-    ></BottomBarLink>
-    <BottomBarLink
-      class="bottombar-link"
-      :active-class="'bottombar-link-active'"
       to="/articoli"
       icon="fas fa-newspaper"
       text="ARTICOLI"
@@ -28,9 +21,9 @@ import BottomBarLink from "./BottomBarLink.vue";
     <BottomBarLink
       class="bottombar-link"
       :active-class="'bottombar-link-active'"
-      to="/preferiti"
-      icon="fas fa-solid fa-bookmark"
-      text="PREFERITI"
+      to="/"
+      icon="fas fa-home"
+      text="HOME"
     ></BottomBarLink>
     <BottomBarLink
       class="bottombar-link"
@@ -38,6 +31,13 @@ import BottomBarLink from "./BottomBarLink.vue";
       to="/zabarte"
       icon="fas fa-solid fa-paintbrush"
       text="ZABARTE"
+    ></BottomBarLink>
+    <BottomBarLink
+      class="bottombar-link"
+      :active-class="'bottombar-link-active'"
+      to="/preferiti"
+      icon="fas fa-solid fa-bookmark"
+      text="PREFERITI"
     ></BottomBarLink>
   </div>
 </template>
