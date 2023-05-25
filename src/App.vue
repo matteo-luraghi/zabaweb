@@ -19,7 +19,12 @@ let classname: string;
 if (wideScreen === true) {
   classname = "footer-circle-large";
 } else {
-  classname = "footer-circle-small";
+  const userAgent = navigator.userAgent;
+  if (userAgent.indexOf("Chrome") > -1) {
+    classname = "footer-circle-small-chrome";
+  } else if (userAgent.indexOf("Safari") > -1) {
+    classname = "footer-circle-small-safari";
+  }
 }
 </script>
 
@@ -122,10 +127,16 @@ if (wideScreen === true) {
   margin: 0 5px;
 }
 
-.footer-circle-small {
+.footer-circle-small-chrome {
   width: 50px;
   height: 35px;
   margin-bottom: 35px;
+}
+
+.footer-circle-small-safari {
+  width: 35px;
+  height: 35px;
+  margin-bottom: 40px;
 }
 
 .footer-circle-large {

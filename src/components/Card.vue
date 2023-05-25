@@ -79,6 +79,15 @@ function shareViaWebShare() {
   });
 }
 
+let classname: string;
+const userAgent = navigator.userAgent;
+
+if (userAgent.indexOf("Chrome") > -1) {
+  classname = "button-chrome";
+} else if (userAgent.indexOf("Safari") > -1) {
+  classname = "button-safari";
+}
+
 async function updateAndReload() {
   await updateArticleDatabase();
   window.location.reload();
@@ -101,13 +110,21 @@ async function updateAndReload() {
         </p>
       </router-link>
       <div class="buttons card-buttons">
-        <button class="save-button" @click="addArticle" v-if="!isArticleSaved">
+        <button
+          :class="`save-button ${classname}`"
+          @click="addArticle"
+          v-if="!isArticleSaved"
+        >
           <i class="fa-regular fa-bookmark"></i>
         </button>
-        <button class="save-button" @click="removeArticle" v-else>
+        <button
+          :class="`save-button ${classname}`"
+          @click="removeArticle"
+          v-else
+        >
           <i class="fa-solid fa-bookmark"></i>
         </button>
-        <button class="share-button" @click="shareViaWebShare">
+        <button :class="`share-button ${classname}`" @click="shareViaWebShare">
           <i class="fa-solid fa-share-nodes"></i>
         </button>
       </div>

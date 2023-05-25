@@ -21,6 +21,15 @@ if (wideScreen === true) {
   classname = "articolo-small";
 }
 
+let browserClass: string;
+const userAgent = navigator.userAgent;
+
+if (userAgent.indexOf("Chrome") > -1) {
+  browserClass = "button-chrome";
+} else if (userAgent.indexOf("Safari") > -1) {
+  browserClass = "button-safari";
+}
+
 //the global variable articleDetails contains all the info to display a single article
 let articleDetails: {
   title: string;
@@ -134,13 +143,24 @@ function shareViaWebShare() {
     <div class="bar-container">
       <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
       <div class="buttons">
-        <button class="save-button" @click="addArticle" v-if="!isArticleSaved">
+        <button
+          :class="`save-button ${browserClass}`"
+          @click="addArticle"
+          v-if="!isArticleSaved"
+        >
           <i class="fa-regular fa-bookmark"></i>
         </button>
-        <button class="save-button" @click="removeArticle" v-else>
+        <button
+          :class="`save-button ${browserClass}`"
+          @click="removeArticle"
+          v-else
+        >
           <i class="fa-solid fa-bookmark"></i>
         </button>
-        <button class="share-button" @click="shareViaWebShare">
+        <button
+          :class="`share-button ${browserClass}`"
+          @click="shareViaWebShare"
+        >
           <i class="fa-solid fa-share-nodes"></i>
         </button>
       </div>
