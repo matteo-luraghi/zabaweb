@@ -44,19 +44,32 @@ function removeNumber() {
 const isNumberSaved = computed(() =>
   savedNumbers.value.includes(`${numberId}`)
 );
+
+let classname: string;
+const userAgent = navigator.userAgent;
+
+if (userAgent.indexOf("Chrome") > -1) {
+  classname = "button-chrome";
+} else if (userAgent.indexOf("Safari") > -1) {
+  classname = "button-safari";
+}
 </script>
 
 <template>
   <div class="bar-container">
     <h2 class="text-font">{{ showPdf.name }}</h2>
     <div class="buttons">
-      <button class="save-button" @click="addNumber" v-if="!isNumberSaved">
+      <button
+        :class="`save-button ${classname}`"
+        @click="addNumber"
+        v-if="!isNumberSaved"
+      >
         <i class="fa-regular fa-bookmark"></i>
       </button>
-      <button class="save-button" @click="removeNumber" v-else>
+      <button :class="`save-button ${classname}`" @click="removeNumber" v-else>
         <i class="fa-solid fa-bookmark"></i>
       </button>
-      <button class="share-button" @click="shareViaWebShare">
+      <button :class="`share-button ${classname}`" @click="shareViaWebShare">
         <i class="fa-solid fa-share-nodes"></i>
       </button>
     </div>
