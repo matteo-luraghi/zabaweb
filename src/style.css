@@ -110,7 +110,7 @@ html, body {
 .button-chrome {
   height: 35px;
   width: 35px;
-  align-items: center;
+  align-items: self-start;
 }
 
 .buttons {
