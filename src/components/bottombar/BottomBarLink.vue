@@ -71,8 +71,7 @@ const isActive = computed(() => route.path === props.to);
   margin-bottom: 5px; /* Adjust the spacing between icon and text */
 }
 
-.link.active,
-.icon-container.active .link.active .icon-text {
+.icon-container.active {
   background-color: #303030;
 }
 </style>
