@@ -57,9 +57,9 @@ import BottomBarLink from "./BottomBarLink.vue";
   background-color: var(--bottombar-bg-color);
   position: fixed;
   z-index: 1;
-  bottom: 5px;
+  bottom: 0;
   left: 0;
-  height: 60px;
+  height: 70px;
   padding: 0.5em;
   border: none;
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
@@ -77,6 +77,7 @@ import BottomBarLink from "./BottomBarLink.vue";
   font-family: "CodeBold";
   font-size: 14px;
   color: #303030;
+  margin-bottom: 10px;
 }
 
 .bottombar-link-active {
