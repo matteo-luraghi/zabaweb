@@ -14,6 +14,11 @@ const isActive = computed(() => route.path === props.to);
       <i class="icon" :class="icon" />
       <span class="icon-text">{{ text }}</span>
     </div>
+    <transition name="fade">
+      <span>
+        <slot />
+      </span>
+    </transition>
   </router-link>
 </template>
 
@@ -52,6 +57,7 @@ const isActive = computed(() => route.path === props.to);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .icon-text {
@@ -63,5 +69,10 @@ const isActive = computed(() => route.path === props.to);
   width: 25px;
   margin-right: 10px;
   margin-bottom: 5px; /* Adjust the spacing between icon and text */
+}
+
+.link.active,
+.link.active .icon-text {
+  background-color: #303030;
 }
 </style>
