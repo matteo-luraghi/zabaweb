@@ -18,6 +18,17 @@
   </div>
 
   <h3 class="title-font" style="font-size: 18px">Numeri</h3>
+
+  <div class="container numeri-container">
+    <router-link
+      :to="`/numero?q=${element.id}#${element.name}`"
+      class="router-link"
+      v-for="element in savedNumbers.numbers"
+    >
+      <h3 class="text-font">{{ element.name }}</h3>
+      <img class="numero-cover" :src="element.img" />
+    </router-link>
+  </div>
 </template>
 
 <script setup lang="ts">
