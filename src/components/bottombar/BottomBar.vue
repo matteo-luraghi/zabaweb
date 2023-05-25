@@ -32,6 +32,13 @@ import BottomBarLink from "./BottomBarLink.vue";
       icon="fas fa-solid fa-bookmark"
       text="PREFERITI"
     ></BottomBarLink>
+    <BottomBarLink
+      class="bottombar-link"
+      :active-class="'bottombar-link-active'"
+      to="/zabarte"
+      icon="fas fa-solid fa-paintbrush"
+      text="ZABARTE"
+    ></BottomBarLink>
   </div>
 </template>
 

@@ -15,13 +15,13 @@
       }"
     />
     <img
-      v-if="isSwiped"
       :src="nextImage.img"
       alt="Zabarte Image"
       :class="{
         swipe: isSwiped,
         left: swipeDirection === 'left',
         right: swipeDirection === 'right',
+        next: true,
       }"
     />
   </div>
@@ -55,11 +55,13 @@ const swipeDirection = ref("");
 
 const currentImage = computed(() => zabarte[currentIndex.value]);
 const nextImage = computed(() => {
-  const nextIndex =
-    swipeDirection.value === "left"
-      ? (currentIndex.value + 1) % zabarte.length
-      : (currentIndex.value - 1 + zabarte.length) % zabarte.length;
-  return zabarte[nextIndex];
+  if (swipeDirection.value === "left") {
+    return zabarte[(currentIndex.value + 1) % zabarte.length];
+  } else if (swipeDirection.value === "right") {
+    return zabarte[(currentIndex.value - 1 + zabarte.length) % zabarte.length];
+  } else {
+    return zabarte[currentIndex.value];
+  }
 });
 
 const handleTouchStart = (event: TouchEvent) => {
@@ -101,34 +103,35 @@ const showPrevImage = () => {
 
 <style>
 .image-container {
-  position: relative;
+  text-align: center;
 }
 
 img {
-  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .swipe.left {
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .swipe.right {
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
-.swipe.left:nth-child(1) {
+.swipe.left:not(.next) {
   transform: translateX(-100%);
 }
 
-.swipe.right:nth-child(1) {
+.swipe.right:not(.next) {
   transform: translateX(100%);
 }
 
-.swipe.left:nth-child(2) {
-  transform: translateX(0);
+.swipe.left.next {
+  transform: translateX(100%);
 }
 
-.swipe.right:nth-child(2) {
-  transform: translateX(0);
+.swipe.right.next {
+  transform: translateX(-100%);
 }
 </style>
