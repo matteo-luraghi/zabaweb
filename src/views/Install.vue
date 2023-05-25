@@ -6,10 +6,10 @@
     <img src="../assets/download/safari3.webp" />
   </div>
   <div v-else class="container">
-    <img src="../assets/download/chrome1" />
-    <img src="../assets/download/chrome2" />
-    <img src="../assets/download/chrome3" />
-    <img src="../assets/download/chrome4" />
+    <img src="../assets/download/chrome1.webp" />
+    <img src="../assets/download/chrome2.webp" />
+    <img src="../assets/download/chrome3.webp" />
+    <img src="../assets/download/chrome4.webp" />
   </div>
 </template>
 
