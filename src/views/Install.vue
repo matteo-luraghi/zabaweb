@@ -41,16 +41,12 @@ import { reactive } from "vue";
 const select = reactive({
   system: "",
 });
-console.log(select.system);
 </script>
 
 <style scoped>
-img {
-  margin-bottom: 10px;
-}
-
 p {
   font-family: "MinionPro";
+  font-size: medium;
 }
 .system-button {
   height: 50px;
@@ -70,5 +66,11 @@ p {
   touch-action: manipulation;
   will-change: transform;
   box-sizing: border-box;
+  width: 90px;
+}
+
+.system-button:active {
+  background-color: #e0e0e0;
+  color: #303030;
 }
 </style>
