@@ -35,8 +35,10 @@ const showPreviousImage = () => {
 };
 
 useSwipe({
-  swipeLeft: showNextImage,
-  swipeRight: showPreviousImage,
+  directives: {
+    swipeleft: showNextImage,
+    swiperight: showPreviousImage,
+  },
 });
 </script>
 
