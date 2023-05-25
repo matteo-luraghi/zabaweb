@@ -28,10 +28,7 @@ if (wideScreen === true) {
 }
 
 function showBottomBar() {
-  if (
-    !wideScreen &&
-    window.location.pathname != "https://zabaweb.vercel.app/install"
-  ) {
+  if (!wideScreen && window.location.pathname != "/install") {
     return true;
   }
   return false;

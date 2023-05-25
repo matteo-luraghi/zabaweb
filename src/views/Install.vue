@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { reactive } from "vue";
+const select = reactive({
+  system: "",
+});
+</script>
+
 <template>
   <h1 class="header">DOWNLOAD</h1>
   <div class="container">
@@ -43,13 +50,6 @@
     <p>Questo metodo va bene per la maggior parte dei browser</p>
   </div>
 </template>
-
-<script setup lang="ts">
-import { reactive } from "vue";
-const select = reactive({
-  system: "",
-});
-</script>
 
 <style scoped>
 p {
