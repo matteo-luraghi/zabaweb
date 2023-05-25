@@ -1,6 +1,6 @@
 <template>
   <h1 class="header articoli-title">SALVATI</h1>
-  <h3 class="title-font">Articoli</h3>
+  <h3 class="title-font" style="font-size: 16px">Articoli</h3>
 
   <div class="container">
     <Card

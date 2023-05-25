@@ -4,7 +4,9 @@ import { computed, ref } from "vue";
 const props = defineProps<{
   query: string;
 }>();
+
 const articleId = parseInt(props.query.split("#")[0]);
+
 let wideScreen = true;
 const windowWidth = window.innerWidth;
 if (windowWidth < 1700) {
@@ -68,10 +70,12 @@ const formattedText = computed(() => {
   return text;
 });
 
+//variable that reads the localStorage
 const savedArticles = ref<string[]>(
   JSON.parse(localStorage.getItem("SavedArticles") || "[]")
 );
 
+//functions to manage the localStorage
 function addArticle() {
   savedArticles.value.push(`${articleId}`);
   localStorage.setItem("SavedArticles", JSON.stringify(savedArticles.value));

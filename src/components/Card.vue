@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { filters, updateDatabase } from "../state";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 
 //info of the article object
 const props = defineProps<{
@@ -47,6 +47,38 @@ function addFilters(data: string, button: string) {
   }
 }
 
+//variable that reads the localStorage
+const savedArticles = ref<string[]>(
+  JSON.parse(localStorage.getItem("SavedArticles") || "[]")
+);
+
+//functions to manage the localStorage
+function addArticle() {
+  savedArticles.value.push(`${props.id}`);
+  localStorage.setItem("SavedArticles", JSON.stringify(savedArticles.value));
+}
+
+function removeArticle() {
+  savedArticles.value = savedArticles.value.filter(
+    (id) => id !== `${props.id}`
+  );
+  localStorage.setItem("SavedArticles", JSON.stringify(savedArticles.value));
+}
+
+// Check if the articleId is in the list of saved articles
+const isArticleSaved = computed(() =>
+  savedArticles.value.includes(`${props.id}`)
+);
+
+//fuction to share the article
+function shareViaWebShare() {
+  navigator.share({
+    title: props.title,
+    text: "",
+    url: window.location.pathname + `?q=${props.id}#${props.title}`,
+  });
+}
+
 async function updateAndReload() {
   await updateDatabase();
   window.location.reload();
@@ -68,6 +100,17 @@ async function updateAndReload() {
           {{ title }}
         </p>
       </router-link>
+      <div class="buttons">
+        <button class="save-button" @click="addArticle" v-if="!isArticleSaved">
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <button class="save-button" @click="removeArticle" v-else>
+          <i class="fa-solid fa-bookmark"></i>
+        </button>
+        <button class="share-button" @click="shareViaWebShare">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+      </div>
     </div>
     <div class="article-card-info">
       <div class="article-card-tags">

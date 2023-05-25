@@ -77,7 +77,6 @@ import BottomBarLink from "./BottomBarLink.vue";
 }
 
 .bottombar-link:hover {
-  background-color: #303030;
   color: #e0e0e0;
 }
 </style>
