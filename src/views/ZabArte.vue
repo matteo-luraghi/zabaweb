@@ -7,6 +7,11 @@ function removeFilter(filterData: string) {
   let index = artFilters.authors.indexOf(filterData);
   if (index > -1) {
     artFilters.authors.splice(index, 1);
+  } else {
+    index = artFilters.tags.indexOf(filterData);
+    if (index > -1) {
+      artFilters.tags.splice(index, 1);
+    }
   }
 }
 
@@ -107,14 +112,16 @@ async function updateAndReload() {
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="articoli-title-container">
     <p class="text-font">Scorri a destra e sinistra per vedere le immagini!</p>
-    <SearchBarArt :class="`articoli-searchbar`" />
-    <button
-      v-if="!showFilters.showFilters"
-      @click="showFilters.showFilters = !showFilters.showFilters"
-      class="articoli-title-filter-button text-font"
-    >
-      Aggiungi Filtri
-    </button>
+    <div class="articoli-searchbar-button">
+      <SearchBarArt :class="`articoli-searchbar`" />
+      <button
+        v-if="!showFilters.showFilters"
+        @click="showFilters.showFilters = !showFilters.showFilters"
+        class="articoli-title-filter-button text-font"
+      >
+        Aggiungi Filtri
+      </button>
+    </div>
     <div class="filter-popup" v-if="showFilters.showFilters">
       <button
         class="button filter-button"
@@ -214,11 +221,8 @@ async function updateAndReload() {
 <style>
 .image-container {
   text-align: center;
-  max-width: 100%;
-  max-height: calc(
-    100vh - 200px
-  ); /* Adjust the value (200px) according to your layout */
-  overflow: hidden;
+  max-width: 90%;
+  max-height: 70%;
 }
 
 .responsive-image {
