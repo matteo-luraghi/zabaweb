@@ -119,7 +119,7 @@ export function filterArt(artFilters: {authors: string[], title: string}) {
                 break
             }
         }
-        if(nope===0) {filtered.push(dataJson[i])}
+        if(nope===0) {filtered.push(zabarte[i])}
         nope = 0
     }
     artFilters.title = ''
