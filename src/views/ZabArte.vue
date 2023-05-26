@@ -18,6 +18,7 @@ const currentIndex = ref(0);
 const isSwiped = ref(false);
 const touchStartX = ref(0);
 const swipeDirection = ref("");
+const isLoading = ref(false);
 
 const currentImage = computed(() => zabarte[currentIndex.value]);
 
@@ -35,16 +36,19 @@ const handleTouchEnd = (event: TouchEvent) => {
   } else if (deltaX < -50) {
     showNextImage();
     swipeDirection.value = "left";
+    isLoading.value = true;
   }
 };
 
 const showNextImage = () => {
   currentIndex.value = (currentIndex.value + 1) % zabarte.length;
+  isLoading.value = false;
 };
 
 const showPrevImage = () => {
   currentIndex.value =
     (currentIndex.value - 1 + zabarte.length) % zabarte.length;
+  isLoading.value = false;
 };
 
 let classname: string;
@@ -133,6 +137,7 @@ if (windowWidth >= 580) {
           right: swipeDirection === 'right',
         }"
       />
+      <div v-if="isLoading">Loading...</div>
     </div>
     <div class="container space">
       <h3 class="text-font">{{ currentImage.title }}</h3>
