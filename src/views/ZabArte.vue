@@ -18,6 +18,7 @@ const currentIndex = ref(0);
 const isSwiped = ref(false);
 const touchStartX = ref(0);
 const swipeDirection = ref("");
+const swipeCooldown = ref(false);
 
 const currentImage = computed(() => zabarte[currentIndex.value]);
 
@@ -26,6 +27,9 @@ const handleTouchStart = (event: TouchEvent) => {
 };
 
 const handleTouchEnd = (event: TouchEvent) => {
+  if (swipeCooldown.value) {
+    return; // Ignore the swipe if the cooldown is active
+  }
   const touchEndX = event.changedTouches[0].clientX;
   const deltaX = touchEndX - touchStartX.value;
 
@@ -36,6 +40,11 @@ const handleTouchEnd = (event: TouchEvent) => {
     showNextImage();
     swipeDirection.value = "left";
   }
+
+  swipeCooldown.value = true; // Activate the cooldown
+  setTimeout(() => {
+    swipeCooldown.value = false; // Deactivate the cooldown after one second
+  }, 1000);
 };
 
 const showNextImage = () => {
@@ -123,18 +132,16 @@ if (windowWidth > 580) {
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd"
     >
-      <transition name="image-swipe">
-        <img
-          :src="currentImage.img"
-          alt="Zabarte Image"
-          @error="updateAndReload"
-          :class="{
-            swipe: isSwiped,
-            left: swipeDirection === 'left',
-            right: swipeDirection === 'right',
-          }"
-        />
-      </transition>
+      <img
+        :src="currentImage.img"
+        alt="Zabarte Image"
+        @error="updateAndReload"
+        :class="{
+          swipe: isSwiped,
+          left: swipeDirection === 'left',
+          right: swipeDirection === 'right',
+        }"
+      />
     </div>
     <div class="container space">
       <h3 class="text-font">{{ currentImage.title }}</h3>
@@ -184,23 +191,6 @@ if (windowWidth > 580) {
 img {
   max-width: 100%;
   max-height: 100%;
-}
-
-.image-swipe-enter-active,
-.image-swipe-leave-active {
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-}
-
-.image-swipe-enter,
-.image-swipe-leave-to {
-  transform: translateX(0);
-  opacity: 1;
-}
-
-.image-swipe-leave,
-.image-swipe-enter-to {
-  transform: translateX(100%);
-  opacity: 0;
 }
 
 .swipe.left {
