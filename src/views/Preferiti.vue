@@ -83,7 +83,12 @@ for (let i in savedZabArteId.value) {
       v-for="art in savedZabArte.art"
     >
       <h3 class="text-font">{{ art.title }}</h3>
-      <img :src="art.img" />
+      <div class="container">
+        <h3 class="text-font" v-for="author in art.authors">{{ author }}</h3>
+        <h3 class="text-font" v-for="tag in art.tags">{{ tag }}</h3>
+      </div>
+
+      <img :src="art.img" class="responsive-image" />
     </router-link>
   </div>
 </template>
