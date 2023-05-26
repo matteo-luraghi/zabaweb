@@ -38,7 +38,7 @@ const showPrevImage = () => {
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
-  <div class="container" v-if="zabarte.length != 0">
+  <div class="container">
     <div
       class="image-container"
       @touchstart="handleTouchStart"
@@ -55,8 +55,12 @@ const showPrevImage = () => {
       />
     </div>
     <h3 class="text-font">{{ currentImage.title }}</h3>
+    <div class="container">
+      <h3 v-for="author in currentImage.authors" class="text-font">
+        {{ author }}
+      </h3>
+    </div>
   </div>
-  <p v-else>Ops! Non ci sono ancora opere d'arte, riprova in futuro!</p>
 </template>
 
 <style>

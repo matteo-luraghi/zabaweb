@@ -23,6 +23,7 @@ interface Numero {
 interface Art {
     id: number,
     title: string,
+    authors: string[],
     img: string
 }
 
@@ -120,6 +121,7 @@ export let archive = reactive([{
 export let zabarte = reactive([{
     id: 0,
     title: '',
+    authors: [''],
     img: '',
 }])
 
