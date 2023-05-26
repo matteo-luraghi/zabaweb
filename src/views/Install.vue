@@ -8,7 +8,7 @@ const select = reactive({
 <template>
   <h1 class="header">DOWNLOAD</h1>
   <div class="container">
-    <p>Seleziona il tuo sistema operativo</p>
+    <p>Che telefono hai?</p>
     <button
       class="button system-button"
       :active-class="'system-button-active'"
