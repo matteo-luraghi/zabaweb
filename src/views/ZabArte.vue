@@ -97,7 +97,8 @@ async function updateAndReload() {
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
-  <SearchBarArt class="articoli-searchbar" />
+  <p class="text-font">Scorri a destra e sinistra per vedere le immagini!</p>
+  <SearchBarArt class="zabart-searchbar" />
   <div class="filters-container" v-if="artFilters.authors.length != 1">
     <button
       class="button filter-button"
@@ -183,5 +184,9 @@ img {
 .swipe.right {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   transform: translateX(100%);
+}
+
+.zabart-searchbar {
+  margin: 0 20px;
 }
 </style>
