@@ -221,6 +221,9 @@ async function updateAndReload() {
       >
         {{ art.title }}
       </h3>
+      <h3 v-for="author in currentImage.authors" class="text-font">
+        {{ author }}
+      </h3>
       <img :src="art.img" class="responsive-image" />
     </router-link>
   </div>
@@ -229,7 +232,7 @@ async function updateAndReload() {
 <style>
 .image-container {
   text-align: center;
-  max-width: 90%;
+  max-width: 100%;
   max-height: 70%;
 }
 

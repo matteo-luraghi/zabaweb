@@ -90,5 +90,6 @@ async function updateAndReload() {
     <h3 v-for="author in zabart.authors" class="text-font">
       {{ author }}
     </h3>
+    <h3 v-for="tag in zabart.tags" class="text-font">{{ tag }}</h3>
   </div>
 </template>
