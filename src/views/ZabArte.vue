@@ -123,16 +123,18 @@ if (windowWidth > 580) {
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd"
     >
-      <img
-        :src="currentImage.img"
-        alt="Zabarte Image"
-        @error="updateAndReload"
-        :class="{
-          swipe: isSwiped,
-          left: swipeDirection === 'left',
-          right: swipeDirection === 'right',
-        }"
-      />
+      <transition name="image-swipe">
+        <img
+          :src="currentImage.img"
+          alt="Zabarte Image"
+          @error="updateAndReload"
+          :class="{
+            swipe: isSwiped,
+            left: swipeDirection === 'left',
+            right: swipeDirection === 'right',
+          }"
+        />
+      </transition>
     </div>
     <div class="container space">
       <h3 class="text-font">{{ currentImage.title }}</h3>
@@ -184,13 +186,28 @@ img {
   max-height: 100%;
 }
 
-.swipe.left {
+.image-swipe-enter-active,
+.image-swipe-leave-active {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.image-swipe-enter,
+.image-swipe-leave-to {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.image-swipe-leave,
+.image-swipe-enter-to {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.swipe.left {
   transform: translateX(-100%);
 }
 
 .swipe.right {
-  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   transform: translateX(100%);
 }
 
