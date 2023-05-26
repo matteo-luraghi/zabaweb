@@ -143,6 +143,7 @@ function checkEmpty() {
   touch-action: manipulation;
   will-change: transform;
   box-sizing: border-box;
+  font-size: 14px;
 }
 
 .articoli-title-filter-button:disabled {

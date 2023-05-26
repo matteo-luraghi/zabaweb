@@ -43,7 +43,7 @@ const handleTouchEnd = (event: TouchEvent) => {
 
   swipeCooldown.value = true; // Activate the cooldown
   setTimeout(() => {
-    swipeCooldown.value = false; // Deactivate the cooldown after 2 seconds
+    swipeCooldown.value = false; // Deactivate the cooldown after 1 second
   }, 1000);
 };
 
