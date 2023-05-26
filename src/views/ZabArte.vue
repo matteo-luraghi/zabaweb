@@ -209,11 +209,11 @@ async function updateAndReload() {
   <div class="container" v-else>
     <router-link
       :to="`/zabarte/view?q=${art.id}#${art.title}`"
-      class="router-link"
+      class="router-link image-container"
       v-for="art in artFiltered"
     >
       <h3 v-if="art.title != ''" class="text-font">{{ art.title }}</h3>
-      <img :src="art.img" />
+      <img :src="art.img" class="responsive-image" />
     </router-link>
   </div>
 </template>
