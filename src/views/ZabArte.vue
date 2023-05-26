@@ -246,7 +246,7 @@ async function updateAndReload() {
 .responsive-image {
   display: block;
   max-width: 100%;
-  max-height: 1000px;
+  max-height: 550px;
   object-fit: contain;
 }
 </style>
