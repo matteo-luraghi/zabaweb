@@ -1,6 +1,24 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import { zabarte } from "@/state";
+import {
+  updateArtDatabase,
+  zabarte,
+  artFiltered,
+  artFilters,
+  showFilters,
+} from "@/state";
+import SearchBarArt from "@/components/SearchBarArt.vue";
+
+function removeFilter(filterData: string) {
+  let index = artFilters.authors.indexOf(filterData);
+  if (index > -1) {
+    artFilters.authors.splice(index, 1);
+  }
+}
+
+function checkEmpty() {
+  return artFiltered.value.length == 0;
+}
 
 const currentIndex = ref(0);
 const isSwiped = ref(false);
@@ -76,11 +94,27 @@ function shareViaWebShare() {
       `/view?q=${currentImage.value.id}#${currentImage.value.title}`,
   });
 }
+
+async function updateAndReload() {
+  await updateArtDatabase();
+  window.location.reload();
+}
 </script>
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
-  <div class="container">
+  <SearchBarArt class="articoli-searchbar" />
+  <div class="filters-container" v-if="artFilters.authors.length != 1">
+    <button
+      class="button filter-button"
+      v-for="filter in artFilters.authors.slice(1)"
+      @click="removeFilter(filter)"
+    >
+      {{ filter }}
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+  <div class="container" v-if="checkEmpty()">
     <div
       class="image-container"
       @touchstart="handleTouchStart"
@@ -89,6 +123,7 @@ function shareViaWebShare() {
       <img
         :src="currentImage.img"
         alt="Zabarte Image"
+        @error="updateAndReload"
         :class="{
           swipe: isSwiped,
           left: swipeDirection === 'left',
@@ -123,6 +158,16 @@ function shareViaWebShare() {
         {{ author }}
       </h3>
     </div>
+  </div>
+  <div class="container" v-else>
+    <router-link
+      :to="`/zabarte/view?q=${art.id}#${art.title}`"
+      class="router-link"
+      v-for="art in artFiltered"
+    >
+      <h3 class="text-font">{{ art.title }}</h3>
+      <img :src="art.img" />
+    </router-link>
   </div>
 </template>
 

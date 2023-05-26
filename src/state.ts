@@ -35,10 +35,19 @@ export let filters = reactive({
     date: "",
 })
 
+export let artFilters = reactive({
+    title: "",
+    authors: [""],
+})
+
 //global computed variable that saves all the articles
 //that pass the filter check
 export let filtered = computed(() => {
     return filterData(filters)
+})
+
+export let artFiltered = computed(() => {
+    return filterArt(artFilters)
 })
 
 //global reactive variable that is true when there's at least
@@ -85,6 +94,35 @@ export function filterData(filters: {title: string, authors: string[], tags: str
         nope = 0
     }
     filters.title = ''
+    return filtered
+}
+
+export function filterArt(artFilters: {authors: string[], title: string}) {
+    let filtered = []
+    let nope = 0
+
+    const toUpper = function(x: string){ 
+        return x.toUpperCase();
+      };
+
+    for(let i=0; i<zabarte.length; i++) {
+        const upperAuthors = zabarte[i]['authors'].map(toUpper)
+
+        if ((zabarte[i]['title'].toUpperCase()).includes(artFilters.title.toUpperCase()) && artFilters.title != '') {
+            filtered.push(zabarte[i])
+            continue
+        }
+        
+        for(let j in artFilters['authors']) {
+            if (!upperAuthors.includes(artFilters['authors'][j].toUpperCase()) && artFilters['authors'][j]!='') {
+                nope = 1
+                break
+            }
+        }
+        if(nope===0) {filtered.push(dataJson[i])}
+        nope = 0
+    }
+    artFilters.title = ''
     return filtered
 }
   

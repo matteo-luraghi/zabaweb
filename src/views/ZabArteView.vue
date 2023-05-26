@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { zabarte } from "@/state";
+import { updateArtDatabase, zabarte } from "@/state";
 import { ref, computed } from "vue";
 const props = defineProps<{
   query: string;
@@ -46,12 +46,17 @@ function shareViaWebShare() {
     url: window.location.pathname + `?q=${zabart.id}#${zabart.title}`,
   });
 }
+
+async function updateAndReload() {
+  await updateArtDatabase();
+  window.location.reload();
+}
 </script>
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="container">
-    <img :src="zabart.img" alt="Zabarte Image" />
+    <img :src="zabart.img" alt="Zabarte Image" @error="updateAndReload" />
   </div>
   <div class="container space">
     <h3 class="text-font">{{ zabart.title }}</h3>

@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { archive } from "../state";
+import { archive, updateArchiveDatabase } from "../state";
 //the variable archive stores all the info, then in the template via the v-for method are displayed all of the Numeri of the database
 //each one is clickable and will route the user to the Numero view where it will be displayed as a pdf embedding
+
+async function updateAndReload() {
+  await updateArchiveDatabase();
+  window.location.reload();
+}
 </script>
 
 <template>
@@ -15,7 +20,7 @@ import { archive } from "../state";
       v-for="element in archive"
     >
       <h3 class="text-font">{{ element.name }}</h3>
-      <img class="numero-cover" :src="element.img" />
+      <img class="numero-cover" :src="element.img" @error="updateAndReload" />
     </router-link>
   </div>
 </template>
