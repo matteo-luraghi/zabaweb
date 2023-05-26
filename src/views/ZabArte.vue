@@ -204,10 +204,12 @@ img {
 }
 
 .swipe.left {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   transform: translateX(-100%);
 }
 
 .swipe.right {
+  transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   transform: translateX(100%);
 }
 
