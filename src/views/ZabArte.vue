@@ -10,8 +10,8 @@ function removeFilter(filterData: string) {
   }
 }
 
-function checkEmpty() {
-  return artFiltered.value.length == 0;
+function checkFull() {
+  return artFiltered.value.length === zabarte.length;
 }
 
 const currentIndex = ref(0);
@@ -108,7 +108,7 @@ async function updateAndReload() {
       <i class="fas fa-times"></i>
     </button>
   </div>
-  <div class="container" v-if="checkEmpty()">
+  <div class="container" v-if="checkFull()">
     <div
       class="image-container"
       @touchstart="handleTouchStart"
