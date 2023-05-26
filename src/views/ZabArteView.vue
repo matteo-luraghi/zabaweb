@@ -91,7 +91,7 @@ async function updateAndReload() {
       </button>
     </div>
   </div>
-  <div class="container">
-    <h3 v-for="tag in zabart.tags" class="text-font">{{ tag }}</h3>
-  </div>
+  <h3 v-for="tag in zabart.tags" class="text-font" style="margin-left: 7%">
+    {{ tag }}
+  </h3>
 </template>

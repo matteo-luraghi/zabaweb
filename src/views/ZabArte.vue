@@ -204,9 +204,13 @@ async function updateAndReload() {
         </button>
       </div>
     </div>
-    <div class="container">
-      <h3 v-for="tag in currentImage.tags" class="text-font">{{ tag }}</h3>
-    </div>
+    <h3
+      v-for="tag in currentImage.tags"
+      class="text-font"
+      style="margin-left: 7%"
+    >
+      {{ tag }}
+    </h3>
     <div class="container space">
       <button class="button filter-button" @click="showPrevImage">
         <i class="fas fa-solid fa-chevron-left"></i>
