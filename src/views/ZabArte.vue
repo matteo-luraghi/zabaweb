@@ -168,7 +168,10 @@ async function updateAndReload() {
       />
     </div>
     <div class="container space">
-      <h3 v-if="currentImage.title != ''" class="text-font">
+      <h3
+        v-if="!currentImage.title.includes('Image') && currentImage.title != ''"
+        class="text-font"
+      >
         {{ currentImage.title }}
       </h3>
       <div class="buttons card-buttons">
@@ -212,7 +215,12 @@ async function updateAndReload() {
       class="router-link image-container"
       v-for="art in artFiltered"
     >
-      <h3 v-if="art.title != ''" class="text-font">{{ art.title }}</h3>
+      <h3
+        v-if="!art.title.includes('Image') && art.title != ''"
+        class="text-font"
+      >
+        {{ art.title }}
+      </h3>
       <img :src="art.img" class="responsive-image" />
     </router-link>
   </div>

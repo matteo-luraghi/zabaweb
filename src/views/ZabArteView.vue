@@ -55,11 +55,21 @@ async function updateAndReload() {
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
-  <div class="container">
-    <img :src="zabart.img" alt="Zabarte Image" @error="updateAndReload" />
+  <div class="container image-container">
+    <img
+      :src="zabart.img"
+      alt="Zabarte Image"
+      @error="updateAndReload"
+      class="responsive-image"
+    />
   </div>
   <div class="container space">
-    <h3 class="text-font">{{ zabart.title }}</h3>
+    <h3
+      v-if="!zabart.title.includes('Image') && zabart.title != ''"
+      class="text-font"
+    >
+      {{ zabart.title }}
+    </h3>
     <div class="buttons card-buttons">
       <button
         :class="`save-button ${classname}`"
