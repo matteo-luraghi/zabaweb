@@ -7,6 +7,7 @@ import Articoli from '../views/Articoli.vue'
 import Articolo from '../views/Articolo.vue'
 import Install from '../views/Install.vue'
 import Zabarte from '../views/ZabArte.vue'
+import ZabarteView from '../views/ZabArteView.vue'
 
 const routes = [
     {
@@ -38,6 +39,11 @@ const routes = [
         path: '/zabarte',
         name: 'Zabarte',
         component: Zabarte,
+    },
+    {
+        path: '/zabarte/view',
+        component: ZabarteView,
+        props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
     },
     {
         //view of the single article

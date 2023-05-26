@@ -34,6 +34,48 @@ const showPrevImage = () => {
   currentIndex.value =
     (currentIndex.value - 1 + zabarte.length) % zabarte.length;
 };
+
+let classname: string;
+const userAgent = navigator.userAgent;
+if (userAgent.indexOf("Chrome") > -1) {
+  classname = "button-chrome";
+} else if (userAgent.indexOf("Safari") > -1) {
+  classname = "button-safari";
+}
+
+//variable that reads the localStorage
+const savedZabArte = ref<string[]>(
+  JSON.parse(localStorage.getItem("SavedZabArte") || "[]")
+);
+
+//functions to manage the localStorage
+function addZabArte() {
+  savedZabArte.value.push(`${currentImage.value.id}`);
+  localStorage.setItem("SavedZabArte", JSON.stringify(savedZabArte.value));
+}
+
+function removeZabArte() {
+  savedZabArte.value = savedZabArte.value.filter(
+    (id) => id !== `${currentImage.value.id}`
+  );
+  localStorage.setItem("SavedZabArte", JSON.stringify(savedZabArte.value));
+}
+
+// Check if the ZabArteId is in the list of saved ZabArte
+const isZabArteSaved = computed(() =>
+  savedZabArte.value.includes(`${currentImage.value.id}`)
+);
+
+//fuction to share the article
+function shareViaWebShare() {
+  navigator.share({
+    title: currentImage.value.title,
+    text: "",
+    url:
+      window.location.pathname +
+      `/view?q=${currentImage.value.id}#${currentImage.value.title}`,
+  });
+}
 </script>
 
 <template>
@@ -54,7 +96,28 @@ const showPrevImage = () => {
         }"
       />
     </div>
-    <h3 class="text-font">{{ currentImage.title }}</h3>
+    <div class="container">
+      <h3 class="text-font">{{ currentImage.title }}</h3>
+      <div class="buttons card-buttons">
+        <button
+          :class="`save-button ${classname}`"
+          @click="addZabArte"
+          v-if="!isZabArteSaved"
+        >
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <button
+          :class="`save-button ${classname}`"
+          @click="removeZabArte"
+          v-else
+        >
+          <i class="fa-solid fa-bookmark"></i>
+        </button>
+        <button :class="`share-button ${classname}`" @click="shareViaWebShare">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+      </div>
+    </div>
     <div class="container">
       <h3 v-for="author in currentImage.authors" class="text-font">
         {{ author }}
