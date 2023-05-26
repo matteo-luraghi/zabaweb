@@ -24,6 +24,7 @@ interface Art {
     id: number,
     title: string,
     authors: string[],
+    tags: string[],
     img: string
 }
 
@@ -38,6 +39,7 @@ export let filters = reactive({
 export let artFilters = reactive({
     title: "",
     authors: [""],
+    tags: [""],
 })
 
 //global computed variable that saves all the articles
@@ -97,7 +99,7 @@ export function filterData(filters: {title: string, authors: string[], tags: str
     return filtered
 }
 
-export function filterArt(artFilters: {authors: string[], title: string}) {
+export function filterArt(artFilters: {authors: string[], title: string, tags: string[]}) {
     let filtered = []
     let nope = 0
 
@@ -115,6 +117,13 @@ export function filterArt(artFilters: {authors: string[], title: string}) {
         
         for(let j in artFilters['authors']) {
             if (!upperAuthors.includes(artFilters['authors'][j].toUpperCase()) && artFilters['authors'][j]!='') {
+                nope = 1
+                break
+            }
+        }
+
+        for(let k in artFilters['tags']) {
+            if (!zabarte[i]['tags'].includes(artFilters['tags'][k]) && artFilters['tags'][k]!='') {
                 nope = 1
                 break
             }
@@ -160,6 +169,7 @@ export let zabarte = reactive([{
     id: 0,
     title: '',
     authors: [''],
+    tags: [''],
     img: '',
 }])
 

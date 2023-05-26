@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, reactive } from "vue";
 import { updateArtDatabase, zabarte, artFiltered, artFilters } from "@/state";
 import SearchBarArt from "@/components/SearchBarArt.vue";
 
@@ -7,6 +7,34 @@ function removeFilter(filterData: string) {
   let index = artFilters.authors.indexOf(filterData);
   if (index > -1) {
     artFilters.authors.splice(index, 1);
+  }
+}
+
+const showFilters = reactive({
+  showFilters: false,
+});
+
+//reactive variable to display the filters as buttons
+const filtersList = reactive({
+  data: [""],
+});
+
+//updates the filters as they're pressed
+filtersList.data = [];
+for (let i in zabarte) {
+  const filteringData = zabarte[i]["tags"];
+  for (let j in filteringData) {
+    if (!filtersList.data.includes(filteringData[j])) {
+      filtersList.data.push(filteringData[j]);
+    }
+  }
+}
+
+//adds the selected filters to the variable artFilters
+//in order to display the articles according to the filters
+function addFilter(filterData: string) {
+  if (!artFilters["tags"].includes(filterData)) {
+    artFilters["tags"].push(filterData);
   }
 }
 
@@ -73,19 +101,35 @@ async function updateAndReload() {
   await updateArtDatabase();
   window.location.reload();
 }
-
-let barWidth = "bar-large";
-const windowWidth = window.innerWidth;
-if (windowWidth > 580) {
-  barWidth = "";
-}
 </script>
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="articoli-title-container">
     <p class="text-font">Scorri a destra e sinistra per vedere le immagini!</p>
-    <SearchBarArt :class="`articoli-searchbar ${barWidth}`" />
+    <SearchBarArt :class="`articoli-searchbar`" />
+    <button
+      v-if="!showFilters.showFilters"
+      @click="showFilters.showFilters = !showFilters.showFilters"
+      class="articoli-title-filter-button text-font"
+    >
+      Aggiungi Filtri
+    </button>
+    <div class="filter-popup" v-if="showFilters.showFilters">
+      <button
+        class="button filter-button"
+        v-for="tag in filtersList.data"
+        @click="addFilter(tag)"
+      >
+        {{ tag }}
+      </button>
+      <button
+        class="button filter-button"
+        @click="showFilters.showFilters = !showFilters.showFilters"
+      >
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
   </div>
   <div class="filters-container" v-if="artFilters.authors.length != 1">
     <button
@@ -103,10 +147,13 @@ if (windowWidth > 580) {
         :src="currentImage.img"
         alt="Zabarte Image"
         @error="updateAndReload"
+        class="responsive-image"
       />
     </div>
     <div class="container space">
-      <h3 class="text-font">{{ currentImage.title }}</h3>
+      <h3 v-if="currentImage.title != ''" class="text-font">
+        {{ currentImage.title }}
+      </h3>
       <div class="buttons card-buttons">
         <button
           :class="`save-button ${classname}`"
@@ -127,16 +174,17 @@ if (windowWidth > 580) {
         </button>
       </div>
     </div>
-    <div class="container">
+    <div class="container space">
       <h3 v-for="author in currentImage.authors" class="text-font">
         {{ author }}
       </h3>
+      <h3 v-for="tag in currentImage.tags" class="text-font">{{ tag }}</h3>
     </div>
     <div class="container space">
-      <button class="button" @click="showPrevImage">
+      <button class="button filter-button" @click="showPrevImage">
         <i class="fas fa-solid fa-chevron-left"></i>
       </button>
-      <button class="button" @click="showNextImage">
+      <button class="button filter-button" @click="showNextImage">
         <i class="fas fa-solid fa-chevron-right"></i>
       </button>
     </div>
@@ -147,7 +195,7 @@ if (windowWidth > 580) {
       class="router-link"
       v-for="art in artFiltered"
     >
-      <h3 class="text-font">{{ art.title }}</h3>
+      <h3 v-if="art.title != ''" class="text-font">{{ art.title }}</h3>
       <img :src="art.img" />
     </router-link>
   </div>
@@ -158,12 +206,11 @@ if (windowWidth > 580) {
   text-align: center;
 }
 
-img {
+.responsive-image {
   max-width: 100%;
-  max-height: 100%;
-}
-
-.bar-large {
-  width: 100%;
+  max-height: calc(
+    100vh - 200px
+  ); /* Adjust the value (200px) according to your layout */
+  object-fit: contain;
 }
 </style>
