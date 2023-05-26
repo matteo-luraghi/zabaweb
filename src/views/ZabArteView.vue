@@ -72,32 +72,26 @@ async function updateAndReload() {
     </h3>
   </div>
   <div class="container">
-    <div class="space">
-      <h3 v-for="author in zabart.authors" class="text-font">
-        {{ author }}
-      </h3>
-      <div class="buttons card-buttons">
-        <button
-          :class="`save-button ${classname}`"
-          @click="addZabArte"
-          v-if="!isZabArteSaved"
-        >
-          <i class="fa-regular fa-bookmark"></i>
-        </button>
-        <button
-          :class="`save-button ${classname}`"
-          @click="removeZabArte"
-          v-else
-        >
-          <i class="fa-solid fa-bookmark"></i>
-        </button>
-        <button :class="`share-button ${classname}`" @click="shareViaWebShare">
-          <i class="fa-solid fa-share-nodes"></i>
-        </button>
-      </div>
-    </div>
-    <h3 v-for="tag in zabart.tags" class="text-font">
-      {{ tag }}
+    <h3 v-for="author in zabart.authors" class="text-font">
+      {{ author }}
     </h3>
+    <div class="buttons card-buttons">
+      <button
+        :class="`save-button ${classname}`"
+        @click="addZabArte"
+        v-if="!isZabArteSaved"
+      >
+        <i class="fa-regular fa-bookmark"></i>
+      </button>
+      <button :class="`save-button ${classname}`" @click="removeZabArte" v-else>
+        <i class="fa-solid fa-bookmark"></i>
+      </button>
+      <button :class="`share-button ${classname}`" @click="shareViaWebShare">
+        <i class="fa-solid fa-share-nodes"></i>
+      </button>
+    </div>
+  </div>
+  <div class="container">
+    <h3 v-for="tag in zabart.tags" class="text-font">{{ tag }}</h3>
   </div>
 </template>
