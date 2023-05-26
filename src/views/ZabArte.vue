@@ -99,7 +99,7 @@ async function updateAndReload() {
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="articoli-title-container">
     <p class="text-font">Scorri a destra e sinistra per vedere le immagini!</p>
-    <SearchBarArt />
+    <SearchBarArt class="articoli-searchbar" />
   </div>
   <div class="filters-container" v-if="artFilters.authors.length != 1">
     <button
