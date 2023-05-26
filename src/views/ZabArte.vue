@@ -141,6 +141,16 @@ async function updateAndReload() {
       <i class="fas fa-times"></i>
     </button>
   </div>
+  <div class="filters-container" v-if="artFilters.tags.length != 1">
+    <button
+      class="button filter-button"
+      v-for="filter in artFilters.tags.slice(1)"
+      @click="removeFilter(filter)"
+    >
+      {{ filter }}
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
   <div class="container" v-if="checkFull()">
     <div class="image-container">
       <img
@@ -204,13 +214,17 @@ async function updateAndReload() {
 <style>
 .image-container {
   text-align: center;
-}
-
-.responsive-image {
   max-width: 100%;
   max-height: calc(
     100vh - 200px
   ); /* Adjust the value (200px) according to your layout */
+  overflow: hidden;
+}
+
+.responsive-image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 </style>
