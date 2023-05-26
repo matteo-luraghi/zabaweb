@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import {
-  updateArtDatabase,
-  zabarte,
-  artFiltered,
-  artFilters,
-  showFilters,
-} from "@/state";
+import { updateArtDatabase, zabarte, artFiltered, artFilters } from "@/state";
 import SearchBarArt from "@/components/SearchBarArt.vue";
-
+console.log(artFiltered);
 function removeFilter(filterData: string) {
   let index = artFilters.authors.indexOf(filterData);
   if (index > -1) {
