@@ -93,13 +93,19 @@ async function updateAndReload() {
   await updateArtDatabase();
   window.location.reload();
 }
+
+let barWidth = "bar-large";
+const windowWidth = window.innerWidth;
+if (windowWidth >= 580) {
+  barWidth = "";
+}
 </script>
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="articoli-title-container">
     <p class="text-font">Scorri a destra e sinistra per vedere le immagini!</p>
-    <SearchBarArt class="articoli-searchbar" />
+    <SearchBarArt :class="`articoli-searchbar ${barWidth}`" />
   </div>
   <div class="filters-container" v-if="artFilters.authors.length != 1">
     <button
@@ -186,5 +192,9 @@ img {
 .swipe.right {
   transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
   transform: translateX(100%);
+}
+
+.bar-large {
+  width: 100%;
 }
 </style>
