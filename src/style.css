@@ -116,3 +116,7 @@ html, body {
 .buttons {
   margin-right: 10px; 
 }
+
+.space {
+  justify-content: space-between;
+}

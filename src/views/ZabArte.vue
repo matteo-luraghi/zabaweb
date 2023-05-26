@@ -96,7 +96,7 @@ function shareViaWebShare() {
         }"
       />
     </div>
-    <div class="container">
+    <div class="container space">
       <h3 class="text-font">{{ currentImage.title }}</h3>
       <div class="buttons card-buttons">
         <button

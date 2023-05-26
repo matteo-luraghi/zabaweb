@@ -29,10 +29,23 @@
       <img class="numero-cover" :src="element.img" />
     </router-link>
   </div>
+
+  <h3 class="text-font" style="font-size: 18px">ZabArte</h3>
+
+  <div class="container">
+    <router-link
+      :to="`/zabarte/view?q=${art.id}#${art.title}`"
+      class="router-link"
+      v-for="art in savedZabArte.art"
+    >
+      <h3 class="text-font">{{ art.title }}</h3>
+      <img :src="art.img" />
+    </router-link>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { archive, dataJson } from "@/state";
+import { archive, dataJson, zabarte } from "@/state";
 import { computed, reactive } from "vue";
 import Card from "@/components/Card.vue";
 
@@ -60,5 +73,17 @@ const savedNumbers = reactive({
 
 for (let i in savedNumbersId.value) {
   savedNumbers.numbers.push(archive[archive.length - savedNumbersId.value[i]]);
+}
+
+const savedZabArteId = computed(() => {
+  const savedZabArteId = localStorage.getItem("SavedZabArte");
+  return savedZabArteId ? JSON.parse(savedZabArteId) : [];
+});
+const savedZabArte = reactive({
+  art: [] as typeof zabarte,
+});
+
+for (let i in savedZabArteId.value) {
+  savedZabArte.art.push(zabarte[zabarte.length - savedZabArteId.value[i]]);
 }
 </script>

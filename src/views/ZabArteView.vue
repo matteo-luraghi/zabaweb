@@ -53,7 +53,7 @@ function shareViaWebShare() {
   <div class="container">
     <img :src="zabart.img" alt="Zabarte Image" />
   </div>
-  <div class="container">
+  <div class="container space">
     <h3 class="text-font">{{ zabart.title }}</h3>
     <div class="buttons card-buttons">
       <button
