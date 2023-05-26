@@ -174,6 +174,11 @@ async function updateAndReload() {
       >
         {{ currentImage.title }}
       </h3>
+    </div>
+    <div class="container space">
+      <h3 v-for="author in currentImage.authors" class="text-font">
+        {{ author }}
+      </h3>
       <div class="buttons card-buttons">
         <button
           :class="`save-button ${classname}`"
@@ -194,10 +199,7 @@ async function updateAndReload() {
         </button>
       </div>
     </div>
-    <div class="container space">
-      <h3 v-for="author in currentImage.authors" class="text-font">
-        {{ author }}
-      </h3>
+    <div class="container">
       <h3 v-for="tag in currentImage.tags" class="text-font">{{ tag }}</h3>
     </div>
     <div class="container space">
@@ -215,6 +217,7 @@ async function updateAndReload() {
       class="router-link image-container"
       v-for="art in artFiltered"
     >
+      <img :src="art.img" class="responsive-image" />
       <h3
         v-if="!art.title.includes('Image') && art.title != ''"
         class="text-font"
@@ -224,7 +227,6 @@ async function updateAndReload() {
       <h3 v-for="author in currentImage.authors" class="text-font">
         {{ author }}
       </h3>
-      <img :src="art.img" class="responsive-image" />
     </router-link>
   </div>
 </template>
@@ -239,7 +241,7 @@ async function updateAndReload() {
 .responsive-image {
   display: block;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 1000px;
   object-fit: contain;
 }
 </style>

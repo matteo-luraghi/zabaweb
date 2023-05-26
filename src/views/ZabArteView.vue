@@ -70,6 +70,11 @@ async function updateAndReload() {
     >
       {{ zabart.title }}
     </h3>
+  </div>
+  <div class="container">
+    <h3 v-for="author in zabart.authors" class="text-font">
+      {{ author }}
+    </h3>
     <div class="buttons card-buttons">
       <button
         :class="`save-button ${classname}`"
@@ -87,9 +92,6 @@ async function updateAndReload() {
     </div>
   </div>
   <div class="container">
-    <h3 v-for="author in zabart.authors" class="text-font">
-      {{ author }}
-    </h3>
     <h3 v-for="tag in zabart.tags" class="text-font">{{ tag }}</h3>
   </div>
 </template>
