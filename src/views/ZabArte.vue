@@ -43,8 +43,8 @@ const handleTouchEnd = (event: TouchEvent) => {
 
   swipeCooldown.value = true; // Activate the cooldown
   setTimeout(() => {
-    swipeCooldown.value = false; // Deactivate the cooldown after 2.5 seconds
-  }, 2500);
+    swipeCooldown.value = false; // Deactivate the cooldown after 2 seconds
+  }, 2000);
 };
 
 const showNextImage = () => {
