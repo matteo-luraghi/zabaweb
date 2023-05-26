@@ -160,12 +160,17 @@ async function updateAndReload() {
   </div>
   <div class="container" v-if="checkFull()">
     <div class="image-container">
-      <img
-        :src="currentImage.img"
-        alt="Zabarte Image"
-        @error="updateAndReload"
-        class="responsive-image"
-      />
+      <router-link
+        :to="`/zabarte/view?q=${currentImage.id}#${currentImage.title}`"
+        class="router-link"
+      >
+        <img
+          :src="currentImage.img"
+          alt="Zabarte Image"
+          @error="updateAndReload"
+          class="responsive-image"
+        />
+      </router-link>
     </div>
     <div class="container space">
       <h3
