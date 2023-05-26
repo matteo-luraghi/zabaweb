@@ -26,10 +26,9 @@ const select = reactive({
   </div>
 
   <div v-if="select.system === 'IOS'" class="container">
-    <p>
-      Apri il link su safari (su altri browser non è possibile installare l'app)
-      e clicca sul pulsante "condividi"
-    </p>
+    <p>Tieni premuto sul link e clicca "Apri link"</p>
+    <img src="../assets/download/safari4.webp" />
+    <p>Clicca sul pulsante "condividi"</p>
     <img src="../assets/download/safari1.webp" />
     <p>Clicca "Aggiungi alla schermata Home"</p>
     <img src="../assets/download/safari2.webp" />
