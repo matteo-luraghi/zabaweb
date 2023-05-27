@@ -9,20 +9,22 @@ const select = reactive({
   <h1 class="header">DOWNLOAD</h1>
   <div class="container">
     <p>Che telefono hai?</p>
-    <button
-      class="button system-button"
-      :active-class="'system-button-active'"
-      @click="select.system = 'ANDROID'"
-    >
-      ANDROID
-    </button>
-    <button
-      class="button system-button"
-      :active-class="'system-button-active'"
-      @click="select.system = 'IOS'"
-    >
-      APPLE (IOS)
-    </button>
+    <div>
+      <button
+        class="button system-button"
+        :active-class="'system-button-active'"
+        @click="select.system = 'ANDROID'"
+      >
+        ANDROID
+      </button>
+      <button
+        class="button system-button"
+        :active-class="'system-button-active'"
+        @click="select.system = 'IOS'"
+      >
+        APPLE (IOS)
+      </button>
+    </div>
   </div>
 
   <div v-if="select.system === 'IOS'" class="container">
@@ -38,7 +40,10 @@ const select = reactive({
   </div>
 
   <div v-if="select.system === 'ANDROID'" class="container">
-    <p>Su Chrome dovrebbe uscire un messaggio per installare l'app, cliccalo</p>
+    <p>
+      Clicca sul messaggio per installare l'app (se non compare prova a
+      ricaricare la pagina)
+    </p>
     <img src="../assets/download/chrome1.webp" />
     <p>Ora clicca "Installa"</p>
     <img src="../assets/download/chrome2.webp" />
