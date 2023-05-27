@@ -24,7 +24,7 @@ if (wideScreen === true) {
     classname = "footer-circle-small-chrome";
   } else if (userAgent.indexOf("Safari") > -1) {
     classname = "footer-circle-small-safari";
-  }
+  } else classname = "footer-circle-small-chrome";
 }
 
 function showBottomBar() {
