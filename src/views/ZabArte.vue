@@ -214,11 +214,10 @@ async function updateAndReload() {
       </button>
     </div>
   </div>
-  <div class="container" v-else>
+  <div v-else class="container" v-for="art in artFiltered">
     <router-link
       :to="`/zabarte/view?q=${art.id}#${art.title}`"
       class="router-link image-container"
-      v-for="art in artFiltered"
     >
       <img :src="art.img" class="responsive-image" />
       <h3
@@ -227,29 +226,29 @@ async function updateAndReload() {
       >
         {{ art.title }}
       </h3>
-      <h3 v-for="author in currentImage.authors" class="text-font">
-        {{ author }}
-      </h3>
-      <div class="buttons card-buttons">
-        <button
-          :class="`save-button ${classname}`"
-          @click="addZabArte(String(art.id))"
-          v-if="!isZabArteSaved"
-        >
-          <i class="fa-regular fa-bookmark"></i>
-        </button>
-        <button
-          :class="`save-button ${classname}`"
-          @click="removeZabArte(String(art.id))"
-          v-else
-        >
-          <i class="fa-solid fa-bookmark"></i>
-        </button>
-        <button :class="`share-button ${classname}`" @click="shareViaWebShare">
-          <i class="fa-solid fa-share-nodes"></i>
-        </button>
-      </div>
     </router-link>
+    <h3 v-for="author in currentImage.authors" class="text-font">
+      {{ author }}
+    </h3>
+    <div class="buttons card-buttons">
+      <button
+        :class="`save-button ${classname}`"
+        @click="addZabArte(String(art.id))"
+        v-if="!isZabArteSaved"
+      >
+        <i class="fa-regular fa-bookmark"></i>
+      </button>
+      <button
+        :class="`save-button ${classname}`"
+        @click="removeZabArte(String(art.id))"
+        v-else
+      >
+        <i class="fa-solid fa-bookmark"></i>
+      </button>
+      <button :class="`share-button ${classname}`" @click="shareViaWebShare">
+        <i class="fa-solid fa-share-nodes"></i>
+      </button>
+    </div>
   </div>
 </template>
 
