@@ -26,7 +26,7 @@ if (userAgent.indexOf("Chrome") > -1) {
   classname = "button-chrome";
 } else if (userAgent.indexOf("Safari") > -1) {
   classname = "button-safari";
-}
+} else classname = "button-chrome";
 
 //variable that reads the localStorage
 const savedZabArte = ref<string[]>(

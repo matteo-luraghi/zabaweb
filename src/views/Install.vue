@@ -50,18 +50,24 @@ const select = reactive({
         ricaricare la pagina)
       </p>
       <img src="../assets/download/chrome1.webp" />
+      <img src="../assets/download/firefox1.webp" />
+      <img src="../assets/download/samsung1.webp" />
     </div>
     <div class="container">
       <p>Ora clicca "Installa"</p>
       <img src="../assets/download/chrome2.webp" />
+      <img src="../assets/download/samsung2.webp" />
     </div>
     <div class="container">
       <p>In alternativa clicca sui tre puntini</p>
       <img src="../assets/download/chrome3.webp" />
+      <img src="../assets/download/firefox2.webp" />
     </div>
     <div class="container">
       <p>E ora clicca su "Installa App"</p>
       <img src="../assets/download/chrome4.webp" />
+      <img src="../assets/download/firefox3.webp" />
+      <img src="../assets/download/opera1.webp" />
     </div>
   </div>
 </template>

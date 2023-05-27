@@ -86,7 +86,7 @@ if (userAgent.indexOf("Chrome") > -1) {
   classname = "button-chrome";
 } else if (userAgent.indexOf("Safari") > -1) {
   classname = "button-safari";
-}
+} else classname = "button-chrome";
 
 async function updateAndReload() {
   await updateArticleDatabase();
