@@ -77,6 +77,9 @@ p {
   font-family: "MinionPro";
   font-size: 24px;
 }
+img {
+  margin-bottom: 10px;
+}
 .system-button {
   height: 50px;
   display: flex;
