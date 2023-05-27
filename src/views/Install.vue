@@ -27,31 +27,42 @@ const select = reactive({
     </div>
   </div>
 
-  <div v-if="select.system === 'IOS'" class="install-container">
-    <p>Tieni premuto sul link e clicca "Apri link"</p>
-    <img src="../assets/download/safari4.webp" />
-    <p>Clicca sul pulsante "condividi"</p>
-    <img src="../assets/download/safari1.webp" />
-    <p>Clicca "Aggiungi alla schermata Home"</p>
-    <img src="../assets/download/safari2.webp" />
-    <p>Clicca "Aggiungi"</p>
-    <img src="../assets/download/safari3.webp" />
+  <div v-if="select.system === 'IOS'" class="container">
+    <div class="container">
+      <p>Apri il link su Safari e clicca sul pulsante "condividi"</p>
+      <img src="../assets/download/safari1.webp" />
+    </div>
+    <div class="container">
+      <p>Clicca "Aggiungi alla schermata Home"</p>
+      <img src="../assets/download/safari2.webp" />
+    </div>
+    <div class="container">
+      <p>Clicca "Aggiungi"</p>
+      <img src="../assets/download/safari3.webp" />
+    </div>
     <p>Fatto! Controlla nella schermata home!</p>
   </div>
 
-  <div v-if="select.system === 'ANDROID'" class="install-container">
-    <p>
-      Clicca sul messaggio per installare l'app (se non compare prova a
-      ricaricare la pagina)
-    </p>
-    <img src="../assets/download/chrome1.webp" />
-    <p>Ora clicca "Installa"</p>
-    <img src="../assets/download/chrome2.webp" />
-    <p>In alternativa clicca sui tre puntini</p>
-    <img src="../assets/download/chrome3.webp" />
-    <p>E ora clicca su "Installa App"</p>
-    <img src="../assets/download/chrome4.webp" />
-    <p>Questo metodo va bene per la maggior parte dei browser</p>
+  <div v-if="select.system === 'ANDROID'" class="container">
+    <div class="container">
+      <p>
+        Clicca sul messaggio per installare l'app (se non compare prova a
+        ricaricare la pagina)
+      </p>
+      <img src="../assets/download/chrome1.webp" />
+    </div>
+    <div class="container">
+      <p>Ora clicca "Installa"</p>
+      <img src="../assets/download/chrome2.webp" />
+    </div>
+    <div class="container">
+      <p>In alternativa clicca sui tre puntini</p>
+      <img src="../assets/download/chrome3.webp" />
+    </div>
+    <div class="container">
+      <p>E ora clicca su "Installa App"</p>
+      <img src="../assets/download/chrome4.webp" />
+    </div>
   </div>
 </template>
 
@@ -84,12 +95,5 @@ p {
 .system-button-active {
   background-color: #e0e0e0;
   color: #303030;
-}
-
-.install-container {
-  display: block;
-  align-items: center;
-  height: auto;
-  padding: 0 7%;
 }
 </style>
