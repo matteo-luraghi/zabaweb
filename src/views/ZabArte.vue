@@ -85,9 +85,9 @@ function removeZabArte(id: string) {
 }
 
 // Check if the ZabArteId is in the list of saved ZabArte
-const isZabArteSaved = computed(() =>
-  savedZabArte.value.includes(`${currentImage.value.id}`)
-);
+function isZabArteSaved(id: string) {
+  return computed(() => savedZabArte.value.includes(id));
+}
 
 //fuction to share the article
 function shareViaWebShare() {
@@ -186,7 +186,7 @@ async function updateAndReload() {
         <button
           :class="`save-button ${classname}`"
           @click="addZabArte(`${currentImage.id}`)"
-          v-if="!isZabArteSaved"
+          v-if="!isZabArteSaved(`${currentImage.id}`)"
         >
           <i class="fa-regular fa-bookmark"></i>
         </button>
@@ -234,7 +234,7 @@ async function updateAndReload() {
       <button
         :class="`save-button ${classname}`"
         @click="addZabArte(String(art.id))"
-        v-if="!isZabArteSaved"
+        v-if="!isZabArteSaved(String(art.id))"
       >
         <i class="fa-regular fa-bookmark"></i>
       </button>
