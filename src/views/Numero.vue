@@ -6,15 +6,21 @@ const props = defineProps<{
   query: string;
 }>();
 
-const numberId = parseInt(props.query.split("#")[0]);
-
 let showPdf = {
   url: "",
   name: "",
 };
 
-showPdf.url = archive[archive.length - numberId].url;
-showPdf.name = archive[archive.length - numberId].name;
+const numberId = parseInt(props.query.split("#")[0]);
+
+let found = archive.find((obj) => {
+  return obj.id === numberId;
+});
+
+if (found) {
+  showPdf.url = found.url;
+  showPdf.name = found.name;
+}
 
 function shareViaWebShare() {
   navigator.share({

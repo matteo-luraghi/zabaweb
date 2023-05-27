@@ -5,9 +5,20 @@ const props = defineProps<{
   query: string;
 }>();
 
+let zabart: {
+  id: number;
+  title: string;
+  authors: string[];
+  tags: string[];
+  img: string;
+};
 const zabartId = parseInt(props.query.split("#")[0]);
-
-const zabart = zabarte[zabarte.length - zabartId];
+let found = zabarte.find((obj) => {
+  return obj.id === zabartId;
+});
+if (found) {
+  zabart = found;
+}
 
 let classname: string;
 const userAgent = navigator.userAgent;

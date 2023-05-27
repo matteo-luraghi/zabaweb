@@ -51,14 +51,20 @@ let articleDetails: {
   img: "",
 };
 
-articleDetails.title = dataJson[dataJson.length - articleId].title;
-articleDetails.text = dataJson[dataJson.length - articleId].text;
-articleDetails.plaintext = dataJson[dataJson.length - articleId].plaintext;
-articleDetails.subtitle = dataJson[dataJson.length - articleId].subtitle;
-articleDetails.img = dataJson[dataJson.length - articleId].img;
-articleDetails.authors = dataJson[dataJson.length - articleId].authors;
-articleDetails.tags = dataJson[dataJson.length - articleId].tags;
-articleDetails.date = dataJson[dataJson.length - articleId].date;
+//looking for the object it in dataJson
+let found = dataJson.find((obj) => {
+  return obj.id === articleId;
+});
+if (found) {
+  articleDetails.title = found.title;
+  articleDetails.text = found.text;
+  articleDetails.plaintext = found.plaintext;
+  articleDetails.subtitle = found.subtitle;
+  articleDetails.img = found.img;
+  articleDetails.authors = found.authors;
+  articleDetails.tags = found.tags;
+  articleDetails.date = found.date;
+}
 
 //this shows the text as it is in notion, with images too
 const formattedText = computed(() => {
