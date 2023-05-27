@@ -74,20 +74,22 @@ const savedZabArte = ref<string[]>(
 );
 
 //functions to manage the localStorage
-function addZabArte(id: string) {
-  savedZabArte.value.push(id);
+function addZabArte() {
+  savedZabArte.value.push(`${currentImage.value.id}`);
   localStorage.setItem("SavedZabArte", JSON.stringify(savedZabArte.value));
 }
 
-function removeZabArte(id: string) {
-  savedZabArte.value = savedZabArte.value.filter((idx) => idx !== id);
+function removeZabArte() {
+  savedZabArte.value = savedZabArte.value.filter(
+    (id) => id !== `${currentImage.value.id}`
+  );
   localStorage.setItem("SavedZabArte", JSON.stringify(savedZabArte.value));
 }
 
 // Check if the ZabArteId is in the list of saved ZabArte
-function isZabArteSaved(id: string) {
-  return computed(() => savedZabArte.value.includes(id));
-}
+const isZabArteSaved = computed(() =>
+  savedZabArte.value.includes(`${currentImage.value.id}`)
+);
 
 //fuction to share the article
 function shareViaWebShare() {
@@ -185,14 +187,14 @@ async function updateAndReload() {
       <div class="buttons card-buttons">
         <button
           :class="`save-button ${classname}`"
-          @click="addZabArte(`${currentImage.id}`)"
-          v-if="!isZabArteSaved(`${currentImage.id}`)"
+          @click="addZabArte"
+          v-if="!isZabArteSaved"
         >
           <i class="fa-regular fa-bookmark"></i>
         </button>
         <button
           :class="`save-button ${classname}`"
-          @click="removeZabArte(`${currentImage.id}`)"
+          @click="removeZabArte"
           v-else
         >
           <i class="fa-solid fa-bookmark"></i>
@@ -230,25 +232,6 @@ async function updateAndReload() {
     <h3 v-for="author in currentImage.authors" class="text-font">
       {{ author }}
     </h3>
-    <div class="buttons card-buttons">
-      <button
-        :class="`save-button ${classname}`"
-        @click="addZabArte(String(art.id))"
-        v-if="!isZabArteSaved(String(art.id))"
-      >
-        <i class="fa-regular fa-bookmark"></i>
-      </button>
-      <button
-        :class="`save-button ${classname}`"
-        @click="removeZabArte(String(art.id))"
-        v-else
-      >
-        <i class="fa-solid fa-bookmark"></i>
-      </button>
-      <button :class="`share-button ${classname}`" @click="shareViaWebShare">
-        <i class="fa-solid fa-share-nodes"></i>
-      </button>
-    </div>
   </div>
 </template>
 
