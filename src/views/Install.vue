@@ -9,7 +9,7 @@ const select = reactive({
   <h1 class="header">DOWNLOAD</h1>
   <div class="container" style="flex-wrap: wrap">
     <p>Che telefono hai?</p>
-    <div>
+    <div class="container">
       <button
         class="button system-button"
         :active-class="'system-button-active'"
@@ -88,6 +88,7 @@ p {
 
 .install-container {
   display: block;
+  align-items: center;
   height: auto;
   padding: 0 7%;
 }
