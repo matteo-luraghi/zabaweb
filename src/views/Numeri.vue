@@ -34,5 +34,6 @@ async function updateAndReload() {
 }
 .numero-cover {
   width: 100%;
+  max-height: 550px;
 }
 </style>
