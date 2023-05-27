@@ -27,7 +27,7 @@ const select = reactive({
     </div>
   </div>
 
-  <div v-if="select.system === 'IOS'" class="container">
+  <div v-if="select.system === 'IOS'" class="install-container">
     <p>Tieni premuto sul link e clicca "Apri link"</p>
     <img src="../assets/download/safari4.webp" />
     <p>Clicca sul pulsante "condividi"</p>
@@ -39,7 +39,7 @@ const select = reactive({
     <p>Fatto! Controlla nella schermata home!</p>
   </div>
 
-  <div v-if="select.system === 'ANDROID'" class="container">
+  <div v-if="select.system === 'ANDROID'" class="install-container">
     <p>
       Clicca sul messaggio per installare l'app (se non compare prova a
       ricaricare la pagina)
@@ -73,7 +73,6 @@ p {
   color: #e0e0e0;
   cursor: pointer;
   font-weight: 600;
-  max-width: 60%;
   text-size-adjust: 80%;
   transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
   touch-action: manipulation;
@@ -85,5 +84,11 @@ p {
 .system-button-active {
   background-color: #e0e0e0;
   color: #303030;
+}
+
+.install-container {
+  display: block;
+  height: auto;
+  padding: 0 7%;
 }
 </style>
