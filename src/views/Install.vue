@@ -78,7 +78,7 @@ p {
   font-size: 24px;
 }
 img {
-  margin-bottom: 10px;
+  margin: 10px;
 }
 .system-button {
   height: 50px;
