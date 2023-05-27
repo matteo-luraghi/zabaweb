@@ -92,6 +92,13 @@ async function updateAndReload() {
   await updateArticleDatabase();
   window.location.reload();
 }
+
+function notPrefriti() {
+  if (window.location.pathname != "/preferiti") {
+    return true;
+  }
+  return false;
+}
 </script>
 
 <template>
@@ -109,7 +116,7 @@ async function updateAndReload() {
           {{ title }}
         </p>
       </router-link>
-      <div class="buttons card-buttons">
+      <div class="buttons card-buttons" v-if="notPrefriti()">
         <button
           :class="`save-button ${classname}`"
           @click="addArticle"
