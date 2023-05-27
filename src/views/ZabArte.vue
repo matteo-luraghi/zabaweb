@@ -74,15 +74,13 @@ const savedZabArte = ref<string[]>(
 );
 
 //functions to manage the localStorage
-function addZabArte() {
-  savedZabArte.value.push(`${currentImage.value.id}`);
+function addZabArte(id: string) {
+  savedZabArte.value.push(id);
   localStorage.setItem("SavedZabArte", JSON.stringify(savedZabArte.value));
 }
 
-function removeZabArte() {
-  savedZabArte.value = savedZabArte.value.filter(
-    (id) => id !== `${currentImage.value.id}`
-  );
+function removeZabArte(id: string) {
+  savedZabArte.value = savedZabArte.value.filter((idx) => idx !== id);
   localStorage.setItem("SavedZabArte", JSON.stringify(savedZabArte.value));
 }
 
@@ -187,14 +185,14 @@ async function updateAndReload() {
       <div class="buttons card-buttons">
         <button
           :class="`save-button ${classname}`"
-          @click="addZabArte"
+          @click="addZabArte(`${currentImage.id}`)"
           v-if="!isZabArteSaved"
         >
           <i class="fa-regular fa-bookmark"></i>
         </button>
         <button
           :class="`save-button ${classname}`"
-          @click="removeZabArte"
+          @click="removeZabArte(`${currentImage.id}`)"
           v-else
         >
           <i class="fa-solid fa-bookmark"></i>
@@ -232,6 +230,25 @@ async function updateAndReload() {
       <h3 v-for="author in currentImage.authors" class="text-font">
         {{ author }}
       </h3>
+      <div class="buttons card-buttons">
+        <button
+          :class="`save-button ${classname}`"
+          @click="addZabArte(String(art.id))"
+          v-if="!isZabArteSaved"
+        >
+          <i class="fa-regular fa-bookmark"></i>
+        </button>
+        <button
+          :class="`save-button ${classname}`"
+          @click="removeZabArte(String(art.id))"
+          v-else
+        >
+          <i class="fa-solid fa-bookmark"></i>
+        </button>
+        <button :class="`share-button ${classname}`" @click="shareViaWebShare">
+          <i class="fa-solid fa-share-nodes"></i>
+        </button>
+      </div>
     </router-link>
   </div>
 </template>
