@@ -12,9 +12,12 @@ const savedArticles = reactive({
 });
 
 for (let i in savedArticlesId.value) {
-  savedArticles.articles.push(
-    dataJson[dataJson.length - savedArticlesId.value[i]]
-  );
+  let found = dataJson.find((obj) => {
+    return obj.id === savedArticlesId.value[i];
+  });
+  if (found) {
+    savedArticles.articles.push(found);
+  }
 }
 
 const savedNumbersId = computed(() => {
@@ -26,7 +29,12 @@ const savedNumbers = reactive({
 });
 
 for (let i in savedNumbersId.value) {
-  savedNumbers.numbers.push(archive[archive.length - savedNumbersId.value[i]]);
+  let found = archive.find((obj) => {
+    return obj.id === savedNumbersId.value[i];
+  });
+  if (found) {
+    savedNumbers.numbers.push(found);
+  }
 }
 
 const savedZabArteId = computed(() => {
@@ -38,7 +46,12 @@ const savedZabArte = reactive({
 });
 
 for (let i in savedZabArteId.value) {
-  savedZabArte.art.push(zabarte[zabarte.length - savedZabArteId.value[i]]);
+  let found = zabarte.find((obj) => {
+    return obj.id === savedZabArteId.value[i];
+  });
+  if (found) {
+    savedZabArte.art.push(found);
+  }
 }
 </script>
 

@@ -2,8 +2,6 @@
 
 Possible future updates:
 
-- problema gestione dati notion vuoti
-- bottoni per zabarte
-- container per zabarte images
+- problema order id AAAAAAAAAa
 - push notifications
 - salva articolo come pdf?
