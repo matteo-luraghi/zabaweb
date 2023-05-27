@@ -229,9 +229,10 @@ async function updateAndReload() {
         {{ art.title }}
       </h3>
     </router-link>
-    <h3 v-for="author in currentImage.authors" class="text-font">
+    <h3 v-for="author in art.authors" class="text-font">
       {{ author }}
     </h3>
+    <h3 v-for="tag in art.tags" class="text-font">{{ tag }}</h3>
   </div>
 </template>
 
