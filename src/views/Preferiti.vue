@@ -13,7 +13,7 @@ const savedArticles = reactive({
 
 for (let i in savedArticlesId.value) {
   let found = dataJson.find((obj) => {
-    return obj.id === savedArticlesId.value[i];
+    return obj.id === parseInt(savedArticlesId.value[i]);
   });
   if (found) {
     savedArticles.articles.push(found);
@@ -30,7 +30,7 @@ const savedNumbers = reactive({
 
 for (let i in savedNumbersId.value) {
   let found = archive.find((obj) => {
-    return obj.id === savedNumbersId.value[i];
+    return obj.id === parseInt(savedNumbersId.value[i]);
   });
   if (found) {
     savedNumbers.numbers.push(found);
@@ -47,7 +47,7 @@ const savedZabArte = reactive({
 
 for (let i in savedZabArteId.value) {
   let found = zabarte.find((obj) => {
-    return obj.id === savedZabArteId.value[i];
+    return obj.id === parseInt(savedZabArteId.value[i]);
   });
   if (found) {
     savedZabArte.art.push(found);
