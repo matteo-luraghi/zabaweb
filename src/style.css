@@ -9,6 +9,7 @@ html, body {
 
 img {
   max-height: 550px;
+  max-width: 740px;
 }
 
 @font-face {
