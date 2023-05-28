@@ -111,7 +111,6 @@ async function updateAndReload() {
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="articoli-title-container">
-    <p class="text-font">Scorri a destra e sinistra per vedere le immagini!</p>
     <div class="articoli-searchbar-button">
       <SearchBarArt :class="`articoli-searchbar`" />
       <button

@@ -3,6 +3,10 @@ import { artFilters } from "@/state";
 
 let search = "";
 function searchFilter() {
+  while (search[search.length - 1] === " ") {
+    //if the last char is a space it gets ignored
+    search = search.slice(0, search.length - 1);
+  }
   if (search != "") {
     artFilters.title = search;
     artFilters.authors.push(search);
