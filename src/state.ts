@@ -135,14 +135,38 @@ export function filterArt(artFilters: {authors: string[], title: string, tags: s
     return filtered
 }
   
+let backendURLs = [
+    "https://zabapp-bakcned.onrender.com/",
+    "https://zabaappbackend-1-j2113551.deta.app/"
+  ];
+
 //api that connects to the backend
 export const api = axios.create({
-    baseURL: 'https://zabaappbackend-1-j2113551.deta.app/',
-    timeout: 5000,
+    baseURL: backendURLs[0],
+    timeout: 3000,
     headers: {
         'Content-Type': 'application/json'
     }
 })
+
+// Variable to keep track of the current backend index
+let currentBackendIndex = 0;
+
+// Interceptor for handling timeout errors
+api.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.code === "ECONNABORTED") {
+      // If there is a timeout error, switch the backend URL
+      currentBackendIndex = (currentBackendIndex + 1) % backendURLs.length;
+      api.defaults.baseURL = backendURLs[currentBackendIndex];
+
+      // Retry the failed request with the new backend URL
+      return api.request(error.config);
+    }
+    return Promise.reject(error);
+  }
+);
 
 //setup of the articoli object from the backend
 export let dataJson = reactive([{
