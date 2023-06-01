@@ -20,6 +20,7 @@ if (found) {
   zabart = found;
 }
 
+//style based on the device's properties
 let classname: string;
 const userAgent = navigator.userAgent;
 if (userAgent.indexOf("Chrome") > -1) {
@@ -58,6 +59,7 @@ function shareViaWebShare() {
   });
 }
 
+//function to update and reload the zabarte database if the images can't be displyed due to notion changing the link
 async function updateAndReload() {
   await updateArtDatabase();
   window.location.reload();

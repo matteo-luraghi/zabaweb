@@ -3,6 +3,7 @@ import { archive, updateArchiveDatabase } from "../state";
 //the variable archive stores all the info, then in the template via the v-for method are displayed all of the Numeri of the database
 //each one is clickable and will route the user to the Numero view where it will be displayed as a pdf embedding
 
+//function to update and reload the archive database if the images can't be displyed due to notion changing the link
 async function updateAndReload() {
   await updateArchiveDatabase();
   window.location.reload();

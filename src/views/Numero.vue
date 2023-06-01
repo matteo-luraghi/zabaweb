@@ -13,6 +13,7 @@ let showPdf = {
 
 const numberId = parseInt(props.query.split("#")[0]);
 
+//retreive the correct numero from the archive based on the ID
 let found = archive.find((obj) => {
   return obj.id === numberId;
 });
@@ -22,6 +23,7 @@ if (found) {
   showPdf.name = found.name;
 }
 
+//function to share the numero
 function shareViaWebShare() {
   navigator.share({
     title: showPdf.name,

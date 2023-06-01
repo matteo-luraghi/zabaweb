@@ -7,6 +7,7 @@ const props = defineProps<{
 
 const articleId = parseInt(props.query.split("#")[0]);
 
+//style based on the device's properties
 let wideScreen = true;
 const windowWidth = window.innerWidth;
 if (windowWidth < 1700) {

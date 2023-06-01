@@ -47,6 +47,7 @@ function checkFull() {
   return artFiltered.value.length === zabarte.length;
 }
 
+//logic to go back and forth between the images using the buttons
 const currentIndex = ref(0);
 
 const currentImage = computed(() => zabarte[currentIndex.value]);
@@ -60,6 +61,7 @@ const showPrevImage = () => {
     (currentIndex.value - 1 + zabarte.length) % zabarte.length;
 };
 
+//style based on the device's properties
 let classname: string;
 const userAgent = navigator.userAgent;
 if (userAgent.indexOf("Chrome") > -1) {
@@ -102,6 +104,7 @@ function shareViaWebShare() {
   });
 }
 
+//function to update and reload the zabarte database if the images can't be displyed due to notion changing the link
 async function updateAndReload() {
   await updateArtDatabase();
   window.location.reload();

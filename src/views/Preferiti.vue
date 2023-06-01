@@ -3,6 +3,7 @@ import { archive, dataJson, zabarte } from "@/state";
 import { computed, reactive } from "vue";
 import Card from "@/components/Card.vue";
 
+//logic to retreive the saved articles from storage (based on the ID)
 const savedArticlesId = computed(() => {
   const savedArticlesId = localStorage.getItem("SavedArticles");
   return savedArticlesId ? JSON.parse(savedArticlesId) : [];
@@ -20,6 +21,7 @@ for (let i in savedArticlesId.value) {
   }
 }
 
+//logic to retreive the saved numeri from storage (based on the ID)
 const savedNumbersId = computed(() => {
   const savedNumbersId = localStorage.getItem("SavedNumbers");
   return savedNumbersId ? JSON.parse(savedNumbersId) : [];
@@ -37,6 +39,7 @@ for (let i in savedNumbersId.value) {
   }
 }
 
+//logic to retreive the saved art from storage (based on the ID)
 const savedZabArteId = computed(() => {
   const savedZabArteId = localStorage.getItem("SavedZabArte");
   return savedZabArteId ? JSON.parse(savedZabArteId) : [];
