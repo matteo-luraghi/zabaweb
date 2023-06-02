@@ -3,6 +3,20 @@ import Card from "../components/Card.vue";
 import FilterPopup from "../components/FilterPopup.vue";
 import SearchBar from "../components/SearchBar.vue";
 import { filters, filtered, showFilters } from "../state";
+import { ref, computed } from "vue";
+
+// reactive variable to track the number of visible articles
+let visibleArticlesCount = ref(10);
+
+// Modify the filtered computed property to return a slice of the filtered array
+const visibleArticles = computed(() => {
+  return filtered.value.slice(0, visibleArticlesCount.value);
+});
+
+// Method to load more articles
+function loadMoreArticles() {
+  visibleArticlesCount.value += 10;
+}
 
 //when a filter is pressed it calls this function
 //that removes it from the global variable filters
@@ -88,7 +102,7 @@ function checkEmpty() {
   <div class="container">
     <Card
       v-if="checkEmpty()"
-      v-for="page in filtered"
+      v-for="page in visibleArticles"
       :id="page.id"
       :title="page.title"
       :subtitle="page.subtitle"
@@ -99,6 +113,15 @@ function checkEmpty() {
       :img="page.img"
     />
     <h3 v-else>Nessun risultato, prova a modificare i filtri!</h3>
+    <div class="container">
+      <button
+        class="button filter-button"
+        v-if="visibleArticlesCount < filtered.length"
+        @click="loadMoreArticles"
+      >
+        Carica Altri
+      </button>
+    </div>
   </div>
 </template>
 
