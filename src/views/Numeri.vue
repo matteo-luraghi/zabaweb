@@ -65,7 +65,7 @@ async function updateAndReload() {
   font-family: "CodeBold";
 }
 .numero-cover {
-  width: 100%;
+  max-width: 300px;
   max-height: 550px;
 }
 </style>
