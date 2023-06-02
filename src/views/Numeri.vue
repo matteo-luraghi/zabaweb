@@ -4,7 +4,7 @@ import { ref, computed } from "vue";
 //the variable archive stores all the info, then in the template via the v-for method are displayed all of the Numeri of the database
 //each one is clickable and will route the user to the Numero view where it will be displayed as a pdf embedding
 
-let visibleNumbersCount = ref(9);
+let visibleNumbersCount = ref(10);
 
 const visibleNumbers = computed(() => {
   return archive.slice(0, visibleNumbersCount.value);
@@ -29,7 +29,7 @@ async function updateAndReload() {
     <router-link
       :to="`/numero?q=${element.id}#${element.name}`"
       class="router-link"
-      v-for="element in archive"
+      v-for="element in visibleNumbers"
     >
       <h3 class="text-font">{{ element.name }}</h3>
       <img

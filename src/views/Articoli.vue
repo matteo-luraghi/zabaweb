@@ -6,7 +6,7 @@ import { filters, filtered, showFilters } from "../state";
 import { ref, computed } from "vue";
 
 // reactive variable to track the number of visible articles
-let visibleArticlesCount = ref(9);
+let visibleArticlesCount = ref(10);
 
 // Modify the filtered computed property to return a slice of the filtered array
 const visibleArticles = computed(() => {

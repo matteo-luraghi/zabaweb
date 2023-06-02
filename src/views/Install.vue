@@ -8,7 +8,7 @@ const select = reactive({
 <template>
   <h1 class="header">DOWNLOAD</h1>
   <div class="container" style="flex-wrap: wrap">
-    <p>Che dispositivo hai?</p>
+    <p>Che dispositivo stai utilizzando?</p>
     <div class="container">
       <button
         id="system-button-android"
