@@ -6,7 +6,7 @@ import { filters, filtered, showFilters } from "../state";
 import { ref, computed } from "vue";
 
 // reactive variable to track the number of visible articles
-let visibleArticlesCount = ref(10);
+let visibleArticlesCount = ref(9);
 
 // Modify the filtered computed property to return a slice of the filtered array
 const visibleArticles = computed(() => {
@@ -116,7 +116,7 @@ function checkEmpty() {
     <div class="container">
       <button
         class="button filter-button"
-        v-if="visibleArticlesCount < filtered.length"
+        v-if="visibleArticlesCount < filtered.length - 1"
         @click="loadMoreArticles"
       >
         Carica Altri

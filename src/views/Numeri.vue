@@ -4,7 +4,7 @@ import { ref, computed } from "vue";
 //the variable archive stores all the info, then in the template via the v-for method are displayed all of the Numeri of the database
 //each one is clickable and will route the user to the Numero view where it will be displayed as a pdf embedding
 
-let visibleNumbersCount = ref(10);
+let visibleNumbersCount = ref(9);
 
 const visibleNumbers = computed(() => {
   return archive.slice(0, visibleNumbersCount.value);
@@ -43,7 +43,7 @@ async function updateAndReload() {
   <div class="container">
     <button
       class="button filter-button"
-      v-if="visibleNumbersCount < archive.length"
+      v-if="visibleNumbersCount < archive.length - 1"
       @click="loadMoreNumbers"
     >
       Carica Altri
