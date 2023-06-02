@@ -43,7 +43,7 @@ async function updateAndReload() {
   <div class="container">
     <button
       class="button filter-button"
-      v-if="visibleNumbersCount < archive.length - 1"
+      v-if="visibleNumbersCount < archive.length"
       @click="loadMoreNumbers"
     >
       Carica Altri

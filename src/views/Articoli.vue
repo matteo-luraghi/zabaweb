@@ -116,7 +116,7 @@ function checkEmpty() {
     <div class="container">
       <button
         class="button filter-button"
-        v-if="visibleArticlesCount < filtered.length - 1"
+        v-if="visibleArticlesCount < filtered.length"
         @click="loadMoreArticles"
       >
         Carica Altri
