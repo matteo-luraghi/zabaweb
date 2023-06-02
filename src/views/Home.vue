@@ -14,7 +14,7 @@ import { dataJson } from "../state";
       style="max-width: 100%"
     />
     <Card
-      v-for="i in 9"
+      v-for="i in 6"
       :id="dataJson[i - 1].id"
       :title="dataJson[i - 1].title"
       :plaintext="dataJson[i - 1].plaintext"
