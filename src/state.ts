@@ -226,3 +226,5 @@ export async function updateArtDatabase() {
 
 //database initialization
 await updateArticleDatabase()
+await updateArchiveDatabase()
+await updateArtDatabase()
