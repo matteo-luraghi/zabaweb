@@ -113,9 +113,15 @@ function checkEmpty() {
       :img="page.img"
     />
     <h3 v-else>Nessun risultato, prova a modificare i filtri!</h3>
-    <div class="container">
+    <div class="container" style="width: 100%">
       <button
         class="button filter-button"
+        style="
+           {
+            max-width: 140px;
+            max-height: 60px;
+          }
+        "
         v-if="visibleArticlesCount < filtered.length"
         @click="loadMoreArticles"
       >
