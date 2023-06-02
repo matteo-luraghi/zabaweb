@@ -65,9 +65,6 @@ function addFilter(filterData: string) {
   min-height: 60px;
   min-width: 0;
   padding: 16px 24px;
-  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
-  touch-action: manipulation;
-  will-change: transform;
 }
 .filter-button:disabled {
   pointer-events: none;

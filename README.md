@@ -11,5 +11,4 @@ Possible future updates:
 
 # Todo
 
-- buttons remain coloured when pressed
 - preferiti con diverse sezioni
