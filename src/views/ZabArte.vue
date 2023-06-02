@@ -117,6 +117,7 @@ async function updateAndReload() {
     <div class="articoli-searchbar-button">
       <SearchBarArt :class="`articoli-searchbar`" />
       <button
+        id="filter-button"
         v-if="!showFilters.showFilters"
         @click="showFilters.showFilters = !showFilters.showFilters"
         class="articoli-title-filter-button text-font"
@@ -126,6 +127,7 @@ async function updateAndReload() {
     </div>
     <div class="filter-popup" v-if="showFilters.showFilters">
       <button
+        id="filter-button-tag-select"
         class="button filter-button"
         v-for="tag in filtersList.data"
         @click="addFilter(tag)"
@@ -133,6 +135,7 @@ async function updateAndReload() {
         {{ tag }}
       </button>
       <button
+        id="close-button"
         class="button filter-button"
         @click="showFilters.showFilters = !showFilters.showFilters"
       >
@@ -142,6 +145,7 @@ async function updateAndReload() {
   </div>
   <div class="filters-container" v-if="artFilters.authors.length != 1">
     <button
+      id="filter-button-author"
       class="button filter-button"
       v-for="filter in artFilters.authors.slice(1)"
       @click="removeFilter(filter)"
@@ -152,6 +156,7 @@ async function updateAndReload() {
   </div>
   <div class="filters-container" v-if="artFilters.tags.length != 1">
     <button
+      id="filter-button-tag"
       class="button filter-button"
       v-for="filter in artFilters.tags.slice(1)"
       @click="removeFilter(filter)"
@@ -188,6 +193,7 @@ async function updateAndReload() {
       </h3>
       <div class="buttons card-buttons">
         <button
+          id="save-button"
           :class="`save-button ${classname}`"
           @click="addZabArte"
           v-if="!isZabArteSaved"
@@ -195,13 +201,18 @@ async function updateAndReload() {
           <i class="fa-regular fa-bookmark"></i>
         </button>
         <button
+          id="saved-button"
           :class="`save-button ${classname}`"
           @click="removeZabArte"
           v-else
         >
           <i class="fa-solid fa-bookmark"></i>
         </button>
-        <button :class="`share-button ${classname}`" @click="shareViaWebShare">
+        <button
+          id="share-button"
+          :class="`share-button ${classname}`"
+          @click="shareViaWebShare"
+        >
           <i class="fa-solid fa-share-nodes"></i>
         </button>
       </div>
@@ -210,10 +221,18 @@ async function updateAndReload() {
       <h3 v-for="tag in currentImage.tags" class="text-font">{{ tag }}</h3>
     </div>
     <div class="container space">
-      <button class="button filter-button" @click="showPrevImage">
+      <button
+        id="prev-image"
+        class="button filter-button"
+        @click="showPrevImage"
+      >
         <i class="fas fa-solid fa-chevron-left"></i>
       </button>
-      <button class="button filter-button" @click="showNextImage">
+      <button
+        id="next-image"
+        class="button filter-button"
+        @click="showNextImage"
+      >
         <i class="fas fa-solid fa-chevron-right"></i>
       </button>
     </div>
@@ -223,7 +242,7 @@ async function updateAndReload() {
       :to="`/zabarte/view?q=${art.id}#${art.title}`"
       class="router-link image-container"
     >
-      <img :src="art.img" class="responsive-image" />
+      <img alt="zabarte-image" :src="art.img" class="responsive-image" />
       <h3
         v-if="!art.title.includes('Image') && art.title != ''"
         class="text-font"

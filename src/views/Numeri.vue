@@ -21,7 +21,12 @@ async function updateAndReload() {
       v-for="element in archive"
     >
       <h3 class="text-font">{{ element.name }}</h3>
-      <img class="numero-cover" :src="element.img" @error="updateAndReload" />
+      <img
+        alt="numero-cover"
+        class="numero-cover"
+        :src="element.img"
+        @error="updateAndReload"
+      />
     </router-link>
   </div>
 </template>

@@ -38,6 +38,7 @@ function checkEmpty() {
       <div class="articoli-searchbar-button">
         <SearchBar class="articoli-searchbar" />
         <button
+          id="add-filters"
           v-if="!showFilters.showFilters"
           @click="showFilters.showFilters = !showFilters.showFilters"
           class="articoli-title-filter-button text-font"
@@ -51,6 +52,7 @@ function checkEmpty() {
 
   <div class="filters-container" v-if="filters.authors.length != 1">
     <button
+      id="filter-author"
       class="button filter-button"
       v-for="filter in filters.authors.slice(1)"
       @click="removeFilter(filter)"
@@ -62,6 +64,7 @@ function checkEmpty() {
 
   <div class="filters-container" v-if="filters.tags.length != 1">
     <button
+      id="filter-tag"
       class="button filter-button"
       v-for="filter in filters.tags.slice(1)"
       @click="removeFilter(filter)"
@@ -72,7 +75,11 @@ function checkEmpty() {
   </div>
 
   <div class="filters-container" v-if="filters.date != ''">
-    <button class="button filter-button" @click="removeFilter(filters.date)">
+    <button
+      id="filter-date"
+      class="button filter-button"
+      @click="removeFilter(filters.date)"
+    >
       {{ filters.date }}
       <i class="fas fa-times"></i>
     </button>

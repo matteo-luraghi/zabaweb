@@ -86,7 +86,7 @@ for (let i in savedZabArteId.value) {
       v-for="element in savedNumbers.numbers"
     >
       <h3 class="text-font">{{ element.name }}</h3>
-      <img class="numero-cover" :src="element.img" />
+      <img alt="numero-cover" class="numero-cover" :src="element.img" />
     </router-link>
   </div>
 
@@ -104,7 +104,7 @@ for (let i in savedZabArteId.value) {
         <h3 class="text-font" v-for="tag in art.tags">{{ tag }}</h3>
       </div>
 
-      <img :src="art.img" class="responsive-image" />
+      <img alt="art-img" :src="art.img" class="responsive-image" />
     </router-link>
   </div>
 </template>

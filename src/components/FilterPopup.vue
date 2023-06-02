@@ -1,72 +1,81 @@
 <script setup lang="ts">
-import { filters, showFilters, dataJson } from '../state'
-import { reactive } from 'vue';
+import { filters, showFilters, dataJson } from "../state";
+import { reactive } from "vue";
 
-    //reactive variable to display the filters as buttons
-    const filtersList = reactive({
-        data: [""],
-    })
+//reactive variable to display the filters as buttons
+const filtersList = reactive({
+  data: [""],
+});
 
-    //updates the filters as they're pressed
-    filtersList.data = []
-    for(let i in dataJson) {
-        const filteringData = dataJson[i]['tags']
-        for (let j in filteringData) {
-            if (!filtersList.data.includes(filteringData[j])) {
-                filtersList.data.push(filteringData[j])
-            }
-        }
-    } 
-
-    //adds the selected filters to the global variable filters
-    //in order to display the articles according to the filters
-    function addFilter(filterData:string) {
-        if(!filters['tags'].includes(filterData)) {
-            filters['tags'].push(filterData)
-        }
+//updates the filters as they're pressed
+filtersList.data = [];
+for (let i in dataJson) {
+  const filteringData = dataJson[i]["tags"];
+  for (let j in filteringData) {
+    if (!filtersList.data.includes(filteringData[j])) {
+      filtersList.data.push(filteringData[j]);
     }
+  }
+}
+
+//adds the selected filters to the global variable filters
+//in order to display the articles according to the filters
+function addFilter(filterData: string) {
+  if (!filters["tags"].includes(filterData)) {
+    filters["tags"].push(filterData);
+  }
+}
 </script>
 
 <template>
-    <div class="filter-popup">
-        <button class="button filter-button" 
-                v-for="tag in filtersList.data"
-                @click="addFilter(tag)">{{ tag }}</button>
-        <button class="button filter-button" 
+  <div class="filter-popup">
+    <button
+      id="filter-button-tag"
+      class="button filter-button"
+      v-for="tag in filtersList.data"
+      @click="addFilter(tag)"
+    >
+      {{ tag }}
+    </button>
+    <button
+      id="filter-button-tag-close"
+      class="button filter-button"
       @click="showFilters.showFilters = !showFilters.showFilters"
-      ><i class="fas fa-times"></i></button>
-    </div>
+    >
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
 </template>
 
 <style>
-    .filter-popup {
-        display: flex;
-        flex-direction: column;
-        margin-right: 10%;
-    }
-    .filter-button {
-        margin-bottom: 10px;
-        background-color: transparent;
-        border: 2px solid #303030;
-        border-radius: 15px;
-        color: #303030;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        min-height: 60px;
-        min-width: 0;
-        padding: 16px 24px;
-        transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
-        touch-action: manipulation;
-        will-change: transform;
-    }
-    .filter-button:disabled{
-        pointer-events: none;
-    }
-    .filter-button:hover{
-        color: #fff;
-        background-color: #303030;
-        box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
-        transform: translateY(-2px);
-    }
+.filter-popup {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10%;
+}
+.filter-button {
+  margin-bottom: 10px;
+  background-color: transparent;
+  border: 2px solid #303030;
+  border-radius: 15px;
+  color: #303030;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  min-height: 60px;
+  min-width: 0;
+  padding: 16px 24px;
+  transition: all 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  touch-action: manipulation;
+  will-change: transform;
+}
+.filter-button:disabled {
+  pointer-events: none;
+}
+.filter-button:hover {
+  color: #fff;
+  background-color: #303030;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
 </style>

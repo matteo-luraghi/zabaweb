@@ -105,6 +105,7 @@ function notPrefriti() {
   <div class="article-card">
     <router-link :to="`/articolo?q=${id}#${title}`">
       <img
+        alt="article-image"
         class="button article-card-image"
         :src="img"
         @error="updateAndReload"
@@ -118,6 +119,7 @@ function notPrefriti() {
       </router-link>
       <div class="buttons card-buttons" v-if="notPrefriti()">
         <button
+          id="save-button"
           :class="`save-button ${classname}`"
           @click="addArticle"
           v-if="!isArticleSaved"
@@ -125,13 +127,18 @@ function notPrefriti() {
           <i class="fa-regular fa-bookmark"></i>
         </button>
         <button
+          id="saved-button"
           :class="`save-button ${classname}`"
           @click="removeArticle"
           v-else
         >
           <i class="fa-solid fa-bookmark"></i>
         </button>
-        <button :class="`share-button ${classname}`" @click="shareViaWebShare">
+        <button
+          id="share-button"
+          :class="`share-button ${classname}`"
+          @click="shareViaWebShare"
+        >
           <i class="fa-solid fa-share-nodes"></i>
         </button>
       </div>

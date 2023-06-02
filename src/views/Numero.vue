@@ -68,16 +68,26 @@ if (userAgent.indexOf("Chrome") > -1) {
     <h2 class="text-font">{{ showPdf.name }}</h2>
     <div class="buttons">
       <button
+        id="save-button"
         :class="`save-button ${classname}`"
         @click="addNumber"
         v-if="!isNumberSaved"
       >
         <i class="fa-regular fa-bookmark"></i>
       </button>
-      <button :class="`save-button ${classname}`" @click="removeNumber" v-else>
+      <button
+        id="saved-button"
+        :class="`save-button ${classname}`"
+        @click="removeNumber"
+        v-else
+      >
         <i class="fa-solid fa-bookmark"></i>
       </button>
-      <button :class="`share-button ${classname}`" @click="shareViaWebShare">
+      <button
+        id="share-button"
+        :class="`share-button ${classname}`"
+        @click="shareViaWebShare"
+      >
         <i class="fa-solid fa-share-nodes"></i>
       </button>
     </div>

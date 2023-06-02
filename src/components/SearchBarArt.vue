@@ -24,7 +24,7 @@ function searchFilter() {
       placeholder="Cerca titolo o autore"
       class="searchbar-input"
     />
-    <button @click="searchFilter" class="searchbar-button">
+    <button id="search-button" @click="searchFilter" class="searchbar-button">
       <i class="fas fa-search searchbar-icon"></i>
     </button>
   </div>

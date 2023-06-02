@@ -37,7 +37,7 @@ function showBottomBar() {
 
 <template>
   <nav class="navbar" v-if="wideScreen">
-    <img class="navbar-logo" src="./assets/logo.webp" />
+    <img alt="logo" class="navbar-logo" src="./assets/logo.webp" />
     <div class="navbar-buttons">
       <router-link to="/" class="button navbar-button">HOME</router-link>
       <router-link to="/articoli" class="button navbar-button"

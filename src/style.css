@@ -28,11 +28,11 @@ img {
 }
 
 .title-font {
-  font-family: "Roadway";
+  font-family: "Roadway", sans-serif;
 }
 
 .text-font {
-  font-family: "MinionPro";
+  font-family: "MinionPro", sans-serif;
 }
 
 .header {

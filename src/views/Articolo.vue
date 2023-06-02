@@ -151,6 +151,7 @@ function shareViaWebShare() {
       <h3 class="articolo-subtitle text-font">{{ articleDetails.subtitle }}</h3>
       <div class="buttons">
         <button
+          id="saved-button"
           :class="`save-button ${browserClass}`"
           @click="addArticle"
           v-if="!isArticleSaved"
@@ -158,6 +159,7 @@ function shareViaWebShare() {
           <i class="fa-regular fa-bookmark"></i>
         </button>
         <button
+          id="save-button"
           :class="`save-button ${browserClass}`"
           @click="removeArticle"
           v-else
@@ -165,6 +167,7 @@ function shareViaWebShare() {
           <i class="fa-solid fa-bookmark"></i>
         </button>
         <button
+          id="share-button"
           :class="`share-button ${browserClass}`"
           @click="shareViaWebShare"
         >
