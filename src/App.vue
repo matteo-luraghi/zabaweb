@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import BottomBar from "./components/bottombar/BottomBar.vue";
+import { updateArchiveDatabase, updateArtDatabase } from "./state";
+
+await updateArchiveDatabase();
+await updateArtDatabase();
 
 //the code below will check the screen size and based on that
 //the app will display an upper navbar (for wide screens) or a bottom navbar (for small screens)
