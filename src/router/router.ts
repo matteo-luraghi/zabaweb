@@ -1,66 +1,57 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue'
-import Preferiti from '../views/Preferiti.vue'
-import Numeri from '../views/Numeri.vue'
-import Numero from '../views/Numero.vue'
-import Articoli from '../views/Articoli.vue'
-import Articolo from '../views/Articolo.vue'
-import Install from '../views/Install.vue'
-import Zabarte from '../views/ZabArte.vue'
-import ZabarteView from '../views/ZabArteView.vue'
 
 const routes = [
     {
         //main route
         path: '/',
         name: 'Home',
-        component: Home,
+        component: () => import(/* webpackChunkName: "home" */ "../views/Home.vue"),
     },
     {
         //view of all the Archivio Numeri
         path: '/numeri',
         name: 'Numeri',
-        component: Numeri,
+        component: () => import(/* webpackChunkName: "numeri" */ "../views/Numeri.vue"),
     },
     {
         //view of all the articles or the filtered ones
         path: '/articoli',
         name: 'Articoli',
-        component: Articoli,
+        component: () => import(/* webpackChunkName: "articoli" */ "../views/Articoli.vue"),
     },
     {
         //view of all the saved articles and numbers
         path: '/preferiti',
         name: 'Preferiti',
-        component: Preferiti,
+        component: () => import(/* webpackChunkName: "preferiti" */ "../views/Preferiti.vue"),
     },
     {
         //view of zabarte
         path: '/zabarte',
         name: 'Zabarte',
-        component: Zabarte,
+        component: () => import(/* webpackChunkName: "zabarte" */ "../views/ZabArte.vue"),
     },
     {
         path: '/zabarte/view',
-        component: ZabarteView,
+        component: () => import(/* webpackChunkName: "zabarteview" */ "../views/ZabArteView.vue"),
         props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
     },
     {
         //view of the single article
         path: '/articolo',
-        component: Articolo,
+        component: () => import(/* webpackChunkName: "articolo" */ "../views/Articolo.vue"),
         props: (route: { query: { q: any; }; }) => ({ query: route.query.q })
     },
     {
         path: '/numero',
-        component: Numero,
+        component: () => import(/* webpackChunkName: "numero" */ "../views/Numero.vue"),
         props: (route: { query: { q: any; }; }) => ({ query: route.query.q }),
     },
     {
         //view for the installation
         path: '/install',
         name: 'Install',
-        component: Install,
+        component: () => import(/* webpackChunkName: "install" */ "../views/Install.vue"),
     }
 ];
 
