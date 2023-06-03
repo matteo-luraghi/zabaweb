@@ -12,3 +12,4 @@ Possible future updates:
 # Todo
 
 - preferiti con diverse sezioni
+- change home view to last articolo numero and arte
