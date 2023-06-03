@@ -7,8 +7,4 @@ The app is running is hosted on https://pages.cloudflare.com/, as of now the onl
 Possible future updates:
 
 - push notifications
-- save article as pdf?
-
-# Todo
-
-- preferiti con diverse sezioni
+- save article as pdf

@@ -56,13 +56,40 @@ for (let i in savedZabArteId.value) {
     savedZabArte.art.push(found);
   }
 }
+
+let showSaved = reactive({
+  show: "articoli",
+});
 </script>
 
 <template>
   <h1 class="header articoli-title">PREFERITI</h1>
-  <h3 class="text-font preferiti-text" style="font-size: 18px">Articoli</h3>
 
   <div class="container">
+    <button
+      class="button filter-button text-font"
+      @click="showSaved.show = 'articoli'"
+      style="font-size: 18px"
+    >
+      Articoli
+    </button>
+    <button
+      class="button filter-button text-font"
+      @click="showSaved.show = 'numeri'"
+      style="font-size: 18px"
+    >
+      Numeri
+    </button>
+    <button
+      class="button filter-button text-font"
+      @click="showSaved.show = 'zabarte'"
+      style="font-size: 18px"
+    >
+      ZabArte
+    </button>
+  </div>
+
+  <div class="container" v-if="showSaved.show === 'articoli'">
     <Card
       v-if="savedArticles.articles.length != 0"
       v-for="page in savedArticles.articles"
@@ -77,9 +104,7 @@ for (let i in savedZabArteId.value) {
     />
   </div>
 
-  <h3 class="text-font preferiti-text" style="font-size: 18px">Numeri</h3>
-
-  <div class="container numeri-container">
+  <div class="container numeri-container" v-if="showSaved.show === 'numeri'">
     <router-link
       :to="`/numero?q=${element.id}#${element.name}`"
       class="router-link"
@@ -90,9 +115,7 @@ for (let i in savedZabArteId.value) {
     </router-link>
   </div>
 
-  <h3 class="text-font preferiti-text" style="font-size: 18px">ZabArte</h3>
-
-  <div class="container">
+  <div class="container" v-if="showSaved.show === 'zabarte'">
     <router-link
       :to="`/zabarte/view?q=${art.id}#${art.title}`"
       class="router-link"
@@ -108,12 +131,3 @@ for (let i in savedZabArteId.value) {
     </router-link>
   </div>
 </template>
-
-<style>
-.preferiti-text {
-  font-size: 22px;
-  margin-left: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-</style>

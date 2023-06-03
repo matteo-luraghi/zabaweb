@@ -23,7 +23,7 @@ async function updateAndReload() {
 
 <template>
   <div class="header">
-    <h1 class="numeri-title">ARCHIVIO DEI NUMERI</h1>
+    <h1 class="numeri-title">ARCHIVIO NUMERI</h1>
   </div>
   <div class="container numeri-container">
     <router-link
