@@ -140,9 +140,6 @@ export function filterArt(artFilters: {authors: string[], title: string, tags: s
 export const api = axios.create({
     baseURL: "https://zabapp-bakcned.onrender.com/",
     timeout: 2500,
-    headers: {
-        'Content-Type': 'application/json'
-    }
 })
 
 //setup of the articoli object from the backend
