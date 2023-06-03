@@ -76,7 +76,7 @@ let showSaved = reactive({
 
   <div class="container" style="flex-wrap: nowrap">
     <button
-      class="preferiti-button button filter-button text-font"
+      class="preferiti-button button text-font"
       :class="{ active: showSaved.articoli.isActive }"
       @click="
         showSaved.show = 'articoli';
@@ -88,7 +88,7 @@ let showSaved = reactive({
       Articoli
     </button>
     <button
-      class="preferiti-button button filter-button text-font"
+      class="preferiti-button button text-font"
       :class="{ active: showSaved.numeri.isActive }"
       @click="
         showSaved.show = 'numeri';
@@ -100,7 +100,7 @@ let showSaved = reactive({
       Numeri
     </button>
     <button
-      class="preferiti-button button filter-button text-font"
+      class="preferiti-button button text-font"
       :class="{ active: showSaved.zabarte.isActive }"
       @click="
         showSaved.show = 'zabarte';
@@ -157,8 +157,22 @@ let showSaved = reactive({
 </template>
 
 <style>
+.preferiti-button {
+  margin-bottom: 20px;
+  background-color: transparent;
+  border: 2px solid #303030;
+  border-radius: 15px;
+  color: #303030;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  height: 60px;
+  width: 88;
+  padding: 16px 16px;
+}
+
 .preferiti-button.active {
-  background-color: #030303;
+  background-color: #303030;
   color: #e0e0e0;
 }
 </style>

@@ -22,7 +22,12 @@ const slicedText = computed(() => {
   if (props.plaintext.length > maxTextLength) {
     let last = 0;
     for (let i = 0; i < props.plaintext.length; i++) {
-      if (props.plaintext[i] === ".") {
+      if (
+        props.plaintext[i] === "." ||
+        props.plaintext[i] === "?" ||
+        props.plaintext[i] === "!" ||
+        props.plaintext[i] === ";"
+      ) {
         last = i;
       }
       if (last > maxTextLength) {
