@@ -23,14 +23,14 @@ async function updateAndReloadArt() {
 
 <template>
   <h1 class="header articoli-title">HOME</h1>
+  <img
+    alt="testata"
+    class="testata"
+    src="../assets/testata.webp"
+    style="max-width: 100%"
+  />
+  <h3 class="text-font home-title">Ultimo articolo</h3>
   <div class="container">
-    <img
-      alt="testata"
-      class="testata"
-      src="../assets/testata.webp"
-      style="max-width: 100%"
-    />
-    <h3 class="text-font home-title">Ultimo articolo</h3>
     <Card
       :id="dataJson[0].id"
       :title="dataJson[0].title"
