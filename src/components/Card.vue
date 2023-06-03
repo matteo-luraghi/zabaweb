@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { filters, updateArticleDatabase } from "../state";
+import { filters } from "../state";
 import { computed, ref } from "vue";
 
 //info of the article object

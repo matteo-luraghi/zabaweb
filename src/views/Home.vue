@@ -1,12 +1,6 @@
 <script setup lang="ts">
 import Card from "../components/Card.vue";
-import {
-  dataJson,
-  archive,
-  zabarte,
-  updateArchiveDatabase,
-  updateArtDatabase,
-} from "../state";
+import { dataJson, archive, zabarte } from "../state";
 //the variable dataJson stores all the info, then in the template via the v-for method are displayed the first 9 articles of the database
 
 //function to update and reload the database if the images can't be displyed due to notion changing the link

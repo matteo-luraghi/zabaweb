@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { updateArtDatabase, zabarte } from "@/state";
+import { zabarte } from "@/state";
 import { ref, computed } from "vue";
 const props = defineProps<{
   query: string;
@@ -58,23 +58,12 @@ function shareViaWebShare() {
     url: window.location.pathname + `?q=${zabart.id}#${zabart.title}`,
   });
 }
-
-//function to update and reload the zabarte database if the images can't be displyed due to notion changing the link
-async function updateAndReload() {
-  await updateArtDatabase();
-  window.location.reload();
-}
 </script>
 
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="container image-container">
-    <img
-      :src="zabart.img"
-      alt="Zabarte Image"
-      @error="updateAndReload"
-      class="responsive-image"
-    />
+    <img :src="zabart.img" alt="Zabarte Image" class="responsive-image" />
   </div>
   <div class="container space">
     <h3

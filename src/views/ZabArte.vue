@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, reactive } from "vue";
-import { updateArtDatabase, zabarte, artFiltered, artFilters } from "@/state";
+import { zabarte, artFiltered, artFilters } from "@/state";
 import SearchBarArt from "@/components/SearchBarArt.vue";
 
 function removeFilter(filterData: string) {
@@ -103,12 +103,6 @@ function shareViaWebShare() {
       `/view?q=${currentImage.value.id}#${currentImage.value.title}`,
   });
 }
-
-//function to update and reload the zabarte database if the images can't be displyed due to notion changing the link
-async function updateAndReload() {
-  await updateArtDatabase();
-  window.location.reload();
-}
 </script>
 
 <template>
@@ -174,7 +168,6 @@ async function updateAndReload() {
         <img
           :src="currentImage.img"
           alt="Zabarte Image"
-          @error="updateAndReload"
           class="responsive-image"
         />
       </router-link>
