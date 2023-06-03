@@ -37,14 +37,14 @@ img {
 
 .header {
   box-sizing: border-box;
-  padding: 40px 60px;
+  padding: 40px 23px;
   display: flex;
   background-color: #303030;
   width: 100%;
   align-items: center;
   justify-content: center;
   color: #e0e0e0;
-  max-height: 120px;
+  height: 90px;
   width: 100%;
   margin-top: 0px;
 }
