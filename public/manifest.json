@@ -26,17 +26,6 @@
         ]
     },
     {
-        "name": "Preferiti", 
-        "short_name": "Preferiti", 
-        "url": "/preferiti",
-        "icons": [
-            {
-                "src": "./shortcuts/saved.png",
-                "sizes": "96x96"
-            }
-        ]
-    },
-    {
         "name": "ZabArte", 
         "short_name": "ZabArte", 
         "url": "/zabarte",

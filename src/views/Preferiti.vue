@@ -59,31 +59,55 @@ for (let i in savedZabArteId.value) {
 
 let showSaved = reactive({
   show: "articoli",
+  articoli: {
+    isActive: true,
+  },
+  numeri: {
+    isActive: false,
+  },
+  zabarte: {
+    isActive: false,
+  },
 });
 </script>
 
 <template>
   <h1 class="header articoli-title">PREFERITI</h1>
 
-  <div class="container">
+  <div class="container" style="flex-wrap: nowrap">
     <button
-      class="button filter-button text-font"
-      @click="showSaved.show = 'articoli'"
-      style="font-size: 18px"
+      class="preferiti-button button filter-button text-font"
+      :class="{ active: showSaved.articoli.isActive }"
+      @click="
+        showSaved.show = 'articoli';
+        showSaved.articoli.isActive = true;
+        showSaved.numeri.isActive = false;
+        showSaved.zabarte.isActive = false;
+      "
     >
       Articoli
     </button>
     <button
-      class="button filter-button text-font"
-      @click="showSaved.show = 'numeri'"
-      style="font-size: 18px"
+      class="preferiti-button button filter-button text-font"
+      :class="{ active: showSaved.numeri.isActive }"
+      @click="
+        showSaved.show = 'numeri';
+        showSaved.articoli.isActive = false;
+        showSaved.numeri.isActive = true;
+        showSaved.zabarte.isActive = false;
+      "
     >
       Numeri
     </button>
     <button
-      class="button filter-button text-font"
-      @click="showSaved.show = 'zabarte'"
-      style="font-size: 18px"
+      class="preferiti-button button filter-button text-font"
+      :class="{ active: showSaved.zabarte.isActive }"
+      @click="
+        showSaved.show = 'zabarte';
+        showSaved.articoli.isActive = false;
+        showSaved.numeri.isActive = false;
+        showSaved.zabarte.isActive = true;
+      "
     >
       ZabArte
     </button>
@@ -131,3 +155,10 @@ let showSaved = reactive({
     </router-link>
   </div>
 </template>
+
+<style>
+.preferiti-button.active {
+  background-color: #030303;
+  color: #e0e0e0;
+}
+</style>
