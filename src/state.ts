@@ -136,9 +136,10 @@ export function filterArt(artFilters: {authors: string[], title: string, tags: s
 }
 
 //api that connects to the backend
+//backup backend: https://zabaappbackend-1-j2113551.deta.app/
 export const api = axios.create({
     baseURL: "https://zabapp-bakcned.onrender.com/",
-    timeout: 500,
+    timeout: 10,
     headers: {
         'Content-Type': 'application/json'
     }
