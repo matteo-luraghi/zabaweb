@@ -15,7 +15,7 @@ const isActive = computed(() => route.path === props.to);
       <span class="icon-text">{{ text }}</span>
     </div>
     <transition name="fade">
-      <span>
+      <span class="text">
         <slot />
       </span>
     </transition>
@@ -23,6 +23,12 @@ const isActive = computed(() => route.path === props.to);
 </template>
 
 <style scoped>
+@media (max-width: 325px) {
+  .link .icon-text {
+    display: none;
+  }
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.1s;
