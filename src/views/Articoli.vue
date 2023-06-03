@@ -141,13 +141,15 @@ function checkEmpty() {
   flex-wrap: wrap;
   box-sizing: border-box;
   justify-content: space-between;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
 }
 
 .articoli-title-text {
   white-space: pre-wrap;
-  margin-left: 10px;
   font-size: large;
+  margin-top: 0px;
 }
 
 .articoli-searchbar {
