@@ -13,12 +13,6 @@ const visibleNumbers = computed(() => {
 function loadMoreNumbers() {
   visibleNumbersCount.value += 10;
 }
-
-//function to update and reload the archive database if the images can't be displyed due to notion changing the link
-async function updateAndReload() {
-  await updateArchiveDatabase();
-  window.location.reload();
-}
 </script>
 
 <template>
@@ -32,12 +26,7 @@ async function updateAndReload() {
       v-for="element in visibleNumbers"
     >
       <h3 class="text-font">{{ element.name }}</h3>
-      <img
-        alt="numero-cover"
-        class="numero-cover"
-        :src="element.img"
-        @error="updateAndReload"
-      />
+      <img alt="numero-cover" class="numero-cover" :src="element.img" />
     </router-link>
   </div>
   <div class="container" style="width: 100%">

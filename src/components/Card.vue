@@ -93,11 +93,6 @@ if (userAgent.indexOf("Chrome") > -1) {
   classname = "button-safari";
 } else classname = "button-chrome";
 
-async function updateAndReload() {
-  await updateArticleDatabase();
-  window.location.reload();
-}
-
 function notPrefriti() {
   if (window.location.pathname != "/preferiti") {
     return true;
@@ -109,12 +104,7 @@ function notPrefriti() {
 <template>
   <div class="article-card">
     <router-link :to="`/articolo?q=${id}#${title}`">
-      <img
-        alt="article-image"
-        class="button article-card-image"
-        :src="img"
-        @error="updateAndReload"
-      />
+      <img alt="article-image" class="button article-card-image" :src="img" />
     </router-link>
     <div class="article-card-title-container">
       <router-link :to="`/articolo?q=${id}#${title}`" class="router-link">
