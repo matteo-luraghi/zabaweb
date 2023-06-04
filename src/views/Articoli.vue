@@ -2,8 +2,30 @@
 import Card from "../components/Card.vue";
 import FilterPopup from "../components/FilterPopup.vue";
 import SearchBar from "../components/SearchBar.vue";
-import { filters, filtered, showFilters } from "../state";
+import {
+  filters,
+  filtered,
+  showFilters,
+  dataJson,
+  zabarte,
+  archive,
+  updateArchiveDatabase,
+  updateArtDatabase,
+  updateArticleDatabase,
+} from "../state";
 import { ref, computed } from "vue";
+
+if (dataJson[0].id === -1) {
+  await updateArticleDatabase();
+}
+
+if (archive[0].id === -1) {
+  await updateArchiveDatabase();
+}
+
+if (zabarte[0].id === -1) {
+  await updateArtDatabase();
+}
 
 // reactive variable to track the number of visible articles
 let visibleArticlesCount = ref(10);

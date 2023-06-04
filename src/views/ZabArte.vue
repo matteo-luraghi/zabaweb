@@ -1,7 +1,28 @@
 <script setup lang="ts">
 import { ref, computed, reactive } from "vue";
-import { zabarte, artFiltered, artFilters } from "@/state";
+import {
+  zabarte,
+  artFiltered,
+  artFilters,
+  dataJson,
+  archive,
+  updateArchiveDatabase,
+  updateArtDatabase,
+  updateArticleDatabase,
+} from "@/state";
 import SearchBarArt from "@/components/SearchBarArt.vue";
+
+if (dataJson[0].id === -1) {
+  await updateArticleDatabase();
+}
+
+if (archive[0].id === -1) {
+  await updateArchiveDatabase();
+}
+
+if (zabarte[0].id === -1) {
+  await updateArtDatabase();
+}
 
 function removeFilter(filterData: string) {
   let index = artFilters.authors.indexOf(filterData);

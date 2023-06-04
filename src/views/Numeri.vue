@@ -1,8 +1,27 @@
 <script setup lang="ts">
-import { archive } from "../state";
+import {
+  archive,
+  dataJson,
+  zabarte,
+  updateArchiveDatabase,
+  updateArtDatabase,
+  updateArticleDatabase,
+} from "../state";
 import { ref, computed } from "vue";
 //the variable archive stores all the info, then in the template via the v-for method are displayed all of the Numeri of the database
 //each one is clickable and will route the user to the Numero view where it will be displayed as a pdf embedding
+
+if (dataJson[0].id === -1) {
+  await updateArticleDatabase();
+}
+
+if (archive[0].id === -1) {
+  await updateArchiveDatabase();
+}
+
+if (zabarte[0].id === -1) {
+  await updateArtDatabase();
+}
 
 let visibleNumbersCount = ref(10);
 

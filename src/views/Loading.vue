@@ -10,9 +10,15 @@ import {
 import Home from "../components/Home.vue";
 import Spinner from "../components/Spinner.vue";
 
-if (dataJson[0].id === -1 || archive[0].id === -1 || zabarte[0].id === -1) {
+if (dataJson[0].id === -1) {
   await updateArticleDatabase();
+}
+
+if (archive[0].id === -1) {
   await updateArchiveDatabase();
+}
+
+if (zabarte[0].id === -1) {
   await updateArtDatabase();
 }
 
