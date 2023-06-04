@@ -143,7 +143,7 @@ export const api = axios.create({
 
 //setup of the articoli object from the backend
 export let dataJson = reactive([{
-    id: 0,
+    id: -1,
     title: '',
     text: {},
     plaintext: '',
@@ -156,14 +156,14 @@ export let dataJson = reactive([{
 
 //setup of the numeri object from the backend
 export let archive = reactive([{
-    id: 0,
+    id: -1,
     name: '',
     url: '',
     img: '',
 }])
 
 export let zabarte = reactive([{
-    id: 0,
+    id: -1,
     title: '',
     authors: [''],
     tags: [''],

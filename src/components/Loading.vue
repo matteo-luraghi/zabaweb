@@ -11,14 +11,20 @@ import Home from "./Home.vue";
 import Spinner from "./Spinner.vue";
 import { computed } from "vue";
 
+console.log(dataJson);
 await updateArticleDatabase();
+console.log(dataJson);
 await updateArchiveDatabase();
 await updateArtDatabase();
 
 let notReady = computed(() => {
-  if (dataJson[0].id === 0 || archive[0].id === 0 || zabarte[0].id === 0)
+  if (dataJson[0].id === -1 || archive[0].id === -1 || zabarte[0].id === -1) {
+    console.log(notReady);
     return true;
-  else return false;
+  } else {
+    console.log(notReady);
+    return false;
+  }
 });
 </script>
 
