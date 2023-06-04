@@ -57,7 +57,9 @@ function showBottomBar() {
   <BottomBar v-if="showBottomBar()" />
 
   <hr class="separator" v-if="wideScreen" />
-  <router-view />
+  <Suspense>
+    <router-view />
+  </Suspense>
 
   <div class="footer">
     <div :class="`footer-circle ${classname}`">
