@@ -1,8 +1,19 @@
 <script setup lang="ts">
-import { archive, dataJson, zabarte } from "@/state";
+import {
+  archive,
+  dataJson,
+  zabarte,
+  updateArchiveDatabase,
+  updateArtDatabase,
+  updateArticleDatabase,
+} from "@/state";
 import Home from "@/views/Home.vue";
 import Spinner from "./Spinner.vue";
 import { computed } from "vue";
+
+await updateArticleDatabase();
+await updateArchiveDatabase();
+await updateArtDatabase();
 
 export let notReady = computed(() => {
   if (dataJson[0].id === 0 || archive[0].id === 0 || zabarte[0].id === 0)
@@ -19,6 +30,6 @@ export let notReady = computed(() => {
     src="../assets/testata.webp"
     style="max-width: 100%"
   />
-  <Spinner :color="'#303030'" duration="20s" v-if="notReady" />
+  <Spinner v-if="notReady" />
   <Home v-else />
 </template>
