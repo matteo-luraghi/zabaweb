@@ -1,25 +1,8 @@
 <script setup lang="ts">
-import {
-  archive,
-  dataJson,
-  updateArchiveDatabase,
-  updateArtDatabase,
-  updateArticleDatabase,
-  zabarte,
-} from "@/state";
+import { archive, dataJson, zabarte } from "@/state";
 import Home from "@/views/Home.vue";
 import Spinner from "./Spinner.vue";
-import { computed, onMounted } from "vue";
-
-console.log(dataJson);
-
-// Perform the asynchronous operations in the created hook
-onMounted(async () => {
-  await updateArticleDatabase();
-  console.log(dataJson);
-  await updateArchiveDatabase();
-  await updateArtDatabase();
-});
+import { computed } from "vue";
 
 export let notReady = computed(() => {
   if (dataJson[0].id === 0 || archive[0].id === 0 || zabarte[0].id === 0)
