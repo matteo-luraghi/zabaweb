@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue'
+import Loading from '../components/Loading.vue'
 import Preferiti from '../views/Preferiti.vue'
 import Numeri from '../views/Numeri.vue'
 import Numero from '../views/Numero.vue'
@@ -13,8 +13,8 @@ const routes = [
     {
         //main route
         path: '/',
-        name: 'Home',
-        component: Home,
+        name: 'Loading',
+        component: Loading,
     },
     {
         //view of all the Archivio Numeri
