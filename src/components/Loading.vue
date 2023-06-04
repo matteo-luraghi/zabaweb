@@ -10,6 +10,7 @@ import {
 import Home from "@/views/Home.vue";
 import Spinner from "./Spinner.vue";
 import { computed } from "vue";
+
 console.log(dataJson);
 await updateArticleDatabase();
 console.log(dataJson);
