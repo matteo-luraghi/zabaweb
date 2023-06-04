@@ -85,7 +85,7 @@ let showSaved = reactive({
         showSaved.zabarte.isActive = false;
       "
     >
-      Articoli
+      <i class="fas fa-newspaper" style="width: 25px"></i>
     </button>
     <button
       class="preferiti-button button text-font"
@@ -97,7 +97,7 @@ let showSaved = reactive({
         showSaved.zabarte.isActive = false;
       "
     >
-      Numeri
+      <i class="fas fa-solid fa-box-archive" style="width: 25px"></i>
     </button>
     <button
       class="preferiti-button button text-font"
@@ -109,7 +109,7 @@ let showSaved = reactive({
         showSaved.zabarte.isActive = true;
       "
     >
-      ZabArte
+      <i class="fas fa-solid fa-paintbrush" style="width: 25px"></i>
     </button>
   </div>
 
@@ -167,7 +167,7 @@ let showSaved = reactive({
   font-size: 16px;
   font-weight: 600;
   height: 60px;
-  width: 88;
+  width: 80px;
   padding: 16px 16px;
 }
 
