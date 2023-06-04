@@ -11,18 +11,20 @@ import Home from "./Home.vue";
 import Spinner from "./Spinner.vue";
 import { computed } from "vue";
 
-console.log(dataJson);
+console.log(dataJson[0].id);
 await updateArticleDatabase();
-console.log(dataJson);
+console.log(dataJson[0].id);
+console.log(archive[0].id);
 await updateArchiveDatabase();
+console.log(archive[0].id);
+console.log(zabarte[0].id);
 await updateArtDatabase();
+console.log(zabarte[0].id);
 
 let notReady = computed(() => {
   if (dataJson[0].id === -1 || archive[0].id === -1 || zabarte[0].id === -1) {
-    console.log(notReady);
     return true;
   } else {
-    console.log(notReady);
     return false;
   }
 });
