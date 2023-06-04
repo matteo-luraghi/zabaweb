@@ -10,9 +10,11 @@ import {
 import Home from "../components/Home.vue";
 import Spinner from "../components/Spinner.vue";
 
-await updateArticleDatabase();
-await updateArchiveDatabase();
-await updateArtDatabase();
+if (dataJson[0].id === -1 || archive[0].id === -1 || zabarte[0].id === -1) {
+  await updateArticleDatabase();
+  await updateArchiveDatabase();
+  await updateArtDatabase();
+}
 
 function notReady() {
   if (dataJson[0].id === -1 || archive[0].id === -1 || zabarte[0].id === -1) {
@@ -31,6 +33,8 @@ function notReady() {
     src="../assets/testata.webp"
     style="max-width: 100%"
   />
-  <Spinner v-if="notReady() === true" />
+  <div class="container" v-if="notReady() === true">
+    <Spinner />
+  </div>
   <Home v-else />
 </template>
