@@ -9,13 +9,17 @@ import {
 } from "@/state";
 import Home from "@/views/Home.vue";
 import Spinner from "./Spinner.vue";
-import { computed } from "vue";
+import { computed, onMounted } from "vue";
 
 console.log(dataJson);
-await updateArticleDatabase();
-console.log(dataJson);
-await updateArchiveDatabase();
-await updateArtDatabase();
+
+// Perform the asynchronous operations in the created hook
+onMounted(async () => {
+  await updateArticleDatabase();
+  console.log(dataJson);
+  await updateArchiveDatabase();
+  await updateArtDatabase();
+});
 
 export let notReady = computed(() => {
   if (dataJson[0].id === 0 || archive[0].id === 0 || zabarte[0].id === 0)
