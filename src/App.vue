@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BottomBar from "./components/bottombar/BottomBar.vue";
+
 //the code below will check the screen size and based on that
 //the app will display an upper navbar (for wide screens) or a bottom navbar (for small screens)
 let wideScreen = true;
@@ -9,11 +10,13 @@ if (windowWidth < 1700) {
 } else {
   wideScreen = true;
 }
+
 //here is also initialized the router-view element, which manges the routing
 //it is nested inside a Suspense element because at the moment (05/2023) it's a very
 //effective way to load async components (the ones that needs the backend API call for example)
 //on the VueJs website it is specified that Suspense is in beta and will probably change in the future
 //if something doesn't work, it's very likely to be that
+
 let classname: string;
 if (wideScreen === true) {
   classname = "footer-circle-large";

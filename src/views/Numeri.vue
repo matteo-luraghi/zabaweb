@@ -11,6 +11,7 @@ import { ref, computed } from "vue";
 //the variable archive stores all the info, then in the template via the v-for method are displayed all of the Numeri of the database
 //each one is clickable and will route the user to the Numero view where it will be displayed as a pdf embedding
 
+//if the variables are not updated by the api the app will call the api
 if (dataJson[0].id === -1) {
   await updateArticleDatabase();
 }

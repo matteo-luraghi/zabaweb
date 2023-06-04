@@ -141,7 +141,7 @@ export const api = axios.create({
     baseURL: "https://zabapp-bakcned.onrender.com/",
 })
 
-//setup of the articoli object from the backend
+//init of the articoli object
 export let dataJson = reactive([{
     id: -1,
     title: '',
@@ -154,7 +154,7 @@ export let dataJson = reactive([{
     img: '',
 }])
 
-//setup of the numeri object from the backend
+//init of the numeri object
 export let archive = reactive([{
     id: -1,
     name: '',
@@ -162,6 +162,7 @@ export let archive = reactive([{
     img: '',
 }])
 
+//init of the zabarte object
 export let zabarte = reactive([{
     id: -1,
     title: '',
@@ -170,6 +171,7 @@ export let zabarte = reactive([{
     img: '',
 }])
 
+//functions to update the variables containing the database's data
 export async function updateArticleDatabase() {
     await api.get<Article[]>('articles').then(
         (res) => {
@@ -196,8 +198,3 @@ export async function updateArtDatabase() {
         (error) => console.log(error)
     )
 }
-
-//database initialization
-//await updateArticleDatabase()
-//await updateArchiveDatabase()
-//await updateArtDatabase()

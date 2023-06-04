@@ -15,6 +15,7 @@ import {
 } from "../state";
 import { ref, computed } from "vue";
 
+//if the variables are not updated by the api the app will call the api
 if (dataJson[0].id === -1) {
   await updateArticleDatabase();
 }

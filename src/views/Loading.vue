@@ -10,6 +10,7 @@ import {
 import Home from "../components/Home.vue";
 import Spinner from "../components/Spinner.vue";
 
+//if the variables are not updated by the api the app will call the api
 if (dataJson[0].id === -1) {
   await updateArticleDatabase();
 }

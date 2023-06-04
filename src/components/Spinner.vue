@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+//code copied from https://loading.io/css/
+</script>
 
 <template>
   <div class="lds-ring">
