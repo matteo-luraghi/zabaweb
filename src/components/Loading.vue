@@ -7,7 +7,7 @@ import {
   updateArtDatabase,
   updateArticleDatabase,
 } from "@/state";
-import Home from "@/views/Home.vue";
+import Home from "./Home.vue";
 import Spinner from "./Spinner.vue";
 import { computed } from "vue";
 
