@@ -15,7 +15,7 @@ await updateArticleDatabase();
 await updateArchiveDatabase();
 await updateArtDatabase();
 
-export let notReady = computed(() => {
+let notReady = computed(() => {
   if (dataJson[0].id === 0 || archive[0].id === 0 || zabarte[0].id === 0)
     return true;
   else return false;
