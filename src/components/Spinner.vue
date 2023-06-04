@@ -1,6 +1,4 @@
-<script setup lang="ts">
-let i = 0;
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="lds-ring">
