@@ -6,6 +6,7 @@ import {
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
+  notReady,
 } from "../state";
 import { ref, computed } from "vue";
 //the variable archive stores all the info, then in the template via the v-for method are displayed all of the Numeri of the database
@@ -22,6 +23,9 @@ if (archive[0].id === -1) {
 
 if (zabarte[0].id === -1) {
   await updateArtDatabase();
+}
+if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
+  notReady.value = false;
 }
 
 let visibleNumbersCount = ref(10);

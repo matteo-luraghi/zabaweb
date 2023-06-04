@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BottomBar from "./components/bottombar/BottomBar.vue";
+import { notReady } from "./state";
 
 //the code below will check the screen size and based on that
 //the app will display an upper navbar (for wide screens) or a bottom navbar (for small screens)
@@ -30,7 +31,11 @@ if (wideScreen === true) {
 }
 
 function showBottomBar() {
-  if (!wideScreen && window.location.pathname != "/install") {
+  if (
+    !wideScreen &&
+    window.location.pathname != "/install" &&
+    !notReady.value
+  ) {
     return true;
   }
   return false;

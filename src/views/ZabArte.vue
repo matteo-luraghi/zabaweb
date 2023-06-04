@@ -9,6 +9,7 @@ import {
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
+  notReady,
 } from "@/state";
 import SearchBarArt from "@/components/SearchBarArt.vue";
 
@@ -23,6 +24,10 @@ if (archive[0].id === -1) {
 
 if (zabarte[0].id === -1) {
   await updateArtDatabase();
+}
+
+if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
+  notReady.value = false;
 }
 
 function removeFilter(filterData: string) {

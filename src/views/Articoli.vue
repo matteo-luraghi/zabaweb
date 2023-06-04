@@ -12,6 +12,7 @@ import {
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
+  notReady,
 } from "../state";
 import { ref, computed } from "vue";
 
@@ -26,6 +27,10 @@ if (archive[0].id === -1) {
 
 if (zabarte[0].id === -1) {
   await updateArtDatabase();
+}
+
+if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
+  notReady.value = false;
 }
 
 // reactive variable to track the number of visible articles

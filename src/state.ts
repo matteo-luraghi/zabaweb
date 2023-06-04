@@ -28,6 +28,10 @@ interface Art {
     img: string
 }
 
+export let notReady = reactive({
+    value: true,
+})
+
 //global reactive variable that saves all the selected filters
 export let filters = reactive({
     title: "",

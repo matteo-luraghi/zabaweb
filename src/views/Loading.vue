@@ -6,6 +6,7 @@ import {
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
+  notReady,
 } from "@/state";
 import Home from "../components/Home.vue";
 import Spinner from "../components/Spinner.vue";
@@ -23,12 +24,8 @@ if (zabarte[0].id === -1) {
   await updateArtDatabase();
 }
 
-function notReady() {
-  if (dataJson[0].id === -1 || archive[0].id === -1 || zabarte[0].id === -1) {
-    return true;
-  } else {
-    return false;
-  }
+if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
+  notReady.value = false;
 }
 </script>
 
@@ -40,7 +37,7 @@ function notReady() {
     src="../assets/testata.webp"
     style="max-width: 100%"
   />
-  <div class="container" v-if="notReady() === true">
+  <div class="container" v-if="notReady.value">
     <Spinner />
   </div>
   <Home v-else />
