@@ -37,8 +37,5 @@ if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
     src="../assets/testata.webp"
     style="max-width: 100%"
   />
-  <div class="container" v-if="notReady.value">
-    <Spinner />
-  </div>
-  <Home v-else />
+  <Home />
 </template>

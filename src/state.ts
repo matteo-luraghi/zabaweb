@@ -1,4 +1,4 @@
-import { reactive, computed } from "vue";
+import { reactive, computed, ref } from "vue";
 import axios from 'axios'
 
 interface Article {
@@ -28,9 +28,7 @@ interface Art {
     img: string
 }
 
-export let notReady = reactive({
-    value: true,
-})
+export let notReady = ref(true)
 
 //global reactive variable that saves all the selected filters
 export let filters = reactive({

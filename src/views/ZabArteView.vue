@@ -1,9 +1,34 @@
 <script setup lang="ts">
-import { zabarte } from "@/state";
+import {
+  zabarte,
+  archive,
+  dataJson,
+  updateArchiveDatabase,
+  updateArtDatabase,
+  updateArticleDatabase,
+  notReady,
+} from "@/state";
 import { ref, computed } from "vue";
 const props = defineProps<{
   query: string;
 }>();
+
+//if the variables are not updated by the api the app will call the api
+if (dataJson[0].id === -1) {
+  await updateArticleDatabase();
+}
+
+if (archive[0].id === -1) {
+  await updateArchiveDatabase();
+}
+
+if (zabarte[0].id === -1) {
+  await updateArtDatabase();
+}
+
+if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
+  notReady.value = false;
+}
 
 let zabart: {
   id: number;

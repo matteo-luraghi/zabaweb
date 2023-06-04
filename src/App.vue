@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BottomBar from "./components/bottombar/BottomBar.vue";
 import { notReady } from "./state";
+import Spinner from "./components/Spinner.vue";
 
 //the code below will check the screen size and based on that
 //the app will display an upper navbar (for wide screens) or a bottom navbar (for small screens)
@@ -40,6 +41,20 @@ function showBottomBar() {
   }
   return false;
 }
+
+let titleName: string;
+if (window.location.pathname === "/") {
+  titleName = "HOME";
+}
+if (window.location.pathname === "/articoli") {
+  titleName = "ARTICOLI";
+}
+if (window.location.pathname === "/numeri") {
+  titleName = "ARCHIVIO NUMERI";
+}
+if (window.location.pathname === "/zabarte") {
+  titleName = "ZABARTE";
+}
 </script>
 
 <template>
@@ -61,10 +76,24 @@ function showBottomBar() {
       >
     </div>
   </nav>
+  <hr class="separator" v-if="wideScreen" />
 
   <BottomBar v-if="showBottomBar()" />
 
-  <hr class="separator" v-if="wideScreen" />
+  <div v-if="notReady">
+    <h1 class="header articoli-title">{{ titleName }}</h1>
+    <img
+      v-if="titleName === 'HOME'"
+      alt="testata"
+      class="testata"
+      src="./assets/testata.webp"
+      style="max-width: 100%"
+    />
+    <div class="container">
+      <Spinner />
+    </div>
+  </div>
+
   <Suspense>
     <router-view />
   </Suspense>

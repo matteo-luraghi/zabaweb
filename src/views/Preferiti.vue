@@ -1,7 +1,32 @@
 <script setup lang="ts">
-import { archive, dataJson, zabarte } from "@/state";
+import {
+  archive,
+  dataJson,
+  zabarte,
+  updateArchiveDatabase,
+  updateArtDatabase,
+  updateArticleDatabase,
+  notReady,
+} from "@/state";
 import { computed, reactive } from "vue";
 import Card from "@/components/Card.vue";
+
+//if the variables are not updated by the api the app will call the api
+if (dataJson[0].id === -1) {
+  await updateArticleDatabase();
+}
+
+if (archive[0].id === -1) {
+  await updateArchiveDatabase();
+}
+
+if (zabarte[0].id === -1) {
+  await updateArtDatabase();
+}
+
+if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
+  notReady.value = false;
+}
 
 //logic to retreive the saved articles from storage (based on the ID)
 const savedArticlesId = computed(() => {
