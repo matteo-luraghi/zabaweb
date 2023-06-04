@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Loading from '../components/Loading.vue'
+import Loading from '../views/Loading.vue'
 import Preferiti from '../views/Preferiti.vue'
 import Numeri from '../views/Numeri.vue'
 import Numero from '../views/Numero.vue'
