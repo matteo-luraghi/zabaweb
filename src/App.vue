@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import BottomBar from "./components/bottombar/BottomBar.vue";
 import { ref, computed, onMounted } from "vue";
-import { notReady, zabarteLoading } from "./state";
+import {
+  notReadyArchive,
+  notReadyArt,
+  notReadyArticles,
+  zabarteLoading,
+} from "./state";
 import Spinner from "./components/Spinner.vue";
 
 //the code below will check the screen size and based on that
@@ -33,29 +38,44 @@ if (wideScreen === true) {
 }
 
 function showBottomBar() {
-  if (
-    !wideScreen &&
-    window.location.pathname != "/install" &&
-    !notReady.value
-  ) {
+  if (!wideScreen && window.location.pathname != "/install") {
     return true;
   }
   return false;
 }
 
-let titleName: string;
-if (window.location.pathname === "/") {
-  titleName = "HOME";
-}
-if (window.location.pathname === "/articoli") {
-  titleName = "ARTICOLI";
-}
-if (window.location.pathname === "/numeri") {
-  titleName = "ARCHIVIO NUMERI";
-}
-if (window.location.pathname === "/zabarte") {
-  titleName = "ZABARTE";
-}
+let showLoading = computed(() => {
+  if (
+    window.location.pathname === "/" &&
+    notReadyArticles.value === true &&
+    notReadyArchive.value === true &&
+    notReadyArt.value === true
+  ) {
+    return true;
+  }
+  if (
+    (window.location.pathname === "/articoli" ||
+      window.location.pathname.includes("/articolo")) &&
+    notReadyArticles.value === true
+  ) {
+    return true;
+  }
+  if (
+    (window.location.pathname === "/numeri" ||
+      window.location.pathname.includes("/numero")) &&
+    notReadyArchive.value === true
+  ) {
+    return true;
+  }
+  if (
+    (window.location.pathname === "/zabarte" ||
+      window.location.pathname.includes("/zabarte/view")) &&
+    notReadyArt.value === true
+  ) {
+    return true;
+  }
+  return false;
+});
 
 const currentImageIndex = ref(0);
 
@@ -104,10 +124,13 @@ onMounted(() => {
 
   <BottomBar v-if="showBottomBar()" />
 
-  <div v-if="notReady">
-    <h1 class="header articoli-title">{{ titleName }}</h1>
+  <Suspense>
+    <router-view />
+  </Suspense>
+
+  <div v-if="showLoading">
+    <h1 class="header articoli-title">CARICAMENTO</h1>
     <img
-      v-if="titleName === 'HOME'"
       alt="testata"
       class="testata"
       src="./assets/testata.webp"
@@ -116,20 +139,16 @@ onMounted(() => {
     <div class="container">
       <transition name="fade">
         <img
+          class="responsive-image"
           v-if="currentImage"
           alt="loading-image"
           :src="currentImage.img"
-          style="{max-width: 100%, margin-bottom: 10px; margin-top:10px}"
           key="currentImage"
         />
       </transition>
       <Spinner />
     </div>
   </div>
-
-  <Suspense>
-    <router-view />
-  </Suspense>
 
   <div class="footer">
     <div :class="`footer-circle ${classname}`">

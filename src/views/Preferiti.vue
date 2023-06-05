@@ -6,26 +6,26 @@ import {
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
-  notReady,
+  notReadyArchive,
+  notReadyArt,
+  notReadyArticles,
 } from "@/state";
 import { computed, reactive } from "vue";
 import Card from "@/components/Card.vue";
 
-//if the variables are not updated by the api the app will call the api
-if (dataJson[0].id === -1) {
+if (notReadyArticles.value) {
   await updateArticleDatabase();
+  notReadyArticles.value = false;
 }
 
-if (archive[0].id === -1) {
+if (notReadyArchive.value) {
   await updateArchiveDatabase();
+  notReadyArchive.value = false;
 }
 
-if (zabarte[0].id === -1) {
+if (notReadyArt.value) {
   await updateArtDatabase();
-}
-
-if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
-  notReady.value = false;
+  notReadyArt.value = false;
 }
 
 //logic to retreive the saved articles from storage (based on the ID)
@@ -160,7 +160,12 @@ let showSaved = reactive({
       v-for="element in savedNumbers.numbers"
     >
       <h3 class="text-font">{{ element.name }}</h3>
-      <img alt="numero-cover" class="numero-cover" :src="element.img" />
+      <img
+        alt="numero-cover"
+        class="numero-cover"
+        :src="element.img"
+        @error="notReadyArchive = true"
+      />
     </router-link>
   </div>
 
@@ -176,7 +181,12 @@ let showSaved = reactive({
         <h3 class="text-font" v-for="tag in art.tags">{{ tag }}</h3>
       </div>
 
-      <img alt="art-img" :src="art.img" class="responsive-image" />
+      <img
+        alt="art-img"
+        :src="art.img"
+        class="responsive-image"
+        @error="notReadyArt = true"
+      />
     </router-link>
   </div>
 </template>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import {
   archive,
-  dataJson,
-  zabarte,
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
-  notReady,
+  notReadyArchive,
+  notReadyArt,
+  notReadyArticles,
 } from "../state";
 import { ref, computed } from "vue";
 
@@ -19,21 +19,19 @@ let showPdf = {
   name: "",
 };
 
-//if the variables are not updated by the api the app will call the api
-if (dataJson[0].id === -1) {
+if (notReadyArticles.value) {
   await updateArticleDatabase();
+  notReadyArticles.value = false;
 }
 
-if (archive[0].id === -1) {
+if (notReadyArchive.value) {
   await updateArchiveDatabase();
+  notReadyArchive.value = false;
 }
 
-if (zabarte[0].id === -1) {
+if (notReadyArt.value) {
   await updateArtDatabase();
-}
-
-if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
-  notReady.value = false;
+  notReadyArt.value = false;
 }
 
 const numberId = parseInt(props.query.split("#")[0]);

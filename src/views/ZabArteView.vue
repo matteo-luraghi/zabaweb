@@ -6,28 +6,28 @@ import {
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
-  notReady,
+  notReadyArchive,
+  notReadyArt,
+  notReadyArticles,
 } from "@/state";
 import { ref, computed } from "vue";
 const props = defineProps<{
   query: string;
 }>();
 
-//if the variables are not updated by the api the app will call the api
-if (dataJson[0].id === -1) {
+if (notReadyArticles.value) {
   await updateArticleDatabase();
+  notReadyArticles.value = false;
 }
 
-if (archive[0].id === -1) {
+if (notReadyArchive.value) {
   await updateArchiveDatabase();
+  notReadyArchive.value = false;
 }
 
-if (zabarte[0].id === -1) {
+if (notReadyArt.value) {
   await updateArtDatabase();
-}
-
-if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
-  notReady.value = false;
+  notReadyArt.value = false;
 }
 
 let zabart: {
@@ -88,7 +88,12 @@ function shareViaWebShare() {
 <template>
   <h1 class="header articoli-title">ZABARTE</h1>
   <div class="container image-container">
-    <img :src="zabart.img" alt="Zabarte Image" class="responsive-image" />
+    <img
+      :src="zabart.img"
+      alt="Zabarte Image"
+      class="responsive-image"
+      @error="notReadyArt = true"
+    />
   </div>
   <div class="container space">
     <h3

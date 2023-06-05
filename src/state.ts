@@ -28,7 +28,9 @@ interface Art {
     img: string
 }
 
-export let notReady = ref(true)
+export let notReadyArticles = ref(true)
+export let notReadyArchive= ref(true)
+export let notReadyArt = ref(true)
 
 //global reactive variable that saves all the selected filters
 export let filters = reactive({

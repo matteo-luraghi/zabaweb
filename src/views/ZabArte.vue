@@ -4,30 +4,28 @@ import {
   zabarte,
   artFiltered,
   artFilters,
-  dataJson,
-  archive,
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
-  notReady,
+  notReadyArt,
+  notReadyArchive,
+  notReadyArticles,
 } from "@/state";
 import SearchBarArt from "@/components/SearchBarArt.vue";
 
-//if the variables are not updated by the api the app will call the api
-if (dataJson[0].id === -1) {
+if (notReadyArticles.value) {
   await updateArticleDatabase();
+  notReadyArticles.value = false;
 }
 
-if (archive[0].id === -1) {
+if (notReadyArchive.value) {
   await updateArchiveDatabase();
+  notReadyArchive.value = false;
 }
 
-if (zabarte[0].id === -1) {
+if (notReadyArt.value) {
   await updateArtDatabase();
-}
-
-if (dataJson[0].id != -1 && archive[0].id != -1 && zabarte[0].id != -1) {
-  notReady.value = false;
+  notReadyArt.value = false;
 }
 
 function removeFilter(filterData: string) {
@@ -196,6 +194,7 @@ function shareViaWebShare() {
           :src="currentImage.img"
           alt="Zabarte Image"
           class="responsive-image"
+          @error="notReadyArt = true"
         />
       </router-link>
     </div>
@@ -262,7 +261,12 @@ function shareViaWebShare() {
       :to="`/zabarte/view?q=${art.id}#${art.title}`"
       class="router-link image-container"
     >
-      <img alt="zabarte-image" :src="art.img" class="responsive-image" />
+      <img
+        alt="zabarte-image"
+        :src="art.img"
+        class="responsive-image"
+        @error="notReadyArt = true"
+      />
       <h3
         v-if="!art.title.includes('Image') && art.title != ''"
         class="text-font"

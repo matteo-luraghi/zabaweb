@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { filters } from "../state";
+import { filters, notReadyArticles } from "../state";
 import { computed, ref } from "vue";
 
 //info of the article object
@@ -104,7 +104,12 @@ function notPrefriti() {
 <template>
   <div class="article-card">
     <router-link :to="`/articolo?q=${id}#${title}`">
-      <img alt="article-image" class="button article-card-image" :src="img" />
+      <img
+        alt="article-image"
+        class="button article-card-image"
+        :src="img"
+        @error="notReadyArticles = true"
+      />
     </router-link>
     <div class="article-card-title-container">
       <router-link :to="`/articolo?q=${id}#${title}`" class="router-link">
