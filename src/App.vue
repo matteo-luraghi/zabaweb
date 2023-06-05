@@ -147,7 +147,7 @@ onMounted(() => {
         />
       </transition>
     </div>
-    <Spinner />
+    <div class="container"><Spinner /></div>
   </div>
 
   <div class="footer">
