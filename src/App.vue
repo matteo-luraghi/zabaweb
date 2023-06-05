@@ -146,8 +146,8 @@ onMounted(() => {
           key="currentImage"
         />
       </transition>
-      <Spinner />
     </div>
+    <Spinner />
   </div>
 
   <div class="footer">
