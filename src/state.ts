@@ -173,6 +173,15 @@ export let zabarte = reactive([{
     img: '',
 }])
 
+//init of zabarte for loading page
+export let zabarteLoading = reactive([{
+    id: -1,
+    title: '',
+    authors: [''],
+    tags: [''],
+    img: '',
+}])
+
 //functions to update the variables containing the database's data
 export async function updateArticleDatabase() {
     await api.get<Article[]>('articles').then(
@@ -200,3 +209,11 @@ export async function updateArtDatabase() {
         (error) => console.log(error)
     )
 }
+
+//getting the last 20 images for the loading screen
+await api.get<Art[]>('zabart-sliced/0-10').then(
+    (res) => {
+        zabarteLoading = res.data
+    },
+    (error) => console.log(error)
+)

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BottomBar from "./components/bottombar/BottomBar.vue";
-import { notReady } from "./state";
+import { ref, computed, onMounted } from "vue";
+import { notReady, zabarteLoading } from "./state";
 import Spinner from "./components/Spinner.vue";
 
 //the code below will check the screen size and based on that
@@ -55,6 +56,29 @@ if (window.location.pathname === "/numeri") {
 if (window.location.pathname === "/zabarte") {
   titleName = "ZABARTE";
 }
+
+const currentImageIndex = ref(0);
+
+// Computed property to get the current image object
+const currentImage = computed(() => {
+  if (zabarteLoading.length > 0) {
+    return zabarteLoading[currentImageIndex.value];
+  }
+  return null;
+});
+
+// Function to rotate to the next image after 3 seconds
+function rotateImage() {
+  if (zabarteLoading.length > 0) {
+    currentImageIndex.value =
+      (currentImageIndex.value + 1) % zabarteLoading.length;
+  }
+}
+
+// Start rotating the images on component mount
+onMounted(() => {
+  setInterval(rotateImage, 3000);
+});
 </script>
 
 <template>
@@ -90,6 +114,15 @@ if (window.location.pathname === "/zabarte") {
       style="max-width: 100%"
     />
     <div class="container">
+      <transition name="fade">
+        <img
+          v-if="currentImage"
+          alt="loading-image"
+          :src="currentImage.img"
+          style="{max-width: 100%, margin-bottom: 10px; margin-top:10px}"
+          key="currentImage"
+        />
+      </transition>
       <Spinner />
     </div>
   </div>
@@ -190,5 +223,15 @@ if (window.location.pathname === "/zabarte") {
 
 .footer-icon {
   color: #303030;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
