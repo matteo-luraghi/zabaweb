@@ -211,7 +211,16 @@ export async function updateArtDatabase() {
     )
 }
 
+//function to force the backend database update
+export async function updateDatabase() {
+    await api.get('update').then(
+        (res) => console.log(res.data),
+        (error) => console.log(error)
+    )
+}
+
 export async function errorImage(type:string) {
+    await updateDatabase()
     if(type === 'articles') {
         notReadyArticles.value = true
         await updateArticleDatabase
