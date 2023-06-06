@@ -140,7 +140,6 @@ export function filterArt(artFilters: {authors: string[], title: string, tags: s
 }
 
 //api that connects to the backend
-//backup backend: https://zabapp-bakcned.onrender.com/
 export const api = axios.create({
     baseURL: "https://zabaappbackend-1-j2113551.deta.app/",
 })
@@ -212,16 +211,7 @@ export async function updateArtDatabase() {
     )
 }
 
-//function to force the backend database update
-export async function updateDatabase() {
-    await api.get('update').then(
-        (res) => console.log(res.data),
-        (error) => console.log(error)
-    )
-}
-
 export async function errorImage(type:string) {
-    await updateDatabase()
     if(type === 'articles') {
         notReadyArticles.value = true
         await updateArticleDatabase

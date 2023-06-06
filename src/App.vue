@@ -38,7 +38,31 @@ if (wideScreen === true) {
 }
 
 function showBottomBar() {
-  if (!wideScreen && window.location.pathname != "/install") {
+  if (
+    !wideScreen &&
+    window.location.pathname != "/install" &&
+    !(
+      window.location.pathname === "/" &&
+      notReadyArticles.value === true &&
+      notReadyArchive.value === true &&
+      notReadyArt.value === true
+    ) &&
+    !(
+      (window.location.pathname === "/articoli" ||
+        window.location.pathname.includes("/articolo")) &&
+      notReadyArticles.value === true
+    ) &&
+    !(
+      (window.location.pathname === "/numeri" ||
+        window.location.pathname.includes("/numero")) &&
+      notReadyArchive.value === true
+    ) &&
+    !(
+      (window.location.pathname === "/zabarte" ||
+        window.location.pathname.includes("/zabarte/view")) &&
+      notReadyArt.value === true
+    )
+  ) {
     return true;
   }
   return false;
