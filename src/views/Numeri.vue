@@ -7,6 +7,7 @@ import {
   notReadyArchive,
   notReadyArt,
   notReadyArticles,
+  errorImage,
 } from "../state";
 import { ref, computed } from "vue";
 //the variable archive stores all the info, then in the template via the v-for method are displayed all of the Numeri of the database
@@ -53,7 +54,7 @@ function loadMoreNumbers() {
         alt="numero-cover"
         class="numero-cover"
         :src="element.img"
-        @error="notReadyArchive = true"
+        @error="errorImage('archive')"
       />
     </router-link>
   </div>

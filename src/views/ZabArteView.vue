@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import {
   zabarte,
-  archive,
-  dataJson,
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,
   notReadyArchive,
   notReadyArt,
   notReadyArticles,
+  errorImage,
 } from "@/state";
 import { ref, computed } from "vue";
 const props = defineProps<{
@@ -92,7 +91,7 @@ function shareViaWebShare() {
       :src="zabart.img"
       alt="Zabarte Image"
       class="responsive-image"
-      @error="notReadyArt = true"
+      @error="errorImage('art')"
     />
   </div>
   <div class="container space">

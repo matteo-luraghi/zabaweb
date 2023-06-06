@@ -10,6 +10,7 @@ import {
   notReadyArt,
   notReadyArchive,
   notReadyArticles,
+  errorImage,
 } from "@/state";
 import SearchBarArt from "@/components/SearchBarArt.vue";
 
@@ -194,7 +195,7 @@ function shareViaWebShare() {
           :src="currentImage.img"
           alt="Zabarte Image"
           class="responsive-image"
-          @error="notReadyArt = true"
+          @error="errorImage('art')"
         />
       </router-link>
     </div>
@@ -265,7 +266,7 @@ function shareViaWebShare() {
         alt="zabarte-image"
         :src="art.img"
         class="responsive-image"
-        @error="notReadyArt = true"
+        @error="errorImage('art')"
       />
       <h3
         v-if="!art.title.includes('Image') && art.title != ''"

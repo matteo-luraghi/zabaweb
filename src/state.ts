@@ -212,6 +212,34 @@ export async function updateArtDatabase() {
     )
 }
 
+//function to force the backend database update
+export async function updateDatabase() {
+    await api.get('update').then(
+        (res) => console.log(res.data),
+        (error) => console.log(error)
+    )
+}
+
+export async function errorImage(type:string) {
+    await updateDatabase()
+    if(type === 'articles') {
+        notReadyArticles.value = true
+        await updateArticleDatabase
+        notReadyArticles.value = false
+    }
+    if(type === 'archive') {
+        notReadyArchive.value = true
+        await updateArchiveDatabase
+        notReadyArchive.value = false
+    }
+    if(type === 'art') {
+        notReadyArt.value = true
+        await updateArtDatabase
+        notReadyArt.value = false
+    }
+    window.location.reload()
+}
+
 //getting the last 20 images for the loading screen
 await api.get<Art[]>('zabart-sliced/0-10').then(
     (res) => {

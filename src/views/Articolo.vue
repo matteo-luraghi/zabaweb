@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import {
   dataJson,
-  archive,
-  zabarte,
   updateArchiveDatabase,
   updateArtDatabase,
   updateArticleDatabase,

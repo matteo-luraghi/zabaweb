@@ -9,6 +9,7 @@ import {
   notReadyArchive,
   notReadyArt,
   notReadyArticles,
+  errorImage,
 } from "@/state";
 import { computed, reactive } from "vue";
 import Card from "@/components/Card.vue";
@@ -164,7 +165,7 @@ let showSaved = reactive({
         alt="numero-cover"
         class="numero-cover"
         :src="element.img"
-        @error="notReadyArchive = true"
+        @error="errorImage('archive')"
       />
     </router-link>
   </div>
@@ -185,7 +186,7 @@ let showSaved = reactive({
         alt="art-img"
         :src="art.img"
         class="responsive-image"
-        @error="notReadyArt = true"
+        @error="errorImage('art')"
       />
     </router-link>
   </div>

@@ -9,6 +9,10 @@ import {
 } from "@/state";
 import Home from "../components/Home.vue";
 
+notReadyArticles.value = true;
+notReadyArchive.value = true;
+notReadyArt.value = true;
+
 if (notReadyArticles.value) {
   await updateArticleDatabase();
   notReadyArticles.value = false;
