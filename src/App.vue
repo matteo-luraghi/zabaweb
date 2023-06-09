@@ -281,7 +281,7 @@ onMounted(() => {
 }
 
 .footer-circle-small-chrome {
-  width: 50px;
+  width: 35px;
   height: 35px;
   margin-bottom: 35px;
 }
