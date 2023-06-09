@@ -175,32 +175,64 @@ onMounted(() => {
   </div>
 
   <div class="footer">
-    <div :class="`footer-circle ${classname}`">
-      <a href="mailto:parini.zabaione@gmail.com"
-        ><i class="footer-icon fas fa-envelope"></i
-      ></a>
+  <div class="footer-row">
+    <div class="footer-circle-container">
+      <div :class="`footer-circle ${classname}`">
+        <a href="mailto:parini.zabaione@gmail.com">
+          <i class="footer-icon fas fa-envelope"></i>
+        </a>
+      </div>
     </div>
-    <div :class="`footer-circle ${classname}`">
-      <a href="https://www.youtube.com/channel/UCh5GWanmOgLQO7up4Tkyk4g"
-        ><i class="footer-icon fa-brands fa-youtube"></i
-      ></a>
+    <div class="footer-circle-container">
+      <div :class="`footer-circle ${classname}`">
+        <a href="https://www.youtube.com/channel/UCh5GWanmOgLQO7up4Tkyk4g">
+          <i class="footer-icon fa-brands fa-youtube"></i>
+        </a>
+      </div>
     </div>
-    <div :class="`footer-circle ${classname}`">
-      <a href="https://www.facebook.com/zabaioneliceoparini/"
-        ><i class="footer-icon fa-brands fa-facebook-f"></i
-      ></a>
+    <div class="footer-circle-container">
+      <div :class="`footer-circle ${classname}`">
+        <a href="https://www.facebook.com/zabaioneliceoparini/">
+          <i class="footer-icon fa-brands fa-facebook-f"></i>
+        </a>
+      </div>
     </div>
-    <div :class="`footer-circle ${classname}`">
-      <a href="https://www.instagram.com/zabaione.liceoparini/"
-        ><i class="footer-icon fa-brands fa-instagram"></i
-      ></a>
+    <div class="footer-circle-container">
+      <div :class="`footer-circle ${classname}`">
+        <a href="https://www.instagram.com/zabaione.liceoparini/">
+          <i class="footer-icon fa-brands fa-instagram"></i>
+        </a>
+      </div>
     </div>
-    <div :class="`footer-circle ${classname}`">
-      <a href="https://zabaioneparini.online/"
-        ><i class="footer-icon fas fa-solid fa-link"></i
-      ></a>
+    <div class="footer-circle-container">
+      <div :class="`footer-circle ${classname}`">
+        <a href="https://zabaioneparini.online/">
+          <i class="footer-icon fas fa-solid fa-link"></i>
+        </a>
+      </div>
     </div>
   </div>
+  <div class="footer-row">
+    <div class="footer-author">
+      App Author:
+    </div>
+    <div class="footer-circle-container">
+      <div :class="`footer-circle ${classname}`">
+        <a href="https://www.instagram.com/matte_luraghi/">
+          <i class="footer-icon fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+    <div class="footer-circle-container">
+      <div :class="`footer-circle ${classname}`">
+        <a href="https://github.com/matteo-luraghi">
+          <i class="footer-icon fa-brands fa-github"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 </template>
 
 <style>
@@ -236,6 +268,14 @@ onMounted(() => {
   align-items: center;
   justify-content: center;
   margin-top: 30px;
+  flex-direction: column;
+  text-align: center;
+}
+
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-circle {
@@ -244,6 +284,10 @@ onMounted(() => {
   background-color: #e0e0e0;
   align-items: center;
   justify-content: center;
+  margin: 0 5px;
+}
+
+.footer-circle-container {
   margin: 0 5px;
 }
 
@@ -262,6 +306,12 @@ onMounted(() => {
 .footer-circle-large {
   width: 50px;
   height: 50px;
+}
+
+.footer-author {
+  color: white;
+  margin-right: 10px;
+  margin-bottom: 40px;
 }
 
 .footer-icon {
