@@ -212,18 +212,20 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="footer-row">
-    <div class="footer-author text-font">
-      App Author:
-    </div>
-    <div class="footer-circle-container">
-      <div :class="`footer-circle ${classname}`">
-        <a href="https://www.instagram.com/matte_luraghi/">
-          <i class="footer-icon fa-brands fa-instagram"></i>
-        </a>
+  <!--
+    <div class="footer-row">
+      <div class="footer-author text-font">
+        App Author:
+      </div>
+      <div class="footer-circle-container">
+        <div :class="`footer-circle ${classname}`">
+          <a href="https://www.instagram.com/matte_luraghi/">
+            <i class="footer-icon fa-brands fa-instagram"></i>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
+  -->
 </div>
 
 </template>
