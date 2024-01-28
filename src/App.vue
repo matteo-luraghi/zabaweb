@@ -206,7 +206,7 @@ onMounted(() => {
     </div>
     <div class="footer-circle-container">
       <div :class="`footer-circle ${classname}`">
-        <a href="https://zabaioneparinionline.com/">
+        <a href="https://www.zabaioneparinionline.com/">
           <i class="footer-icon fas fa-solid fa-link"></i>
         </a>
       </div>
